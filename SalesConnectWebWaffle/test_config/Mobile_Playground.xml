@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"> 
+
+<!-- TEMPLATE VERSION
+2012.11.04-2200
+-->
+
+<!-- SEE TESTNG.ORG for documentation on using testng xml config files. DTD available at above link and also in testng.jar -->
+
+<suite thread-count="1" name="SmokeTestSuite" parallel="false">
+    <listeners>
+      <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+	</listeners>
+
+    <!--parameter name="mobilePlatform" value="iOS" />
+    <parameter name="platformVersion" value="7.1.2"/-->
+    <parameter name="browser_url" value="https://svt5lb01a.rtp.raleigh.ibm.com/sales/salesconnect/" />
+          
+      <test name="Android tests" preserve-order="true" enabled="true">
+      <parameter name="mobile_platform" value="Android" />
+      <parameter name="platform_version" value="4.4.4" />
+      <classes>
+        <class name="com.ibm.appium.test.Client.ClientsTests">
+          <methods>
+            <include name="s27252ClientListViewSearchMyItems" /> 
+            <include name="s27252ClientDashboardSearch" />             
+          </methods>
+        </class>
+        <class name="com.ibm.appium.test.Contact.ContactsTests">
+		  <methods>
+	       	<include name="s2506ContactCreate_required" />
+	        <include name="s2506ContactListViewSearchMyItems" />   	   		
+	       </methods> 
+     	 </class>
+     	 <class name="com.ibm.appium.test.Opportunity.OpportunitiesTests">
+		  <methods>
+	       	<include name="s2626OpportunitiesCreate" />
+	        <include name="sOpportunitiesDashboardSearch" />
+	        <include name="sOpportunitiesListViewSearchMyItems" />
+	      </methods> 
+     	</class>	
+		<class name="com.ibm.appium.test.Note.NotesTests">
+		  <methods>
+       		<include name="s3410NotesCreate" />
+       		<include name="sNoteDashboardSearch" />
+       		<include name="sNoteListViewSearchMyItems" />
+     	  </methods> 
+      	</class>		
+     	<class name="com.ibm.appium.test.Task.TasksTests">
+		  <methods>
+	        <include name="s2419TasksCreate" />
+	       	<include name="s2421TasksDashboardSearch" />
+	        <include name="s2421TasksListViewSearchMyItems" />	        
+	      </methods> 
+     	</class>		
+		<class name="com.ibm.appium.test.Call.CallsTests">
+		  <methods>
+	       	<include name="s2495CallsCreate" />
+	       	<include name="s2495CallsDashboardSearch" />
+	       	<include name="s2495CallsListViewSearchMyItems" />
+	      </methods> 
+     	</class>			       		
+	  </classes>
+    </test>
+  	  
+      <test name="iOS Test" preserve-order="true" enabled="false">
+      <parameter name="mobile_platform" value="iOS" />
+      <parameter name="platform_version" value="8.4.1" />
+		<classes>
+		   <class name="com.ibm.appium.test.Note.NotesTests">
+			    <methods>
+	    	   		<include name="s3410NotesCreate" />
+    	   			<include name="sNoteListViewSearch" />
+			    </methods>
+			   </class>
+      	</classes>
+  	  </test> 	  
+  	  
+      <test name="Android Test" preserve-order="true" enabled="false">
+      <parameter name="mobile_platform" value="Android" />
+      <parameter name="platform_version" value="4.4.4" />
+		<classes>	
+    	<class name="com.ibm.appium.test.RLI.RevenueLineItemTests">
+		  <methods>
+	        <include name="s27809CreateLineItem" />
+	        <include name="s27809EditLineItem" />
+	      </methods> 
+     	</class>
+	</classes>
+  	  </test>
+      
+</suite> 

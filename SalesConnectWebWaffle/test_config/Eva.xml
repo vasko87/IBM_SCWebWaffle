@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!-- TEMPLATE VERSION
+2012.11.04-2200
+-->
+
+<!-- SEE TESTNG.ORG for documentation on using testng xml config files. DTD available at above link and also in testng.jar -->
+
+<suite thread-count="1" name="SmokeTestSuite" parallel="false" >
+ 
+  <!-- SELENIUM GRID/REMOTE SERVER SETTINGS -->
+  <!--Remote server:-->
+  <!--parameter name="server_is_grid_hub" value="true" />
+  <parameter name="server_host" value="dubxpcvm645.mul.ie.ibm.com" />
+  <parameter name="server_port" value="4444" /-->
+  
+   <!--Uncomment below to run locally-->
+  <parameter name="server_is_grid_hub" value="false" />
+  <parameter name="server_host" value="localhost" />
+  <parameter name="server_port" value="" /> 
+
+  <!-- BROWSER START COMMAND
+  The appropriate browser start commmand is formed from the browser_start_command string in format [browser_name]_[browser_version]_[browser_environment_os]. 
+  All 3 parts are required.
+  If using selenium grid(i.e. '<parameter name="server_is_grid_hub" value="true" />'), browser start command will be used to set capabilities. 
+  You must request capabilities that match what is available on the grid. View grid capabilities at 'http://[server_host]:[server_port]/grid/'.
+  If using -IBMtemplate argument with executable jar, desired browsers must be delimited by a semi-colon (e.g. 'GoogleChrome_9_Windows;Firefox_8_Windows').
+  -->
+  <parameter name="browser_start_command" value="ff_31.7_Windows" />
+  
+  <!--
+  WAFFLE CONFIGURATION PARAMETERS
+  Will be used in configuration of waffle. May also contain parameters used in configuration of test tool
+  -->
+  <parameter name="timeout_implicit_wait" value="60000" />
+  <parameter name="timeout_explicit_wait" value="60000" />
+  <parameter name="root_folder_name" value="c:\SeleniumServer\" />
+ 
+<!-- SalesConnect specific parameters -->
+  <!--parameter name="sugarurldb" value="jdbc:db2://svt3sugdb01.rtp.raleigh.ibm.com:50000/sugarcrm"/-->
+  <parameter name="sugarurldb" value="jdbc:db2://svt5oltp01.rtp.raleigh.ibm.com:50000/saleconn" />
+  <parameter name="testphase" value="nodbaccess" />
+  <parameter name="apimanagement" value="https://w3-dev.api.ibm.com/sales/development/scapisvt5/"/>
+  <parameter name="client_ID" value="42e2bc6e-5920-46d1-ba3d-dbc9ec963fae"/>
+  <parameter name="client_secret" value="lF5wU5pK7gB6gM2jV2vM4kI3cL2tH0cT2vV2oY5yB7hM1hF6jR"/>
+  
+  
+  <!-- LISTENERS -->
+  <listeners>
+    <listener class-name="com.ibm.atmn.waffle.base.BaseExecutionListener" />
+    <listener class-name="com.ibm.atmn.waffle.base.BaseTestListener" />
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+  </listeners>
+  
+  <!-- 
+  TESTS
+  Specify test structure below. A test is a collection of test classes. 
+  Parameters for tests may be expected. <Test> parameters automatically override suite parameters of the same same.
+  <Test> divisions are abritrary. @Test method locations for a <test> may be specified by <package> or <class>.
+  -->
+  
+  <!-- APPLICATION UNDER TEST HOST SERVER -->
+  <!--parameter name="browser_url" value="https://svt4sugarlb01a.rtp.raleigh.ibm.com/sales/salesconnect" /--><!-- address of application host -->
+  <parameter name="browser_url" value="https://svt5lb01a.rtp.raleigh.ibm.com/sales/salesconnect" /><!-- address of application host -->
+  <!--parameter name="browser_url" value="https://scdevapp6.swg.usma.ibm.com/sales/salesconnect" /--><!-- address of application host -->
+  <!--parameter name="browser_url" value="https://w3-01preview.ibm.com/sales/salesconnect" /-->
+  
+  <!-- LC UNDER TEST HOST SERVER -->
+  <!--parameter name="cxnurl" value="https://svtsccon4.rtp.raleigh.ibm.com/" /-->
+  <!--parameter name="cxnurl" value="https://w3-connections-beta.toronto.ca.ibm.com/" /-->
+  <parameter name="cxnurl" value="https://devconnections.rtp.raleigh.ibm.com/" />
+  
+   <!--parameter name="cxnurl" value="https://w3beta-2.toronto.ca.ibm.com/" /-->
+
+  
+    <test name="Eva Tests" preserve-order="true" enabled="true">
+    <classes>
+	
+	  <!--class name="com.ibm.salesconnect.test.examples.CreateSiteAddUsersJoinCommunity" /-->
+	  	    	
+   	  <!--class name="com.ibm.salesconnect.test.BusinessCard.s31952_RemoveBusinessCardContactFromClient" />
+   	  <class name="com.ibm.salesconnect.test.BusinessCard.s31952_RemoveBusinessCardContactFromOppty" />
+   	  <class name="com.ibm.salesconnect.test.BusinessCard.s9892BusinessCardOpportunities" /--> 
+   	  
+       
+   	  <!--class name="com.ibm.salesconnect.test.Search.s29860ExternalSearchDisabledForContacts" /-->
+   	  <class name="com.ibm.salesconnect.test.Search.s1950VerifyBasicAndAdvancedContactSearchByTag" />
+   	  <!--class name="com.ibm.salesconnect.test.Search.s1950VerifyContactSearchByEmail" />
+   	  <class name="com.ibm.salesconnect.test.Search.s1965SearchMyItemsAccounts" />
+      <class name="com.ibm.salesconnect.test.Search.s1965SearchMyItemsContactsInOpenOpportunities" /-->
+   	  <class name="com.ibm.salesconnect.test.Search.s32590SearchingPrivacyContactsGlobalSearchPopUp" />
+    	 
+   	  <class name="com.ibm.salesconnect.test.Miscellaneous.s1952CreateContactFromSubpanel" />
+   	  <class name="com.ibm.salesconnect.test.Miscellaneous.EditContactFromSubpanel" />
+      <class name="com.ibm.salesconnect.test.Miscellaneous.CopyEditContact" />
+      <class name="com.ibm.salesconnect.test.Miscellaneous.checkSingleUserSelection" />
+   	  <!--class name="com.ibm.salesconnect.test.Miscellaneous.s29860ExternalAccountsTabRemovedLinkedIn" /-->
+      
+      <!--class name="com.ibm.salesconnect.test.WinPlan.WinPlanCAW" />
+      <class name="com.ibm.salesconnect.test.WinPlan.WinPlanIV" />
+      <class name="com.ibm.salesconnect.test.WinPlan.WinPlanQGCP" />
+      <class name="com.ibm.salesconnect.test.WinPlan.WinPlanVQ" /-->
+      	
+      <!--class name="com.ibm.salesconnect.test.DocSharing.s4675_s9492OpportunityShareUnshareDocumentWithOpportunityTeam" /-->
+      
+      <!--class name="com.ibm.salesconnect.test.DocSharing.s4675_s9492OpportunityShareUnshareDeleteDocumentSharedWithClientTeam" />
+      <class name="com.ibm.salesconnect.test.DocSharing.s4675_s9492OpportunityShareUnshareDocumentWithMultipleUsers" />
+	  <class name="com.ibm.salesconnect.test.DocSharing.s4675ClientShareDocumentWithEveryone" />
+      <class name="com.ibm.salesconnect.test.DocSharing.s5482ClientShareExternalDocumentWithMultipleGroupsAndConnectionsCommunity" />
+      <class name="com.ibm.salesconnect.test.DocSharing.s4675OpportunityShareDocumentWithEveryone" />
+      <class name="com.ibm.salesconnect.test.DocSharing.s5482OpportunityShareExternalDocumentWithEveryone" /-->
+	  
+	  <!--class name="com.ibm.salesconnect.test.Collab.s1816UnfollowOpptyActivityStream" />
+	  <class name="com.ibm.salesconnect.test.Collab.s4890VerifyUIInConnectionsTabOpportunity" />
+      <class name="com.ibm.salesconnect.test.Collab.s4890VerifyUIInConnectionsTabClient" />
+      <class name="com.ibm.salesconnect.test.Collab.s1816OpptyTabFunctionality" />
+      <class name="com.ibm.salesconnect.test.Collab.s19282ClientUpdateTabLikeComments" />
+      <class name="com.ibm.salesconnect.test.Collab.s19282OpptyUpdateTabAtMentions" /-->
+      
+      <!--class name="com.ibm.salesconnect.test.ManageEvents.s19282FollowFromClientShowsInManageNotifications" />
+      <class name="com.ibm.salesconnect.test.ManageEvents.s19282FollowingUnfollowingManagedClientsAssignedTo" />
+      <class name="com.ibm.salesconnect.test.ManageEvents.s19282FollowingUnfollowingManagedOpportunitiesAssignedTo" />
+      <class name="com.ibm.salesconnect.test.ManageEvents.s19282FollowUnFollowAllClientsInManagedEvents" />
+      <class name="com.ibm.salesconnect.test.ManageEvents.s19282FollowUnFollowAllOpportunitiesInManagedEvents" /-->
+      
+      <!--class name="com.ibm.salesconnect.test.SocialAnalytics.cr4884RecommendedDocSalesKitRankingRaised" />
+      <class name="com.ibm.salesconnect.test.SocialAnalytics.s2663RecommendedDocFilterMarketAnalysis" /-->
+      
+      <!--class name="com.ibm.salesconnect.test.Level1.AT_Collab" />
+      <class name="com.ibm.salesconnect.test.Level1.AT_Sugar" />
+      <class name="com.ibm.salesconnect.test.Level1.BVT_Connections" />
+      <class name="com.ibm.salesconnect.test.BusinessCard.s9897BusinessCardTasks" />
+      <class name="com.ibm.salesconnect.test.Collab.S30658EmbeddedExperienceDisplayUI" />
+      <class name="com.ibm.salesconnect.test.ManageEvents.s19282ManageEventsUI" />
+      <class name="com.ibm.salesconnect.test.DocSharing.s4675ClientShareDocumentWithClientTeam" />
+      <class name="com.ibm.salesconnect.test.WinPlan.WinPlanSummaryUI" />
+      <class name="com.ibm.salesconnect.test.Miscellaneous.sISPTest" />
+      <class name="com.ibm.salesconnect.test.Miscellaneous.CRUDRli" />
+      <class name="com.ibm.salesconnect.test.SocialAnalytics.s2667RecommendedDocFilterSalesKit" />
+   	  <class name="com.ibm.salesconnect.test.Search.s1950VerifyContactGlobalSearch" /-->
+      
+      <!--class name="com.ibm.salesconnect.test.Collab.collabWebservices" /-->
+      
+      <!--class name="com.ibm.salesconnect.test.Collab.collabWebservices">
+      <methods>
+      <include name="Test_s30329ClientMicroblogRetrieveActivitystreamFilter"></include>
+      </methods>
+      </class-->
+      
+      
+      <!--class name="com.ibm.salesconnect.test.Membership.s30351UserRemovedFromClientNoAccessToCommunity" />
+      <class name="com.ibm.salesconnect.test.Membership.s303271UserAccessToGUCByClient" />
+      <class name="com.ibm.salesconnect.test.Membership.s30373NoUserAccessToGUCByOpportunity" />
+      <class name="com.ibm.salesconnect.test.Membership.s30358UserRemovedfromConnectionsGUCNotClient" />
+      <class name="com.ibm.salesconnect.test.Membership.s30343UserIsAddedToClientTeamandAddedToMembershipOfCommunity" />   
+      <class name="com.ibm.salesconnect.test.Membership.s30364UserRemovedFromClientTeamStillInGUC" />
+      <class name="com.ibm.salesconnect.test.Membership.s30347UserAddedToOpportunityNotGivenCommunityMembership" /-->
+      
+      
+	</classes>
+  </test>
+
+    <test name="Specific tests" preserve-order="true" enabled="true">
+<classes> 
+      <!--class name="com.ibm.salesconnect.test.Level1.AT_Sugar">			
+			<methods>
+				<include name="Test_AT_Call"></include>
+			</methods> 
+</class-->
+      </classes>
+  </test>
+  
+</suite>

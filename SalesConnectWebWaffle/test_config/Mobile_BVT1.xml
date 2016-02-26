@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"> 
+
+<!-- # # # # # # # # # # 
+#    TEMPLATE VERSION  #
+#	 2015.02.25-0.11   #
+# # # # # # # # # # # -->
+
+<suite thread-count="1" name="MobileTestSuite" parallel="false" >
+  <listeners>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+  </listeners>
+	  
+  <parameter name="browser_url" value="https://svt6lb01a.rtp.raleigh.ibm.com/sales/salesconnect/" />
+  <!--parameter name="app_url" value="NEW_URL_HERE" /-->  
+  <!--parameter name="app_url" value="https://lmc2.watson.ibm.com:15011/svt5" /-->
+  <!--parameter name="app_url" value="https://lmc2.watson.ibm.com:15022/sales/salesconnect" /-->
+  
+    <test name="Android tests" preserve-order="true" enabled="true">
+      <parameter name="mobile_platform" value="Android" />
+      <parameter name="platform_version" value="4.4.4" />
+      <classes>
+        <class name="com.ibm.appium.test.Client.ClientsTests">
+          <methods>
+            <include name="s27252ClientListViewSearchMyItems" /> 
+            <include name="s27252ClientDashboardSearch" />             
+          </methods>
+        </class>
+        <class name="com.ibm.appium.test.Contact.ContactsTests">
+		  <methods>
+	       	<include name="s2506ContactCreate_required" />
+	       	<include name="s2627ContactEdit" />
+	        <include name="s27253ContactCreateRelatedOpportunity" />
+   	       	<include name="s27253ContactCreateRelatedCall" />
+	        <include name="s2506ContactListViewSearchMyItems" />   	   		
+	       	<exclude name="s2506ContactCreate_full" />
+	       	<exclude name="s2627FullContactEdit" />
+	       </methods> 
+     	 </class>
+     	 <class name="com.ibm.appium.test.Opportunity.OpportunitiesTests">
+		  <methods>
+	       	<include name="s2626OpportunitiesCreate" />
+	       	<include name="s2627OpportunitiesEdit" />
+	        <include name="sOpportunitiesDashboardSearch" />
+	        <include name="sOpportunitiesListViewSearchMyItems" />
+	      </methods> 
+     	</class>	
+     	<class name="com.ibm.appium.test.RLI.RevenueLineItemTests">
+		  <methods>
+	        <include name="s27809CreateLineItem" />
+	        <include name="s27809EditLineItem" />
+	      </methods> 
+     	</class>
+		<class name="com.ibm.appium.test.Note.NotesTests">
+		  <methods>
+       		<include name="s3410NotesCreate" />
+       	    <include name="sNoteEdit" />
+       		<include name="sNoteDashboardSearch" />
+       		<include name="sNoteListViewSearchMyItems" />
+     	  </methods> 
+      	</class>		
+     	<class name="com.ibm.appium.test.Task.TasksTests">
+		  <methods>
+	        <include name="s2419TasksCreate" />
+	       	<include name="s2421TasksEdit" />
+	       	<include name="s2421TasksDashboardSearch" />
+	        <include name="s2421TasksListViewSearchMyItems" />	        
+	      </methods> 
+     	</class>		
+		<class name="com.ibm.appium.test.Call.CallsTests">
+		  <methods>
+	       	<include name="s2495CallsCreate" />
+	       	<include name="s2496CallsEdit" />
+	       	<include name="s2495CallsDashboardSearch" />
+	       	<include name="s2495CallsListViewSearchMyItems" />
+	      </methods> 
+     	</class>			       		
+	  </classes>
+    </test>
+    
+    <test name="iOS tests" preserve-order="true" enabled="false">
+      <parameter name="mobile_platform" value="iOS" />
+      <parameter name="platform_version" value="9.0" />
+      <classes>
+        <class name="com.ibm.appium.test.Client.ClientsTests">
+          <methods>
+            <include name="s27252ClientListViewSearchMyItems" /> 
+            <exclude name="s27252ClientDashboardSearch" />             
+          </methods>
+        </class>
+        <class name="com.ibm.appium.test.Contact.ContactsTests">
+		  <methods>
+	       	<include name="s2506ContactCreate_required" />
+	        <include name="s2627ContactListViewSearchMyItems" />   	   		
+   	       	<include name="s2627ContactEdit" />
+   	       	<include name="s27253ContactCreateRelatedCall" />
+   	       	<include name="s27253ContactCreateRelatedOpportunity" />
+	       	<exclude name="s2506ContactCreate_full" />
+	       	<exclude name="s2627FullContactEdit" />
+	       </methods> 
+     	 </class>
+     	 <class name="com.ibm.appium.test.Opportunity.OpportunitiesTests">
+		  <methods>
+	       	<include name="s2626OpportunitiesCreate" />
+	        <include name="sOpportunitiesDashboardSearch" />
+	        <include name="sOpportunitiesListViewSearchMyItems" />
+	      	<include name="s2627OpportunitiesEdit" />
+	      </methods> 
+     	</class>
+		<class name="com.ibm.appium.test.RLI.RevenueLineItemTests">
+		  <methods>
+	        <include name="s27809CreateLineItem" />
+	        <include name="s27809EditLineItem" />
+	      </methods> 
+     	</class>
+		<class name="com.ibm.appium.test.Note.NotesTests">
+		  <methods>
+       		<include name="s3410NotesCreate" />
+       		<include name="sNoteDashboardSearch" />
+       		<include name="sNoteListViewSearch" />
+       		<include name="sNoteEdit" />
+     	  </methods> 
+      	</class>		
+
+     	<class name="com.ibm.appium.test.Task.TasksTests">
+		  <methods>
+	        <include name="s2419TasksCreate" />
+	       	<include name="s2421TasksDashboardSearch" />
+	        <include name="s2421TasksListViewSearchMyItems" />	        
+	        <include name="s2421TasksEdit" />
+	      </methods> 
+     	</class>		
+		<class name="com.ibm.appium.test.Call.CallsTests">
+		  <methods>
+	       	<include name="s2495CallsCreate" />
+	       	<include name="s2495CallsDashboardSearch" />
+	       	<include name="s2495CallsListViewSearchMyItems" />
+	       	<include name="s2496CallsEdit" />
+	      </methods> 
+     	</class>				       		
+	  </classes>
+    </test>
+  </suite> 

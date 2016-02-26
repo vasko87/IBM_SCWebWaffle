@@ -1,0 +1,9 @@
+uid,password,display name,email,first name,last name,groups
+sctid,den1ed4u,Administrator,sctid@email,sctid,sctid,db2_users
+test02,passw0rd,Test02 Fest02,test02@tst.ibm.com,Test02,Fest02,bus_admin
+test08,passw0rd,Test08 Fest08,test08@tst.ibm.com,Test08,Fest08,uid
+test09,passw0rd,Test09 Fest09,test09@tst.ibm.com,Test09,Fest09,uid
+test10,passw0rd,Test10 Fest10,test10@tst.ibm.com,Test10,Fest10,uid
+test01,passw0rd,Test01 Fest01,test01@tst.ibm.com,Test01,Fest01,noGBL_Search
+eve25,passw0rd,Eve25 EveL25,eve25@tst.ibm.com,Eve25,EveL25,cchFnId
+eve29,passw0rd,Eve29 EveL29,eve29@tst.ibm.com,Eve29,EveL29,nonCchFnId

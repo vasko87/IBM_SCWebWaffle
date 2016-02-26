@@ -1,0 +1,6 @@
+TC_NAME;URL;Body;User;Expected_response
+UpdateLeadAsFavourite;/*lead-id*/favorite;;;200
+UpdateLeadLinkTask;/*taskLead*/link/tasks/*taskID*;"{"date_due":"2099-12-16T12:00:00-05:00","description":"This Task due date is updated to 2099"}";;200
+UpdateLeadLinkTaskNotLinked;/*lead-id*/link/tasks/*unLinkedtaskID*;"{"date_due":"2099-12-16T12:00:00-05:00","description":"This Task due date is updated to 2099"}";;200
+UpdateLeadLinkTaskInvalidTask;/*taskLead*/link/tasks/INVALID;"{"date_due":"2099-12-16T12:00:00-05:00","description":"This Task due date is updated to 2099"}";;404
+MassUpdate;/MassUpdate;"{"massupdate_params":{"uid":["*lead1*","*lead2*"],"status":"LEADPROG","status_detail_c":"PROGINIT"}}";;200

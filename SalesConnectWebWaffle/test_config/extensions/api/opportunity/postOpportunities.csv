@@ -1,0 +1,73 @@
+TC_NAME;URL;Body;User;Expected_response
+OnlyRequired;;"{ ""description"": ""API Created Oppty Required Fields Only"", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"", ""contact_id_c"":""*contactID*""}";;200
+MissingDescription;;"{ ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"", ""contact_id_c"":""*contactID*""}";;422
+MissingAccountID;;"{ ""description"": ""API Created Oppty Required Field Account ID Missing"", ""lead_source"":""SLSP"",""contact_id_c"":""*contactID*""}";;422
+MissingLeadSource;;"{ ""description"": ""API Created Oppty Required Field Lead Source Missing"", ""account_id"": ""*clientBeanID*"", ""contact_id_c"":""*contactID*""}";;422
+MissingPrimaryContact;;"{ ""description"": ""API Created Oppty Required Field Primary Contact Missing"", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP""}";;422
+SetInvalidAccountID;;"{ ""description"": ""API Created Oppty Invalid Account ID"", ""account_id"": blah, ""lead_source"":""SLSP"", ""contact_id_c"":""*contactID*""}";;422
+SetInvalidLeadSource;;"{ ""description"": ""API Created Oppty Invalid Lead Source"", ""account_id"": ""*clientBeanID*"", ""lead_source"":blah, ""contact_id_c"":""*contactID*""}";;422
+SetInvalidPrimaryContact;;"{ ""description"": ""API Created Oppty Invalid Primary Contact "", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"", ""contact_id_c"":blah}";;422
+SetInvalidDescription;;"{ ""description"": blah, ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"", ""contact_id_c"":""*contactID*""}";;422
+SetInvalidNonReqDateClosed;;"{ ""description"": ""API Created Oppty Invalid Non Required Field Date Closed"", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"",""contact_id_c"":""*contactID*"", ""date_closed"":""2015""}";;422
+SetInvalidNonReqAssignedUserID;;"{ ""description"": ""API Created Oppty Invalid Non Required Field Assigned User ID"", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"", ""contact_id_c"":""*contactID*"",  ""assigned_user_id"": blah}";;422
+SetInvalidNonReqSalesStage;;"{ ""description"": ""API Created Oppty Invalid Non Required Field Sales Stage"", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"", :""sales_stage:"":""103"", ""contact_id_c"":""*contactID*""}";;422
+SetInvalidNonReqSolutionCode;;"{ ""description"": ""API Created Oppty Invalid Non Required Field Solution Code"", ""account_id"": ""*clientBeanID*"", ""solution_codes_c"":[blah], ""lead_source"":""SLSP"",""contact_id_c"":""*contactID*""}";;422
+SetInvalidNonReqMyFavourite;;"{ ""description"": ""API Created Oppty Invalid Non Required Field My Favorite"",""my_favorite"":blah, ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"", ""contact_id_c"":""*contactID*""}";;422
+SetInvalidNonReqAssignedBPID;;"{ ""description"": ""API Created Oppty Invalid Non Required Field Assigned Business Partner ID"", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"", ""contact_id_c"":""*contactID*"", ""assigned_bp_id"":blah}";;422
+SetInvalidNonReqCurrencyID;;"{ ""description"": ""API Created Oppty Invalid Non Required Field Currency ID"", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"", ""currency_id"":""1000"", ""contact_id_c"":""*contactID*""}";;422
+SetInvalidNonReqCampaignID;;"{ ""description"": ""API Created Oppty Invalid Non Required Field Campaign ID"", ""account_id"": ""*clientBeanID*"", ""campaign_id"":blah, ""lead_source"":""SLSP"", ""contact_id_c"":""*contactID*""}";;422
+SetInvalidNonReqSalesStageSalesStatusCombo;;"{ ""description"": ""API Created Oppty Invalid Non Required Fields Sales Stage, Sales Status Combination"", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"", ""sales_stage"":""03"",  ""sales_status"":blah, ""contact_id_c"":""*contactID*""}";;422
+SetNotSettableName;;"{ ""description"": ""API Created Oppty Set Non Required Field Name, ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"", ""name"":""New Oppty Name"",""contact_id_c"":""*contactID*""}";;422
+SetNotSettableAmount;;"{ ""description"": ""API Created Oppty With Not Settable Field Amount  "", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"",""contact_id_c"":""*contactID*"",""amount"":""2.222000""}";;422
+SetNotSettableAccountName;;"{ ""description"": ""API Created Oppty With Not Settable Field Account Name  "", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"",""contact_id_c"":""*contactID*"",""account_name"":""ANTUNA EXILUS""}";;422
+SetNotSettableAmountUSDollar;;"{ ""description"": ""API Created Oppty With Not Settable Field Amount US Dollar  "", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"",""contact_id_c"":""*contactID*"",""amount_usdollar"":""4.500000""}";;422
+SetNotSettableAssignedBPName;;"{ ""description"": ""API Created Oppty With Not Settable Field Assigned BP Name  "", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"",""contact_id_c"":""*contactID*""""assigned_bp_id"":""HP""}";;422
+SetNotSettableAssignedUserAddressCountry;;"{ ""description"": ""API Created Oppty With Not Settable Field Assigned User Address Country  "", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"",""contact_id_c"":""*contactID*"",""assigned_user_name_address_country"":""Ireland""}";;422
+SetNotSettableCampaignCodeC;;"{ ""description"": ""API Created Oppty With Not Settable Field Campaign Code C "", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"",""contact_id_c"":""*contactID*"",""campaign_code_c"":[]}";;422
+SetNotSettableCMRC;;"{ ""description"": ""API Created Oppty With Not Settable CMR C  "", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"",""contact_id_c"":""*contactID*"",""cmr_c"":""8721067""}";;422
+SetNotSettableCMRID;;"{ ""description"": ""API Created Oppty With Not Settable Field CMR ID  "", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"",""contact_id_c"":""*contactID*"",""cmr_id"":""S007DCT2HW-000508-822""}";;422
+SetNotSettableContactNameKana;;"{ ""description"": ""API Created Oppty With Not Settable Field Contact Name Kana  "", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"",""contact_id_c"":""*contactID*"",""contact_name_kana"":""""}";;422
+SetNotSettableCurrencyName;;"{ ""description"": ""API Created Oppty With Not Settable Field Currency Name  "", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"",""contact_id_c"":""*contactID*"",""currency_name"":""Afghani""}";;422
+SetNotSettableCurrencySymbol;;"{ ""description"": ""API Created Oppty With Not Settable Field Currency Symbol  "", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"",""contact_id_c"":""*contactID*"",""currency_symbol"":""Af""}";;422
+SetNotSettableTeamMembers;;"{ ""description"": ""API Created Oppty With Not Settable Field Team Members"", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"",""contact_id_c"":""*contactID*"", ""team_members"":[""ie01 bie01 (Noticer)"",""ie01 bie01 (Identifier)""]}";;422
+SetNotSettableSurveyC;;"{ ""description"": ""API Created Oppty Set Not Settable Field Survey_C "", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"", ""contact_id_c"":""*contactID*"", ""survey_c"":true}";;422
+SetNotSettableVersion;;"{ ""description"": ""API Created Oppty Set Not Settable Field Version"", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"", ""contact_id_c"":""*contactID*"", ""version"":2}";;422
+SetNotSettableModule;;"{ ""description"": ""API Created Oppty Set Not SettableField Module"", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"", ""contact_id_c"":""*contactID*"", ""_module"":""Tasks""}";;422
+SetNotSettableBaseRate;;"{ ""description"": ""API Created Oppty Uneditable Field Base Rate"", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"", ""contact_id_c"":""*contactID*"", ""base_rate"":2}";;422
+SetNonReqDateClosed;;"{ ""description"": ""API Created Oppty Set Non Required Field Date Closed"", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"",""contact_id_c"":""*contactID*"", ""date_closed"":""2016-10-28""}";;200
+SetNonReqSalesStage;;"{ ""description"": ""API Created Oppty Set Non Required Field Sales Stage"", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"", :""sales_stage:"":""02"", ""contact_id_c"":""*contactID*""}";;200
+SetNonReqSolutionCode;;"{ ""description"": ""API Created Oppty Set Non Required Field Solution Code"", ""account_id"": ""*clientBeanID*"", ""solution_codes_c"":[""BCSSI:BCS Sales Initiatives|BGMOBILE:Mobile Services GTS only""], ""lead_source"":""SLSP"",""contact_id_c"":""*contactID*""}";;200
+SetReqMyFavourite;;"{ ""description"": ""API Created Oppty Set Non Required Field My Favorite"",""my_favorite"":true, ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"", ""contact_id_c"":""*contactID*""}";;200
+SetNonReqCurrencyID;;"{ ""description"": ""API Created Oppty Set Non Required Field Currency ID"", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"", ""currency_id"":""-99"", ""contact_id_c"":""*contactID*""}";;200
+SetNonReqCampaignCodeC;;"{ ""description"": ""API Created Oppty Set Non Required Field Campaign Code C"", ""account_id"": ""*clientBeanID*"", ""campaign_code_c"":[{id"":""e5392208-91e5-494c-1c18-546b8c6d7208"",""text"":""AU8AB06W - ANZ - System i""}], """"lead_source"""":""""SLSP"""", """"contact_id_c"""":""""*contactID*""""}""";;200
+IllegalInvalidReasonWonIncorrectSalesStage;;"{ ""description"": ""API Created Oppty Illegal Action, Edit Reason Won with Non Win Sales Stage"", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"", ""contact_id_c"":""*contactID*"", ""reason_won_c"":blah}";;422
+NonExistantField;;"{ ""description"": ""API Created Oppty With Non Existant Field Blah "", ""account_id"": ""*clientBeanID*"", ""lead_source"":""SLSP"", ""contact_id_c"":""*contactID*"", ""blah"":blah}";;422
+AssignedUserIDOnly;;"{ ""assigned_user_id"": ""*assignedUserID*""}";;422
+AccountIDOnly;;"{ ""account_id"": ""*clientBeanID*""}";;422
+LinkMultipleRLIsInline;/*opportunity-id*/link;"{ ""link_name"": ""opportun_revenuelineitems"", ""ids"": [ ""*rliID1*"",""*rliID2*"",""*rliID3*"" ] }";;200
+LinkMultipleTasksInline;/*opportunity-id*/link;"{ ""link_name"": ""tasks"", ""ids"": [ ""*taskID1*"",""*taskID2*"",""*taskID3*"" ] }";;200
+LinkMultipleCallsInline;/*opportunity-id*/link;"{ ""link_name"": ""calls"", ""ids"": [ ""*callID1*"",""*callID2*"",""*callID3*"" ] }";;200
+LinkMultipleMeetingsInline;/*opportunity-id*/link;"{ ""link_name"": ""meetings"", ""ids"": [ ""*meetingID1*"",""*meetingID2*"",""*meetingID3*"" ] }";;200
+LinkMultipleNotesInline;/*opportunity-id*/link;"{ ""link_name"": ""notes"", ""ids"": [ ""*noteID1*"",""*noteID2*"",""*noteID3*"" ] }";;200
+LinkMultipleContactsInline;/*opportunity-id*/link;"{ ""link_name"": ""contacts"", ""ids"": [ ""*contactID1*"",""*contactID2*"",""*contactID3*"" ] }";;200
+LinkMultipleObjectsWrongIDs;/*opportunity-id*/link;"{ ""link_name"": ""calls"", ""ids"": [ ""*taskID1*"",""*taskID2*"",""*taskID3*"" ] }";;404
+LinkMultipleOpportunitiesInline;/*opportunity-id*/link;"{ ""link_name"": ""rel_opportunities"", ""ids"": [ ""*opportunityID1*"",""*opportunityID2*"",""*opportunityID3*"" ],""reason_code"": ""GBSSWG""}";;200
+LinkSingleOpportunity;/*opportunity-id*/link/rel_opportunities/*opportunityID*;"{""reason_code"": ""GBSSWG""}";;200
+LinkSingleCall;/*opportunity-id*/link/calls/*callID*;;;200
+LinkSingleRLI;/*opportunity-id*/link/opportun_revenuelineitems/*rliID*;;;200
+LinkSingleMeeting;/*opportunity-id*/link/meetings/*meetingID*;;;200
+LinkSingleNote;/*opportunity-id*/link/notes/*noteID*;;;200
+LinkSingleTask;/*opportunity-id*/link/tasks/*taskID*;;;200
+LinkSingleContact;/*opportunity-id*/link/contacts/*contactID4*;;;200
+LinkSingleClient;/*opportunity-id*/link/accounts/*clientBeanID1*;;;200
+LinkSingleObjectWrongID;/*opportunity-id*/link/tasks/*callsID*;;;404
+LinkSingleOpportunityOtherUser;/*opportunity-id*/link/rel_opportunities/*opportunityID*;"{""reason_code"": ""GBSSWG""}";user2;403
+LinkSingleCallOtherUser;/*opportunity-id*/link/calls/*callID*;;user2;200
+LinkSingleRLIOtherUser;/*opportunity-id*/link/opportun_revenuelineitems/*rliID*;;user2;200
+LinkSingleMeetingOtherUser;/*opportunity-id*/link/meetings/*meetingID*;;user2;200
+LinkSingleNoteOtherUser;/*opportunity-id*/link/notes/*noteID*;;user2;200
+LinkSingleTaskOtherUser;/*opportunity-id*/link/tasks/*taskID*;;user2;200
+LinkSingleContactOtherUser;/*opportunity-id*/link/contacts/*contactID4*;;user2;200
+LinkSingleClientOtherUser;/*opportunity-id*/link/accounts/*clientBeanID1*;;user2;200
+SubscribeToOpportunity;/*opportunity-id*/subscribe;;;200
+SubscribeToOtherUsersOpportunity;/*opportunity-id*/subscribe;;user2;200

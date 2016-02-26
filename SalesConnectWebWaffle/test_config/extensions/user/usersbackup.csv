@@ -1,0 +1,21 @@
+uid,password,display name,email,first name,last name,groups
+sctid,den1ed4u,Administrator,sctid@email,sctid,sctid,db2_users
+-0505K754,passw0rd,ie01 bie01,ie01@tst.ibm.com,ie01,bie01,bus_admin
+-0505L754,passw0rd,ie02 bie02,ie02@tst.ibm.com,ie02,bie02,uid
+-0501D756,passw0rd,il01 bil01,il01@tst.ibm.com,il01,bil01,uid
+-05397744,passw0rd,in01 bin01,in01@tst.ibm.com,in01,bin01,uid
+-050WK724,passw0rd,de01 bde01,de01@tst.ibm.com,de01,bde01,dach_users
+-055I9897,passw0rd,us02 bus02,us02@tst.ibm.com,us02,bus02,us_users
+,passw2rd,,rossa01l@tst.ibm.com,,,readonly
+1fcf85bc-ef36-d2df-c327-530d0c3a8c3b,passw0rd,helenbyrne12,helenbyrne12@tst.ibm.com,helenbyrne12,helenbyrne12,e2e_AGusers
+943ba63b-6264-1a81-5fe7-52f150d760da,passw0rd,uk02 buk02,uk02@tst.ibm.com,uk02,buk02,noGBL_Search
+a87888d8-1726-2d88-953e-52f150b33abe,passw0rd,uk03 buk03,uk03@tst.ibm.com,uk03,buk03,noMem_users
+MichaelSC,Passw0rd,MichaelSC SCActive,MichaelSC@tst.ibm.com,MichaelSC,SCActive,e2e_AGusers
+JacobSC,Passw0rd,JacobSC SCActive,JacobSC@tst.ibm.com,JacobSC,SCActive,e2e_AGusers
+AP01SC,Passw0rd,AP01SC SCActive,AP01SC@tst.ibm.com,AP01SC,SCActive,e2e_APusers
+AP02SC,Passw0rd,AP02SC SCActive,AP02SC@tst.ibm.com,AP02SC,SCActive,e2e_APusers
+EU01SC,Passw0rd,EU01SC SCActive,EU01SC@tst.ibm.com,EU01SC,SCActive,e2e_EUusers
+EU02SC,Passw0rd,EU02SC SCActive,EU02SC@tst.ibm.com,EU02SC,SCActive,e2e_EUusers
+eve25,passw0rd,Eve25 EveL25,eve25@tst.ibm.com,Eve25,EveL25,cchFnId
+eve29,passw0rd,Eve29 EveL29,eve29@tst.ibm.com,Eve29,EveL29,nonCchFnId
+424552c5-5e3f-990d-69c9-550681f11b65,Apr15pwd,SalesConnect Test1,sctest1@us.ibm.com,SalesConnect,Test1,mobile

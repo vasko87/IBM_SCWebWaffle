@@ -1,0 +1,85 @@
+TC_NAME;URL;Body;User;Expected_response
+UpdateOpportunityAsFavourite;/*opportunity-id*/favorite;;;200
+UpdateOpportunityAsNotFavourite;/*opportunity-id*/unfavorite;;;200
+MassUpdate;/MassUpdate;"{ ""massupdate_params"":{""uid"":[""*opportunity1*"",""*opportunity2*""],""description"":""Mass Update Opportunity"",""lead_source"":""RLPL""}}";;200
+UpdateAllRequired;/*opportunity-id*;"{ ""description"": ""Edited API Created Oppty Update All Required Fields"", ""account_id"": ""*clientBeanID1*"", ""lead_source"":""RLPL"", ""contact_id_c"":""*contactID1*""}";;200
+UpdateDescription;/*opportunity-id*;"{ ""description"": ""Edited Opportunity Description""}";;200
+UpdateAccountIDOnly;/*opportunity1*;"{ ""account_id"": ""*clientBeanID1*""}";;200
+UpdateContactIDC;/*opportunity1*;"{ ""contact_id_c"":""*contactID1*""}";;200
+UpdateBothAccountIDAndContactIDC;/*opportunity2*;"{ ""account_id"": ""*clientBeanID1*"", ""contact_id_c"":""*contactID1*""}";;200
+UpdateLeadSource;/*opportunity-id*;"{ ""lead_source"":""SLSP""}";;200
+UpdateTags;/*opportunity-id*;"{ ""tags"":""OpptyTag""}";;200
+UpdateDateClosed;/*opportunity-id*;"{ ""date_closed"":""2016-10-28""}";;200
+UpdateName;/*opportunity-id*;"{ ""name"":""Name Updated""}";;422
+UpdateID;/*opportunity-id*;"{ ""id"":""ID Updated""}";;422
+UpdateWithInvalidLeadSource;/*opportunity-id*;"{ ""lead_source"":blah}";;422
+UpdateWithInvalidContactIDC;/*opportunity-id*;"{ ""contact_id_c"":blah}";;422
+UpdateWithInvalidContactIDAndPContactIDC;/*opportunity-id*;"{ ""contact_id_c"":""*contactID1*"", pcontact_id_c:blah}";;422
+UpdateWithInvalidDateClosed;/*opportunity-id*;"{ ""date_closed"":""2015""}";;422
+UpdateWithInvalidAssignedUserID;/*opportunity-id*;"{ ""assigned_user_id"": blah}";;422
+UpdateWithInvalidAssighedUserIDAssignedUserNameCombo;/*opportunity-id*;"{ ""assigned_user_id"": ""*assignedUserID*"", assigned_user_name:blah}";;422
+UpdateWithInvalidSalesStage;/*opportunity-id*;"{ ""sales_stage"":""103""}";;422
+UpdateWithInvalidCurrencyID;/*opportunity-id*;"{ ""currency_id"":blah}";;422
+UpdateWithInvalidCampaignID;/*opportunity-id*;"{ ""campaign_id"":blah}";;422
+UpdateWithInvalidMyFavourite;/*opportunity-id*;"{ ""my_favorite"":blah}";;422
+UpdateWithInvalidAssignedBPID;/*opportunity-id*;"{ ""assigned_bp_id"":blah}";;422
+UpdateWithInvalidSalesStageSalesStatusCombo;/*opportunity-id*;"{ ""sales_stage"":""04"", ""sales_status"":""New""}";;422
+SetInvalidDescription;/*opportunity-id*;"{ ""description"":blah}";;422
+SetInvalidNonReqSolutionCode;/*opportunity-id*;"{ ""solution_codes_c"":[blah]}";;422
+SetNotSettableAmount;/*opportunity-id*;"{ ""amount"":""3.000000""}";;422
+SetNotSettableAccountName;/*opportunity-id*;"{ ""account_name"":""ANTUNA EXILUS""}";;422
+SetNotSettableAmountUSDollar;/*opportunity-id*;"{ ""amount_usdollar"":""3.000000""}";;422
+SetNotSettableAssignedBPName;/*opportunity-id*;"{ ""assigned_bp_name"":""Microsoft""}";;422
+SetNotSettableAssignedUserAddressCountry;/*opportunity-id*;"{ ""assigned_user_name_address_country"":""Ireland""}";;422
+SetNotSettableCampaignCodeC;/*opportunity-id*;"{ ""campaign_code_c"":[{id"":""e5392208-91e5-494c-1c18-546b8c6d7208"",""text"":""AU8AB06W - ANZ - System i""}]}""";;422
+SetNotSettableCMRC;/*opportunity-id*;"{ ""cmr_c"":""""}";;422
+SetNotSettableCMRID;/*opportunity-id*;"{ ""cmr_id"":""S007DCT2HW-000508-822""}";;422
+SetNotSettableContactNameKana;/*opportunity-id*;"{ ""contact_name_kana"":""""}";;422
+SetNotSettableCurrencyName;/*opportunity-id*;"{ ""currency_name"":""""}";;422
+SetNotSettableCurrencySymbol;/*opportunity-id*;"{ ""currency_symbol"":""""}";;422
+SetNotSettableTeamMembers;/*opportunity-id*;"{ ""team_members"":[""ie01 bie01 (Noticer)"",""ie01 bie01 (Identifier)""]}";;422
+UpdateNotSettableSurveyC;/*opportunity-id*;"{"" survey_c"":true}";;422
+UpdateNotSettableVersion;/*opportunity-id*;"{ ""version"":2}";;422
+UpdateNotSettableModule;/*opportunity-id*;"{ ""_module"":""Tasks""}";;422
+UpdateNotSettableBaseRate;/*opportunity-id*;"{ ""base_rate"":2}";;422
+UpdateWithIllegalInvalidReasonWonIncorrectSalesStage;/*opportunity-id*;"{ ""reason_won_c"":blah}";;422
+UpdateWithNonExistantField;/*opportunity-id*;"{ ""blah"":blah}";;422
+LinkSingleOpportunity;/*opportunity-id*/link/rel_opportunities/*opportunityID*;"{""reason_code"": ""GBSSWG""}";;200
+LinkSingleCall;/*opportunity-id*/link/calls/*callID*;;;200
+LinkSingleRLI;/*opportunity-id*/link/opportun_revenuelineitems/;"{""*rliBody*""}";;200
+LinkSingleMeeting;/*opportunity-id*/link/meetings/*meetingID*;;;200
+LinkSingleNote;/*opportunity-id*/link/notes/*noteID*;;;200
+LinkSingleTask;/*opportunity-id*/link/tasks/*taskID*;;;200
+LinkSingleContact;/*opportunity-id*/link/contacts/*contactID2*;;;200
+LinkSingleObjectWrongID;/*opportunity-id*/link/tasks/*callsID*;;;404
+LinkSingleOpportunityOtherUser;/*opportunity-id*/link/rel_opportunities/*opportunityID*;"{""reason_code"": ""GBSSWG""}";user2;403
+LinkSingleCallOtherUser;/*opportunity-id*/link/calls/*callID*;;user2;200
+LinkSingleRLIOtherUser;/*opportunity-id*/link/opportun_revenuelineitems/;"{""*rliBody*""}";user2;200
+LinkSingleMeetingOtherUser;/*opportunity-id*/link/meetings/*meetingID*;;user2;200
+LinkSingleNoteOtherUser;/*opportunity-id*/link/notes/*noteID*;;user2;200
+LinkSingleTaskOtherUser;/*opportunity-id*/link/tasks/*taskID*;;user2;200
+LinkSingleContactOtherUser;/*opportunity-id*/link/contacts/*contactID2*;;user2;200
+UpdateOpportunityLinkTask;/*linkOpportunity*/link/tasks/*taskID1*;"{ ""name"":""Updated Base task""}";;200
+UpdateOpportunityLinkTaskNotLinked;/*opportunity-id*/link/tasks/*unLinkedTaskID*;"{ ""name"":""Updated Base task""}";;200
+UpdateOpportunityLinkTaskInvalidTask;/*linkOpportunity*/link/tasks/INVALID;"{ ""name"":""Updated Base task""}";;404
+UpdateOpportunityLinkCall;/*linkOpportunity*/link/calls/*callID1*;"{ ""name"":""Updated Base Call""}";;200
+UpdateOpportunityLinkCallNotLinked;/*opportunity-id*/link/calls/*unLinkedCallID*;"{ ""name"":""Updated Base Call""}";;200
+UpdateOpportunityLinkCallInvalidCall;/*linkOpportunity*/link/calls/INVALID;"{ ""name"":""Updated Base Call""}";;404
+UpdateOpportunityLinkOpportunity;/*linkOpportunity*/link/rel_opportunities/*opportunityID1*;"{ ""description"": ""Edited Opportunity Description"",""reason_code"": ""GBSSWG""}";;200
+UpdateOpportunityLinkOpportunityNotLinked;/*opportunity-id*/link/rel_opportunities/*unLinkedOpportunityID*;"{ ""description"": ""Edited Opportunity Description"",""reason_code"": ""GBSSWG""}";;200
+UpdateOpportunityLinkOpportunityInvalidOpportunity;/*linkOpportunity*/link/rel_opportunities/INVALID;"{ ""description"": ""Edited Opportunity Description"",""reason_code"": ""GBSSWG""}";;404
+UpdateOpportunityLinkRLI;/*linkOpportunity*/link/opportun_revenuelineitems/*rliID1*;"{ ""revenue_amount"":""1000""} – Change this";;200
+UpdateOpportunityLinkRLINotLinked;/*opportunity-id*/link/opportun_revenuelineitems/*unLinkedRLIID*;"{ ""revenue_amount"":""1000""}";;200
+UpdateOpportunityLinkRLIInvalidRLI;/*linkOpportunity*/link/opportun_revenuelineitems/INVALID;"{ ""revenue_amount"":""1000""}";;404
+UpdateOpportunityLinkNote;/*linkOpportunity*/link/notes/*noteID1*;"{ ""name"":""Updated Base Note""}";;200
+UpdateOpportunityLinkNoteNotLinked;/*opportunity-id*/link/notes/*unLinkedNoteID*;"{ ""name"":""Updated Base Note""}";;200
+UpdateOpportunityLinkNoteInvalidNote;/*linkOpportunity*/link/notes/INVALID;"{ ""name"":""Updated Base Note""}";;404
+UpdateOpportunityLinkMeeting;/*linkOpportunity*/link/meetings/*meetingID1*;"{ ""name"":""Updated Base Meeting""}";;200
+UpdateOpportunityLinkMeetingNotLinked;/*opportunity-id*/link/meetings/*unLinkedMeetingID*;"{ ""name"":""Updated Base Meeting""}";;200
+UpdateOpportunityLinkMeetingInvalidMeeting;/*linkOpportunity*/link/meetings/INVALID;"{ ""name"":""Updated Base Meeting""}";;404
+UpdateOpportunityLinkContact;/*linkOpportunity*/link/contacts/*contactID3*;"{ ""first_name"":""ContactFirstTest""}";;200
+UpdateOpportunityLinkContactNotLinked;/*opportunity-id*/link/contacts/*unLinkedContactID*;"{ ""first_name"":""ContactFirstTest""}";;200
+UpdateOpportunityLinkContactInvalidContact;/*linkOpportunity*/link/contacts/INVALID;"{ ""first_name"":""ContactFirstTest""}";;404
+UpdateWithInvalidAccountIDAccountNameCombo;/*opportunity-id*;"{ ""account_id"": ""*clientBeanID*"", account_name:blah}";;422
+UpdateDeletedToTrue;/*opportunity-id*;"{ ""deleted"": true }";;403
+UpdateWithInvalidAccountID;/*opportunity-id*;"{ ""account_id"": blah}";;422

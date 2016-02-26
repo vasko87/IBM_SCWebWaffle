@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Product UI test suite" default="zipeverything" basedir=".">
+
+	<!-- directories -->
+	<property name="build.dir" value="${basedir}/build" />
+	<property name="lib.dir" value="${basedir}/lib" />
+	<property name="classes.dir" value="${build.dir}/classes" />
+	<property name="src.dir" value="${basedir}/src" />
+
+	<!-- .jar paths -->
+	<property name="waffle.jar" value="${lib.dir}/waffle.jar" />
+	<property name="selenium.jar" value="${lib.dir}/selenium-server-standalone-2.46.0.jar" />
+	<property name="MAFjar" value="${lib.dir}/Mobile_AutomationFramework-0.2.0.jar" />
+	<property name="protojar" value="${lib.dir}/protobuf-java-2.5.0.jar" />
+	<property name="db2jcc.jar" value="${lib.dir}/db2jcc.jar" />
+	<property name="opencsv-2.3.jar" value="${lib.dir}/opencsv-2.3.jar" />
+	<property name="json-simple-1.1.1.jar" value="${lib.dir}/json-simple-1.1.1.jar" />
+	<property name="dom4j-1.6.1.jar" value="${lib.dir}/dom4j-1.6.1.jar" />
+	<property name="PdfGenerator.jar" value="${lib.dir}/PdfGenerator.jar" />
+	<property name="jaxen-1.1-beta-6.jar" value="${lib.dir}/jaxen-1.1-beta-6.jar" />
+
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete>
+			<fileset dir="${basedir}">
+				<include name="*.log" />
+				<include name="*.out" />
+				<include name="*.err" />
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="prepare-deps" depends="clean">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${classes.dir}" />
+		<mkdir dir="${build.dir}/test_config" />
+
+		<copy todir="${build.dir}/test_config">
+			<fileset dir="${basedir}/test_config">
+				<include name="**/*" />
+				<exclude name="**/*.jazzignore" />
+			</fileset>
+		</copy>
+		
+		<copy todir="${build.dir}/resources">
+			<fileset dir="${basedir}/resources">
+				<include name="**/*" />
+				<exclude name="**/*.jazzignore" />
+			</fileset>
+		</copy>
+
+	</target>
+
+	<path id="classpath">
+		<pathelement location="${waffle.jar}" />
+		<pathelement location="${selenium.jar}" />
+		<pathelement location="${db2jcc.jar}" />
+		<pathelement location="${opencsv-2.3.jar}" />
+		<pathelement location="${json-simple-1.1.1.jar}" />
+		<pathelement location="${dom4j-1.6.1.jar}" />
+		<pathelement location="${PdfGenerator.jar}" />
+		<pathelement location="${jaxen-1.1-beta-6.jar}" />
+		<pathelement location="${MAFjar}" />
+		<pathelement location="${protojar}" />
+	</path>
+
+	<target name="compile" depends="prepare-deps">
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" debug="true" includeantruntime="false" classpathref="classpath" includes="**/*" />
+	</target>
+
+	<target name="build-jar" depends="compile">
+		<jar destfile="${build.dir}/SalesConnectAuto.jar" basedir="${classes.dir}" duplicate="preserve">
+			<manifest>
+				<attribute name="Main-Class" value="com.ibm.salesconnect.common.Wrapper" />
+				<attribute name="Class-Path" value="." />
+			</manifest>
+			<zipfileset src="${waffle.jar}" excludes="META-INF/*" />
+			<zipfileset src="${selenium.jar}" excludes="META-INF/*" />
+			<zipfileset src="${db2jcc.jar}" excludes="META-INF/*" />
+			<zipfileset src="${opencsv-2.3.jar}" excludes="META-INF/*" />
+			<zipfileset src="${json-simple-1.1.1.jar}" excludes="META-INF/*" />
+			<zipfileset src="${PdfGenerator.jar}" excludes="META-INF/*" />
+			<zipfileset src="${jaxen-1.1-beta-6.jar}" excludes="META-INF/*" />
+			<zipfileset src="${dom4j-1.6.1.jar}" excludes="META-INF/*" />
+			<zipfileset src="${MAFjar}" excludes="META-INF/*" />
+			<zipfileset src="${protojar}" excludes="META-INF/*" />
+		</jar>
+		<delete dir="${classes.dir}" />
+	</target>
+	
+	<target name="zipeverything" depends="build-jar">
+		<zip destfile="${basedir}/Build Automation Jar.zip" basedir="${build.dir}">
+		</zip>
+	</target>
+</project>

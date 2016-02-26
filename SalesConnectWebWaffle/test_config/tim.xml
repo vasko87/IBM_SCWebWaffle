@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!-- TEMPLATE VERSION
+2012.11.04-2200
+-->
+
+<!-- SEE TESTNG.ORG for documentation on using testng xml config files. DTD available at above link and also in testng.jar -->
+
+<suite thread-count="1" name="SugarTests" parallel="methods" >
+  
+   <!--Uncomment below to run locally-->
+  <parameter name="server_is_grid_hub" value="false" />
+  <parameter name="server_host" value="localhost" />
+  <parameter name="server_port" value="" />
+  
+
+  <!-- APPLICATION UNDER TEST HOST SERVER -->
+  <parameter name="browser_url" value="https://svt5lb01a.rtp.raleigh.ibm.com/sales/salesconnect" />
+
+  <!-- BROWSER START COMMAND -->
+  <parameter name="browser_start_command" value="ff_38_Windows" />
+  
+  <!--
+  WAFFLE CONFIGURATION PARAMETERS
+  Will be used in configuration of waffle. May also contain parameters used in configuration of test tool
+  -->
+  <parameter name="timeout_implicit_wait" value="60000" />
+  <parameter name="timeout_explicit_wait" value="60000" />
+  <parameter name="root_folder_name" value="SeleniumServer" />
+ 
+<!-- SalesConnect specific parameters -->
+  <!-- parameter name="sugarurldb" value="jdbc:db2://svt3sugdb01.rtp.raleigh.ibm.com:50000/sugarcrm"/->
+  <!--parameter name="sugarurldb" value="jdbc:db2://svt5oltp01.rtp.raleigh.ibm.com:50000/saleconn" /-->
+  <!-- parameter name="testphase" value="nodbaccess" /-->
+  <!--parameter name="cxnurl" value="https://svtsccon4.rtp.raleigh.ibm.com/" /-->
+   <!--parameter name="cxnurl" value="https://svt1ic20.rtp.raleigh.ibm.com/" /-->
+   <!--parameter name="cxnurl" value="https://w3beta-2.toronto.ca.ibm.com/" /-->
+   <!--parameter name="cxnurl" value="https://w3alpha-3.toronto.ca.ibm.com/" /-->
+  <parameter name="cxnurl" value="https://w3-icdev3.ahe.boulder.ibm.com/" />
+  <!--parameter name="cxnurl" value="https://devconnections2.rtp.raleigh.ibm.com/"/-->
+  <!--parameter name="cxnurl" value="https://devconnections.rtp.raleigh.ibm.com/"/-->
+  <!--parameter name="cxnurl" value="https://w3-connections-beta.toronto.ca.ibm.com/" /-->
+ 
+	<!-- parameter name="apimanagement" value="https://w3-dev.api.ibm.com/sales/development/salesconnect/"/-->
+	<!--parameter name="apimanagement" value="https://w3-dev.api.ibm.com/sales/test/salesconnect/"/-->
+		<!--parameter name="apimanagement" value="https://w3-dev.api.ibm.com/sales/development/scapisvt5/"/-->
+
+	<!-- parameter name="clientid" value="3fc57020-e72a-4e2d-a594-9a088f18a55b"/>
+	<parameter name="clientsecret" value="sM7uF0kY3fK3xM5jQ0kX2rE2oJ6oI1fK4hC3nN5sU3gP7fY2hK"/-->
+  
+<!-- LISTENERS -->
+  <listeners>
+    <listener class-name="com.ibm.atmn.waffle.base.BaseExecutionListener" />
+    <listener class-name="com.ibm.atmn.waffle.base.BaseTestListener" />
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+  </listeners>
+  
+  <!-- 
+  TESTS
+  Specify test structure below. A test is a collection of test classes. 
+  Parameters for tests may be expected. <Test> parameters automatically override suite parameters of the same same.
+  <Test> divisions are abritrary. @Test method locations for a <test> may be specified by <package> or <class>.
+  -->
+
+  </test>
+    <test name="BVT tests" preserve-order="true" enabled="false">
+  <groups>
+    <run>
+      <include name="BVT0" />
+    </run>
+  </groups>
+     <packages>
+      <package name="com.ibm.salesconnect.test.*" />
+    </packages>
+  </test> 
+    <test name="Mobile tests" preserve-order="true" enabled="false">
+  <groups>
+    <run>
+      <include name="MOBILE"  />
+    </run>
+  </groups>
+     <packages>
+      <package name="com.ibm.salesconnect.test.mobile" />
+    </packages>
+  </test>
+</suite>

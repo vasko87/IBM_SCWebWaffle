@@ -1,0 +1,554 @@
+<html>
+<head>
+<title>TestNG:  Mobile tests</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Mobile tests</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>95/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Fri Feb 26 07:42:21 BRT 2016</td>
+</tr>
+<tr><td>Total time:</td><td>786 seconds (786319 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td>MOBILE </td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.CallRestAPITests.Test_createCall()'><b>Test_createCall</b><br>Test class: com.ibm.salesconnect.test.mobile.CallRestAPITests</td>
+<td></td>
+<td>4</td>
+<td>com.ibm.salesconnect.test.mobile.CallRestAPITests@57177af9</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.ContactRestAPITests.Test_createContact()'><b>Test_createContact</b><br>Test class: com.ibm.salesconnect.test.mobile.ContactRestAPITests</td>
+<td></td>
+<td>2</td>
+<td>com.ibm.salesconnect.test.mobile.ContactRestAPITests@23541e79</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.NoteRestAPITests.Test_createNote()'><b>Test_createNote</b><br>Test class: com.ibm.salesconnect.test.mobile.NoteRestAPITests</td>
+<td></td>
+<td>3</td>
+<td>com.ibm.salesconnect.test.mobile.NoteRestAPITests@679cac0d</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.OpportunityRestApiTests.Test_createOpportunity()'><b>Test_createOpportunity</b><br>Test class: com.ibm.salesconnect.test.mobile.OpportunityRestApiTests</td>
+<td></td>
+<td>7</td>
+<td>com.ibm.salesconnect.test.mobile.OpportunityRestApiTests@5e232be7</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.TaskRestAPITests.Test_createTask()'><b>Test_createTask</b><br>Test class: com.ibm.salesconnect.test.mobile.TaskRestAPITests</td>
+<td></td>
+<td>3</td>
+<td>com.ibm.salesconnect.test.mobile.TaskRestAPITests@44fb1c22</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.MeetingRestAPITests.Test_createmeeting()'><b>Test_createmeeting</b><br>Test class: com.ibm.salesconnect.test.mobile.MeetingRestAPITests</td>
+<td></td>
+<td>3</td>
+<td>com.ibm.salesconnect.test.mobile.MeetingRestAPITests@3691e124</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.CallRestAPITests.Test_deleteCall()'><b>Test_deleteCall</b><br>Test class: com.ibm.salesconnect.test.mobile.CallRestAPITests</td>
+<td></td>
+<td>4</td>
+<td>com.ibm.salesconnect.test.mobile.CallRestAPITests@57177af9</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.ContactRestAPITests.Test_deleteContact()'><b>Test_deleteContact</b><br>Test class: com.ibm.salesconnect.test.mobile.ContactRestAPITests</td>
+<td></td>
+<td>3</td>
+<td>com.ibm.salesconnect.test.mobile.ContactRestAPITests@23541e79</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.NoteRestAPITests.Test_deleteNote()'><b>Test_deleteNote</b><br>Test class: com.ibm.salesconnect.test.mobile.NoteRestAPITests</td>
+<td></td>
+<td>4</td>
+<td>com.ibm.salesconnect.test.mobile.NoteRestAPITests@679cac0d</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.TaskRestAPITests.Test_deleteTask()'><b>Test_deleteTask</b><br>Test class: com.ibm.salesconnect.test.mobile.TaskRestAPITests</td>
+<td></td>
+<td>4</td>
+<td>com.ibm.salesconnect.test.mobile.TaskRestAPITests@44fb1c22</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.MeetingRestAPITests.Test_deletemeeting()'><b>Test_deletemeeting</b><br>Test class: com.ibm.salesconnect.test.mobile.MeetingRestAPITests</td>
+<td></td>
+<td>4</td>
+<td>com.ibm.salesconnect.test.mobile.MeetingRestAPITests@3691e124</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.CallRestAPITests.Test_editCall()'><b>Test_editCall</b><br>Test class: com.ibm.salesconnect.test.mobile.CallRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.CallRestAPITests@57177af9</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.MeetingRestAPITests.Test_editMeeting()'><b>Test_editMeeting</b><br>Test class: com.ibm.salesconnect.test.mobile.MeetingRestAPITests</td>
+<td></td>
+<td>6</td>
+<td>com.ibm.salesconnect.test.mobile.MeetingRestAPITests@3691e124</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.NoteRestAPITests.Test_editNote()'><b>Test_editNote</b><br>Test class: com.ibm.salesconnect.test.mobile.NoteRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.NoteRestAPITests@679cac0d</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.OpportunityRestApiTests.Test_editOpportunity()'><b>Test_editOpportunity</b><br>Test class: com.ibm.salesconnect.test.mobile.OpportunityRestApiTests</td>
+<td></td>
+<td>12</td>
+<td>com.ibm.salesconnect.test.mobile.OpportunityRestApiTests@5e232be7</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.TaskRestAPITests.Test_editTask()'><b>Test_editTask</b><br>Test class: com.ibm.salesconnect.test.mobile.TaskRestAPITests</td>
+<td></td>
+<td>6</td>
+<td>com.ibm.salesconnect.test.mobile.TaskRestAPITests@44fb1c22</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.CallRestAPITests.Test_favoriteCall()'><b>Test_favoriteCall</b><br>Test class: com.ibm.salesconnect.test.mobile.CallRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.CallRestAPITests@57177af9</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.ClientRestAPITests.Test_favoriteClient()'><b>Test_favoriteClient</b><br>Test class: com.ibm.salesconnect.test.mobile.ClientRestAPITests</td>
+<td></td>
+<td>2</td>
+<td>com.ibm.salesconnect.test.mobile.ClientRestAPITests@468a9e1a</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.ContactRestAPITests.Test_favoriteContact()'><b>Test_favoriteContact</b><br>Test class: com.ibm.salesconnect.test.mobile.ContactRestAPITests</td>
+<td></td>
+<td>4</td>
+<td>com.ibm.salesconnect.test.mobile.ContactRestAPITests@23541e79</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.NoteRestAPITests.Test_favoriteNote()'><b>Test_favoriteNote</b><br>Test class: com.ibm.salesconnect.test.mobile.NoteRestAPITests</td>
+<td></td>
+<td>6</td>
+<td>com.ibm.salesconnect.test.mobile.NoteRestAPITests@679cac0d</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.OpportunityRestApiTests.Test_favoriteOpportunity()'><b>Test_favoriteOpportunity</b><br>Test class: com.ibm.salesconnect.test.mobile.OpportunityRestApiTests</td>
+<td></td>
+<td>8</td>
+<td>com.ibm.salesconnect.test.mobile.OpportunityRestApiTests@5e232be7</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.TaskRestAPITests.Test_favoriteTask()'><b>Test_favoriteTask</b><br>Test class: com.ibm.salesconnect.test.mobile.TaskRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.TaskRestAPITests@44fb1c22</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.MeetingRestAPITests.Test_favoritemeeting()'><b>Test_favoritemeeting</b><br>Test class: com.ibm.salesconnect.test.mobile.MeetingRestAPITests</td>
+<td></td>
+<td>4</td>
+<td>com.ibm.salesconnect.test.mobile.MeetingRestAPITests@3691e124</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.CallRestAPITests.Test_linkAdditionalAssigneeToCall()'><b>Test_linkAdditionalAssigneeToCall</b><br>Test class: com.ibm.salesconnect.test.mobile.CallRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.CallRestAPITests@57177af9</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.NoteRestAPITests.Test_linkAdditionalAssigneeToNote()'><b>Test_linkAdditionalAssigneeToNote</b><br>Test class: com.ibm.salesconnect.test.mobile.NoteRestAPITests</td>
+<td></td>
+<td>9</td>
+<td>com.ibm.salesconnect.test.mobile.NoteRestAPITests@679cac0d</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.TaskRestAPITests.Test_linkAdditionalAssigneeToTask()'><b>Test_linkAdditionalAssigneeToTask</b><br>Test class: com.ibm.salesconnect.test.mobile.TaskRestAPITests</td>
+<td></td>
+<td>7</td>
+<td>com.ibm.salesconnect.test.mobile.TaskRestAPITests@44fb1c22</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.ClientRestAPITests.Test_linkCallToClient()'><b>Test_linkCallToClient</b><br>Test class: com.ibm.salesconnect.test.mobile.ClientRestAPITests</td>
+<td></td>
+<td>6</td>
+<td>com.ibm.salesconnect.test.mobile.ClientRestAPITests@468a9e1a</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.ContactRestAPITests.Test_linkCallToContact()'><b>Test_linkCallToContact</b><br>Test class: com.ibm.salesconnect.test.mobile.ContactRestAPITests</td>
+<td></td>
+<td>6</td>
+<td>com.ibm.salesconnect.test.mobile.ContactRestAPITests@23541e79</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.OpportunityRestApiTests.Test_linkCallToOpportunity()'><b>Test_linkCallToOpportunity</b><br>Test class: com.ibm.salesconnect.test.mobile.OpportunityRestApiTests</td>
+<td></td>
+<td>10</td>
+<td>com.ibm.salesconnect.test.mobile.OpportunityRestApiTests@5e232be7</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.TaskRestAPITests.Test_linkCallToTask()'><b>Test_linkCallToTask</b><br>Test class: com.ibm.salesconnect.test.mobile.TaskRestAPITests</td>
+<td></td>
+<td>6</td>
+<td>com.ibm.salesconnect.test.mobile.TaskRestAPITests@44fb1c22</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.MeetingRestAPITests.Test_linkClientToMeeting()'><b>Test_linkClientToMeeting</b><br>Test class: com.ibm.salesconnect.test.mobile.MeetingRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.MeetingRestAPITests@3691e124</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.NoteRestAPITests.Test_linkClientToNote()'><b>Test_linkClientToNote</b><br>Test class: com.ibm.salesconnect.test.mobile.NoteRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.NoteRestAPITests@679cac0d</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.TaskRestAPITests.Test_linkClientToTask()'><b>Test_linkClientToTask</b><br>Test class: com.ibm.salesconnect.test.mobile.TaskRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.TaskRestAPITests@44fb1c22</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.CallRestAPITests.Test_linkContactToCall()'><b>Test_linkContactToCall</b><br>Test class: com.ibm.salesconnect.test.mobile.CallRestAPITests</td>
+<td></td>
+<td>6</td>
+<td>com.ibm.salesconnect.test.mobile.CallRestAPITests@57177af9</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.ClientRestAPITests.Test_linkContactToClient()'><b>Test_linkContactToClient</b><br>Test class: com.ibm.salesconnect.test.mobile.ClientRestAPITests</td>
+<td></td>
+<td>4</td>
+<td>com.ibm.salesconnect.test.mobile.ClientRestAPITests@468a9e1a</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.MeetingRestAPITests.Test_linkContactToMeeting()'><b>Test_linkContactToMeeting</b><br>Test class: com.ibm.salesconnect.test.mobile.MeetingRestAPITests</td>
+<td></td>
+<td>11</td>
+<td>com.ibm.salesconnect.test.mobile.MeetingRestAPITests@3691e124</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.NoteRestAPITests.Test_linkContactToNote()'><b>Test_linkContactToNote</b><br>Test class: com.ibm.salesconnect.test.mobile.NoteRestAPITests</td>
+<td></td>
+<td>8</td>
+<td>com.ibm.salesconnect.test.mobile.NoteRestAPITests@679cac0d</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.OpportunityRestApiTests.Test_linkContactToOpportunity()'><b>Test_linkContactToOpportunity</b><br>Test class: com.ibm.salesconnect.test.mobile.OpportunityRestApiTests</td>
+<td></td>
+<td>23</td>
+<td>com.ibm.salesconnect.test.mobile.OpportunityRestApiTests@5e232be7</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.TaskRestAPITests.Test_linkContactToTask()'><b>Test_linkContactToTask</b><br>Test class: com.ibm.salesconnect.test.mobile.TaskRestAPITests</td>
+<td></td>
+<td>6</td>
+<td>com.ibm.salesconnect.test.mobile.TaskRestAPITests@44fb1c22</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.ClientRestAPITests.Test_linkMeetingToClient()'><b>Test_linkMeetingToClient</b><br>Test class: com.ibm.salesconnect.test.mobile.ClientRestAPITests</td>
+<td></td>
+<td>4</td>
+<td>com.ibm.salesconnect.test.mobile.ClientRestAPITests@468a9e1a</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.ContactRestAPITests.Test_linkMeetingToContact()'><b>Test_linkMeetingToContact</b><br>Test class: com.ibm.salesconnect.test.mobile.ContactRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.ContactRestAPITests@23541e79</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.CallRestAPITests.Test_linkNoteToCall()'><b>Test_linkNoteToCall</b><br>Test class: com.ibm.salesconnect.test.mobile.CallRestAPITests</td>
+<td></td>
+<td>6</td>
+<td>com.ibm.salesconnect.test.mobile.CallRestAPITests@57177af9</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.ClientRestAPITests.Test_linkNoteToClient()'><b>Test_linkNoteToClient</b><br>Test class: com.ibm.salesconnect.test.mobile.ClientRestAPITests</td>
+<td></td>
+<td>4</td>
+<td>com.ibm.salesconnect.test.mobile.ClientRestAPITests@468a9e1a</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.OpportunityRestApiTests.Test_linkNoteToOpportunity()'><b>Test_linkNoteToOpportunity</b><br>Test class: com.ibm.salesconnect.test.mobile.OpportunityRestApiTests</td>
+<td></td>
+<td>9</td>
+<td>com.ibm.salesconnect.test.mobile.OpportunityRestApiTests@5e232be7</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.TaskRestAPITests.Test_linkNoteToTask()'><b>Test_linkNoteToTask</b><br>Test class: com.ibm.salesconnect.test.mobile.TaskRestAPITests</td>
+<td></td>
+<td>10</td>
+<td>com.ibm.salesconnect.test.mobile.TaskRestAPITests@44fb1c22</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.CallRestAPITests.Test_linkOpportunityToCall()'><b>Test_linkOpportunityToCall</b><br>Test class: com.ibm.salesconnect.test.mobile.CallRestAPITests</td>
+<td></td>
+<td>10</td>
+<td>com.ibm.salesconnect.test.mobile.CallRestAPITests@57177af9</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.ContactRestAPITests.Test_linkOpportunityToContact()'><b>Test_linkOpportunityToContact</b><br>Test class: com.ibm.salesconnect.test.mobile.ContactRestAPITests</td>
+<td></td>
+<td>9</td>
+<td>com.ibm.salesconnect.test.mobile.ContactRestAPITests@23541e79</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.MeetingRestAPITests.Test_linkOpportunityToMeeting()'><b>Test_linkOpportunityToMeeting</b><br>Test class: com.ibm.salesconnect.test.mobile.MeetingRestAPITests</td>
+<td></td>
+<td>10</td>
+<td>com.ibm.salesconnect.test.mobile.MeetingRestAPITests@3691e124</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.NoteRestAPITests.Test_linkOpportunityToNote()'><b>Test_linkOpportunityToNote</b><br>Test class: com.ibm.salesconnect.test.mobile.NoteRestAPITests</td>
+<td></td>
+<td>9</td>
+<td>com.ibm.salesconnect.test.mobile.NoteRestAPITests@679cac0d</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.TaskRestAPITests.Test_linkOpportunityToTask()'><b>Test_linkOpportunityToTask</b><br>Test class: com.ibm.salesconnect.test.mobile.TaskRestAPITests</td>
+<td></td>
+<td>9</td>
+<td>com.ibm.salesconnect.test.mobile.TaskRestAPITests@44fb1c22</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.CallRestAPITests.Test_linkTaskToCall()'><b>Test_linkTaskToCall</b><br>Test class: com.ibm.salesconnect.test.mobile.CallRestAPITests</td>
+<td></td>
+<td>6</td>
+<td>com.ibm.salesconnect.test.mobile.CallRestAPITests@57177af9</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.ClientRestAPITests.Test_linkTaskToClient()'><b>Test_linkTaskToClient</b><br>Test class: com.ibm.salesconnect.test.mobile.ClientRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.ClientRestAPITests@468a9e1a</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.NoteRestAPITests.Test_linkTaskToNote()'><b>Test_linkTaskToNote</b><br>Test class: com.ibm.salesconnect.test.mobile.NoteRestAPITests</td>
+<td></td>
+<td>6</td>
+<td>com.ibm.salesconnect.test.mobile.NoteRestAPITests@679cac0d</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.OpportunityRestApiTests.Test_linkTaskToOpportunity()'><b>Test_linkTaskToOpportunity</b><br>Test class: com.ibm.salesconnect.test.mobile.OpportunityRestApiTests</td>
+<td></td>
+<td>10</td>
+<td>com.ibm.salesconnect.test.mobile.OpportunityRestApiTests@5e232be7</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.TaskRestAPITests.Test_linkTaskToTask()'><b>Test_linkTaskToTask</b><br>Test class: com.ibm.salesconnect.test.mobile.TaskRestAPITests</td>
+<td></td>
+<td>10</td>
+<td>com.ibm.salesconnect.test.mobile.TaskRestAPITests@44fb1c22</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.CallRestAPITests.Test_linkUserToCall()'><b>Test_linkUserToCall</b><br>Test class: com.ibm.salesconnect.test.mobile.CallRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.CallRestAPITests@57177af9</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.MeetingRestAPITests.Test_linkUserToMeeting()'><b>Test_linkUserToMeeting</b><br>Test class: com.ibm.salesconnect.test.mobile.MeetingRestAPITests</td>
+<td></td>
+<td>8</td>
+<td>com.ibm.salesconnect.test.mobile.MeetingRestAPITests@3691e124</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.LoginRestAPITests.Test_logout()'><b>Test_logout</b><br>Test class: com.ibm.salesconnect.test.mobile.LoginRestAPITests</td>
+<td></td>
+<td>1</td>
+<td>com.ibm.salesconnect.test.mobile.LoginRestAPITests@5ee3be9f</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.LoginRestAPITests.Test_obtainLabels()'><b>Test_obtainLabels</b><br>Test class: com.ibm.salesconnect.test.mobile.LoginRestAPITests</td>
+<td></td>
+<td>115</td>
+<td>com.ibm.salesconnect.test.mobile.LoginRestAPITests@5ee3be9f</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.LoginRestAPITests.Test_obtainMe()'><b>Test_obtainMe</b><br>Test class: com.ibm.salesconnect.test.mobile.LoginRestAPITests</td>
+<td></td>
+<td>38</td>
+<td>com.ibm.salesconnect.test.mobile.LoginRestAPITests@5ee3be9f</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.LoginRestAPITests.Test_obtainMetadata()'><b>Test_obtainMetadata</b><br>Test class: com.ibm.salesconnect.test.mobile.LoginRestAPITests</td>
+<td></td>
+<td>28</td>
+<td>com.ibm.salesconnect.test.mobile.LoginRestAPITests@5ee3be9f</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.ClientRestAPITests.Test_relateNewCallToClient()'><b>Test_relateNewCallToClient</b><br>Test class: com.ibm.salesconnect.test.mobile.ClientRestAPITests</td>
+<td></td>
+<td>6</td>
+<td>com.ibm.salesconnect.test.mobile.ClientRestAPITests@468a9e1a</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.ContactRestAPITests.Test_relateNewCallToContact()'><b>Test_relateNewCallToContact</b><br>Test class: com.ibm.salesconnect.test.mobile.ContactRestAPITests</td>
+<td></td>
+<td>4</td>
+<td>com.ibm.salesconnect.test.mobile.ContactRestAPITests@23541e79</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.OpportunityRestApiTests.Test_relateNewCallToOpportunity()'><b>Test_relateNewCallToOpportunity</b><br>Test class: com.ibm.salesconnect.test.mobile.OpportunityRestApiTests</td>
+<td></td>
+<td>8</td>
+<td>com.ibm.salesconnect.test.mobile.OpportunityRestApiTests@5e232be7</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.CallRestAPITests.Test_relateNewContactToCall()'><b>Test_relateNewContactToCall</b><br>Test class: com.ibm.salesconnect.test.mobile.CallRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.CallRestAPITests@57177af9</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.ClientRestAPITests.Test_relateNewContactToClient()'><b>Test_relateNewContactToClient</b><br>Test class: com.ibm.salesconnect.test.mobile.ClientRestAPITests</td>
+<td></td>
+<td>3</td>
+<td>com.ibm.salesconnect.test.mobile.ClientRestAPITests@468a9e1a</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.MeetingRestAPITests.Test_relateNewContactToMeeting()'><b>Test_relateNewContactToMeeting</b><br>Test class: com.ibm.salesconnect.test.mobile.MeetingRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.MeetingRestAPITests@3691e124</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.NoteRestAPITests.Test_relateNewContactToNote()'><b>Test_relateNewContactToNote</b><br>Test class: com.ibm.salesconnect.test.mobile.NoteRestAPITests</td>
+<td></td>
+<td>9</td>
+<td>com.ibm.salesconnect.test.mobile.NoteRestAPITests@679cac0d</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.OpportunityRestApiTests.Test_relateNewContactToOpportunity()'><b>Test_relateNewContactToOpportunity</b><br>Test class: com.ibm.salesconnect.test.mobile.OpportunityRestApiTests</td>
+<td></td>
+<td>11</td>
+<td>com.ibm.salesconnect.test.mobile.OpportunityRestApiTests@5e232be7</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.TaskRestAPITests.Test_relateNewContactToTask()'><b>Test_relateNewContactToTask</b><br>Test class: com.ibm.salesconnect.test.mobile.TaskRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.TaskRestAPITests@44fb1c22</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.OpportunityRestApiTests.Test_relateNewLineItemToOpportunity()'><b>Test_relateNewLineItemToOpportunity</b><br>Test class: com.ibm.salesconnect.test.mobile.OpportunityRestApiTests</td>
+<td></td>
+<td>9</td>
+<td>com.ibm.salesconnect.test.mobile.OpportunityRestApiTests@5e232be7</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.CallRestAPITests.Test_relateNewNoteToCall()'><b>Test_relateNewNoteToCall</b><br>Test class: com.ibm.salesconnect.test.mobile.CallRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.CallRestAPITests@57177af9</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.ClientRestAPITests.Test_relateNewNoteToClient()'><b>Test_relateNewNoteToClient</b><br>Test class: com.ibm.salesconnect.test.mobile.ClientRestAPITests</td>
+<td></td>
+<td>3</td>
+<td>com.ibm.salesconnect.test.mobile.ClientRestAPITests@468a9e1a</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.MeetingRestAPITests.Test_relateNewNoteToMeeting()'><b>Test_relateNewNoteToMeeting</b><br>Test class: com.ibm.salesconnect.test.mobile.MeetingRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.MeetingRestAPITests@3691e124</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.OpportunityRestApiTests.Test_relateNewNoteToOpportunity()'><b>Test_relateNewNoteToOpportunity</b><br>Test class: com.ibm.salesconnect.test.mobile.OpportunityRestApiTests</td>
+<td></td>
+<td>8</td>
+<td>com.ibm.salesconnect.test.mobile.OpportunityRestApiTests@5e232be7</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.TaskRestAPITests.Test_relateNewNoteToTask()'><b>Test_relateNewNoteToTask</b><br>Test class: com.ibm.salesconnect.test.mobile.TaskRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.TaskRestAPITests@44fb1c22</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.CallRestAPITests.Test_relateNewOpportunityToCall()'><b>Test_relateNewOpportunityToCall</b><br>Test class: com.ibm.salesconnect.test.mobile.CallRestAPITests</td>
+<td></td>
+<td>8</td>
+<td>com.ibm.salesconnect.test.mobile.CallRestAPITests@57177af9</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.ClientRestAPITests.Test_relateNewOpportunityToClient()'><b>Test_relateNewOpportunityToClient</b><br>Test class: com.ibm.salesconnect.test.mobile.ClientRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.ClientRestAPITests@468a9e1a</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.ContactRestAPITests.Test_relateNewOpportunityToContact()'><b>Test_relateNewOpportunityToContact</b><br>Test class: com.ibm.salesconnect.test.mobile.ContactRestAPITests</td>
+<td></td>
+<td>7</td>
+<td>com.ibm.salesconnect.test.mobile.ContactRestAPITests@23541e79</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.MeetingRestAPITests.Test_relateNewOpportunityToMeeting()'><b>Test_relateNewOpportunityToMeeting</b><br>Test class: com.ibm.salesconnect.test.mobile.MeetingRestAPITests</td>
+<td></td>
+<td>8</td>
+<td>com.ibm.salesconnect.test.mobile.MeetingRestAPITests@3691e124</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.NoteRestAPITests.Test_relateNewOpportunityToNote()'><b>Test_relateNewOpportunityToNote</b><br>Test class: com.ibm.salesconnect.test.mobile.NoteRestAPITests</td>
+<td></td>
+<td>8</td>
+<td>com.ibm.salesconnect.test.mobile.NoteRestAPITests@679cac0d</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.TaskRestAPITests.Test_relateNewOpportunityToTask()'><b>Test_relateNewOpportunityToTask</b><br>Test class: com.ibm.salesconnect.test.mobile.TaskRestAPITests</td>
+<td></td>
+<td>8</td>
+<td>com.ibm.salesconnect.test.mobile.TaskRestAPITests@44fb1c22</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.CallRestAPITests.Test_relateNewTaskToCall()'><b>Test_relateNewTaskToCall</b><br>Test class: com.ibm.salesconnect.test.mobile.CallRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.CallRestAPITests@57177af9</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.ClientRestAPITests.Test_relateNewTaskToClient()'><b>Test_relateNewTaskToClient</b><br>Test class: com.ibm.salesconnect.test.mobile.ClientRestAPITests</td>
+<td></td>
+<td>3</td>
+<td>com.ibm.salesconnect.test.mobile.ClientRestAPITests@468a9e1a</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.MeetingRestAPITests.Test_relateNewTaskToMeeting()'><b>Test_relateNewTaskToMeeting</b><br>Test class: com.ibm.salesconnect.test.mobile.MeetingRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.MeetingRestAPITests@3691e124</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.NoteRestAPITests.Test_relateNewTaskToNote()'><b>Test_relateNewTaskToNote</b><br>Test class: com.ibm.salesconnect.test.mobile.NoteRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.NoteRestAPITests@679cac0d</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.OpportunityRestApiTests.Test_relateNewTaskToOpportunity()'><b>Test_relateNewTaskToOpportunity</b><br>Test class: com.ibm.salesconnect.test.mobile.OpportunityRestApiTests</td>
+<td></td>
+<td>9</td>
+<td>com.ibm.salesconnect.test.mobile.OpportunityRestApiTests@5e232be7</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.TaskRestAPITests.Test_relateNewTaskToTask()'><b>Test_relateNewTaskToTask</b><br>Test class: com.ibm.salesconnect.test.mobile.TaskRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.TaskRestAPITests@44fb1c22</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.CallRestAPITests.Test_unFavoriteCall()'><b>Test_unFavoriteCall</b><br>Test class: com.ibm.salesconnect.test.mobile.CallRestAPITests</td>
+<td></td>
+<td>4</td>
+<td>com.ibm.salesconnect.test.mobile.CallRestAPITests@57177af9</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.ClientRestAPITests.Test_unFavoriteClient()'><b>Test_unFavoriteClient</b><br>Test class: com.ibm.salesconnect.test.mobile.ClientRestAPITests</td>
+<td></td>
+<td>2</td>
+<td>com.ibm.salesconnect.test.mobile.ClientRestAPITests@468a9e1a</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.ContactRestAPITests.Test_unFavoriteContact()'><b>Test_unFavoriteContact</b><br>Test class: com.ibm.salesconnect.test.mobile.ContactRestAPITests</td>
+<td></td>
+<td>4</td>
+<td>com.ibm.salesconnect.test.mobile.ContactRestAPITests@23541e79</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.NoteRestAPITests.Test_unFavoriteNote()'><b>Test_unFavoriteNote</b><br>Test class: com.ibm.salesconnect.test.mobile.NoteRestAPITests</td>
+<td></td>
+<td>4</td>
+<td>com.ibm.salesconnect.test.mobile.NoteRestAPITests@679cac0d</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.OpportunityRestApiTests.Test_unFavoriteOpportunity()'><b>Test_unFavoriteOpportunity</b><br>Test class: com.ibm.salesconnect.test.mobile.OpportunityRestApiTests</td>
+<td></td>
+<td>7</td>
+<td>com.ibm.salesconnect.test.mobile.OpportunityRestApiTests@5e232be7</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.TaskRestAPITests.Test_unFavoriteTask()'><b>Test_unFavoriteTask</b><br>Test class: com.ibm.salesconnect.test.mobile.TaskRestAPITests</td>
+<td></td>
+<td>4</td>
+<td>com.ibm.salesconnect.test.mobile.TaskRestAPITests@44fb1c22</td></tr>
+<tr>
+<td title='com.ibm.salesconnect.test.mobile.MeetingRestAPITests.Test_unFavoritemeeting()'><b>Test_unFavoritemeeting</b><br>Test class: com.ibm.salesconnect.test.mobile.MeetingRestAPITests</td>
+<td></td>
+<td>5</td>
+<td>com.ibm.salesconnect.test.mobile.MeetingRestAPITests@3691e124</td></tr>
+</table><p>
+</body>
+</html>

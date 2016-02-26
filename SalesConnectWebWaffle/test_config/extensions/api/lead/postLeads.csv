@@ -1,0 +1,29 @@
+TC_NAME;URL;Body;User;Expected_response
+OnlyRequired;;{ "first_name": "one", "last_name": "smith", "phone_mobile": "22-222-2222", "primary_address_country": "US", "status": "LEADNEW" , "lead_source": "LSCAMP", "assigned_user_id": "*userID*"};;200
+MissingFirstName;;{ "last_name": "smith", "phone_mobile": "22-222-2222", "primary_address_country": "US", "status": "LEADNEW" };;422
+MissingLastName;;{ "first_name": "one", "phone_mobile": "22-222-2222", "primary_address_country": "US", "status": "LEADNEW" };;422
+MissingMobilePhone;;{ "first_name": "one", "last_name": "smith", "primary_address_country": "US", "status": "LEADNEW" };;422
+MissingAddressCountry;;{ "first_name": "one", "last_name": "smith", "phone_mobile": "22-222-2222", "status": "LEADNEW" };;422
+MissingStatus;;{ "first_name": "one", "last_name": "smith", "phone_mobile": "22-222-2222", "primary_address_country": "US"};;422
+InvalidCountry;;{ "first_name": "one", "last_name": "smith", "phone_mobile": "22-222-2222", "primary_address_country": "AA", "status": "LEADNEW" };;422
+InvalidStatus;;{ "first_name": "one", "last_name": "smith", "phone_mobile": "22-222-2222", "primary_address_country": "US", "status": "INVALID" };;422
+InvalidStatusStatusDetailcCombo;;{ "first_name": "one", "last_name": "smith", "phone_mobile": "22-222-2222", "primary_address_country": "US", "status": "LEADNEW", "status_detail_c": "COLDSTDT" };;422
+LinkMultipleCallsInline;/*lead-id*/link;{ "link_name": "calls", "ids": [ "*callID1*","*callID2*","*callID3*" ] };;200
+LinkMultipleEmailsInline;/*lead-id*/link;{ "link_name": "emails", "ids": [ "*emailID1*","*emailID2*","*emailID3*" ] };;200
+LinkMultipleMeetingsInline;/*lead-id*/link;{ "link_name": "meetings", "ids": [ "*meetingID1*","*meetingID2*","*meetingID3*" ] };;200
+LinkMultipleNotesInline;/*lead-id*/link;{ "link_name": "notes", "ids": [ "*noteID1*","*noteID2*","*noteID3*" ] };;200
+LinkMultipleTasksInline;/*lead-id*/link;{ "link_name": "tasks", "ids": [ "*taskID1*","*taskID2*","*taskID3*" ] };;200
+LinkMultipleObjectsWrongIDs;/*lead-id*/link;{ "link_name": "calls", "ids": [ "*taskID1*","*taskID2*","*taskID3*" ] };;404
+LinkSingleCall;/*lead-id*/link/calls/*callID*;;;200
+LinkSingleEmail;/*lead-id*/link/emails/*emailID*;;;200
+LinkSingleMeeting;/*lead-id*/link/meetings/*meetingID*;;;200
+LinkSingleNote;/*lead-id*/link/notes/*noteID*;;;200
+LinkSingleTask;/*lead-id*/link/tasks/*taskID*;;;200
+LinkSingleObjectWrongID;/*lead-id*/link/tasks/*callsID*;;;404
+LinkSingleCallOtherUser;/*lead-id*/link/calls/*callID*;;user2;404
+LinkSingleEmailOtherUser;/*lead-id*/link/emails/*emailID*;;user2;404
+LinkSingleMeetingOtherUser;/*lead-id*/link/meetings/*meetingID*;;user2;404
+LinkSingleNoteOtherUser;/*lead-id*/link/notes/*noteID*;;user2;404
+LinkSingleTaskOtherUser;/*lead-id*/link/tasks/*taskID*;;user2;404
+SubscribeToLead;/*lead-id*/subscribe;;;200
+SubscribeToOtherUsersLead;/*lead-id*/subscribe;;user2;404

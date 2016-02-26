@@ -1,0 +1,1016 @@
+swagger: '2.0'
+
+info:
+  version: '3.0'
+  title:  opportunitiesTBD API
+  x-sc-module: /opportunities
+  description: The opportunities module
+ 
+basePath: /salesconnect
+consumes:
+  - application/json
+produces:
+  - application/json
+
+definitions:
+       
+  opportunities-additional_users:
+    type: array
+    items:
+      type: object
+      properties:
+        employee_job_role:
+          type: string
+          x-sc-notes:
+          - TBD
+        first_name:
+          type: string
+          example: Donald E.
+          x-sc-notes:
+          - TBD
+        last_name:
+          type: string
+          example: Weaver
+          x-sc-notes:
+          - TBD
+        module:
+          type: string
+          example: User
+          x-sc-notes:
+          - TBD
+        role:
+          type: string
+          example: IGF
+          x-sc-notes:
+          - TBD
+        withheld_link:
+          type: boolean
+          x-sc-notes:
+          - TBD  
+          
+  opportunities-campaign_code_c:
+    type: array
+    items:
+      type: string
+
+  opportunities-cross_lob:
+    type: array
+    items:
+      type: string
+
+  opportunities-related_opportunities:
+    type: array
+    items:
+      type: string
+
+  opportunities-solution_codes_c:
+    type: array
+    items:
+      type: string
+      x-sc-enum: { api: /Opportunities/enum/solution_codes_c }
+      example: ISAIS14
+      x-sc-notes:
+      - TBD
+
+  opportunities-team_members:
+    type: array
+    items:
+      type: string
+      x-sc-enum: {api: /Opportunities/enum/team_members }
+      example: Donald E. Weaver (IGF Rep)
+      x-sc-notes:
+      - there is an enum return for this, but based on the example it is not an enumeration, just a list of names.
+
+  opportunities-team_name:
+    type: array
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Global
+          x-sc-notes:
+          - TBD
+        name_2:
+          type: string
+          x-sc-notes:
+          - TBD
+        primary:
+          type: boolean
+          x-sc-notes:
+          - TBD
+
+  opportunities-reason_won_lost_avl:
+    type: string
+    enum:
+      - ""
+      - WH (Better experts/skills)
+      - CH (Better experts/skills.)
+      - CI (Better understood client need.)
+      - WI (Better understood client needs)
+      - NG (Bid resources not available)
+      - EC (Business priority changed)
+      - EL (Client took â€œin-houseâ€�)
+      - WJ (Cross-brand value prop)
+      - CJ (Cross-brand value prop.)
+      - EH (Delayed indefinitely)
+      - NP (Divested Offering)
+      - NR (Duplicate opportunity)
+      - ND (Easy Pass - not a valid lead)
+      - NX (Entered in Error)
+      - DO (GPP Divested Offering)
+      - WL (IBM had lowest price)
+      - CL (IBM had lowest price.)
+      - WM (IBM incumbency advantage)
+      - CM (IBM incumbency advantage.)
+      - WN (IBM set the agenda/RFP)
+      - CN (IBM set the agenda/RFP.)
+      - NB (Insufficient customer budget)
+      - WO (ISV relationships)
+      - CO (ISV relationships.)
+      - NE (Low odds of winning)
+      - NF (Low priority vs other deals)
+      - NV (Machine Already Entitled)
+      - NJ (Machine Decommission)
+      - EM (New client management)
+      - LV (Open Source Solution Selected)
+      - WP (Quantified business case)
+      - CP (Quantified business case.)
+      - WQ (Relationships w key execs)
+      - CQ (Relationships w key execs.)
+      - ED (Required funding not avail)
+      - WR (Strong references)
+      - CR (Strong references.)
+      - NY (Too old to pursue)
+      - NO (Transferred to other OM tool)
+      - EF (Transferred to other OM tool.)
+      - NQ (Unresponsive to our efforts)
+      - LB (Client bought solely on price)
+      - LD (Comp. incumbency advantage)
+      - LF (Inferior relationship vs. comp)
+      - LG (Inflexibility in approach)
+      - LI (Lacked quantified bus. case)
+      - LM (Lacked the right experts)
+      - LN (Over-solutioned vs cust needs)
+      - LS (Poor cross-brand execution)
+      - LT (Sat. issues from previous sale)
+      - LU (Wrong skills mix)
+      - LW (GPP Duplicate Oppty)
+      - LX (GPP No Bid)
+      - LY (GPP Client Did Not Pursue)
+      - LZ (GPP Too Old to Pursue)
+
+    externalDocs:
+      description: Opportunity Sales Stage Reason Code // Current (0100) // Approved // op - Opportunity
+      url: https://w3.ibm.com/standards/information/tmt/output/Approved/ibmww/op/bds/Opportunity_Management/Opportunity_Sales_Stage_Reason_Code.html
+
+    x-sc-enum:
+      AVL:
+        dictionary_name : reason_won_lost 
+      api: /opportunities/enum/reason_won_c
+
+              
+    x-sc-notes:
+    - TBD
+
+
+  opportunitiesTBD-WinplanObject:
+    description: |
+      The winplans object (ibm_Winplans module) that is associated with an opportunity.
+      
+                           
+  OpportunityTBDObject:
+    allOf:
+      - $ref: '#/definitions/OpportunityTBDResponseExtraReturnObject'
+      - $ref: '#/definitions/OpportunityTBDMutableObject'
+      - $ref: '#/definitions/OpportunityTBDWorkingObject'
+
+  OpportunityTBDResponseExtraReturnObject:
+    description: Opportunity Object fields returned, but not settable.
+    allOf:
+      - $ref: 'MASTER#/definitions/BasicReadonlyObject'
+      - additionalProperties: true
+        properties:
+          assigned_user_name:
+            type: string
+            example: Mark J. (Mark) Vincenzes
+            x-sc-notes:
+            - readonly
+            x-sc-crud: readonly
+            
+          assigned_user_name_address_country:
+            type: string
+            x-sc-notes:
+            - readonly
+
+    
+     
+  OpportunityTBDMutableObject:
+    description: Opportunity object fields that can be supplied on a create or update operation
+    allOf:
+      - $ref: 'MASTER#/definitions/BasicMutableObject'
+      - required:
+          - account_id
+          - assigned_user_id
+          - contact_id_c
+          - description
+          - lead_source
+        properties:
+          account_id:
+            type: string
+            x-sc-type: 'MASTER#/definitions/SugarId'
+            example: cd5d352b-b156-a658-62ce-51b7dab1a047
+            x-sc-notes:
+              - required on post, update TBD
+            x-sc-crud:
+              create: required
+              update: TBD            
+
+          assigned_user_id:
+            type: string
+            x-sc-type: 'MASTER#/definitions/SugarId'        
+            example: e5358092-4357-79e3-498c-503935e67c9b
+            x-sc-notes:
+              - required for creating oppty
+            x-sc-crud:
+              create: required
+              update: TBD
+        
+          contact_id_c:
+            type: string
+            x-sc-context: 'MASTER#/definitions/SugarId'        
+            example: 1eba87cb774d9a0
+            x-sc-notes:
+              - defect: should be required, currently is not
+            x-sc-crud:
+              create: required
+              update: optional          
+
+          date_closed:
+            type: string
+            format: date
+            example: "2015-09-06"
+            x-sc-notes:
+            - The 'enum' values for '/opportunities/enum/date_closed' appear to be more associated with a query operation than setting the value of this field
+
+          description:
+            type: string
+            example: big opportunity
+            x-sc-notes:
+              - defect: should be required, currently is not
+            x-sc-crud:
+              create: required
+              update: optional
+
+          last_updating_system_c:
+            type: string
+            x-sc-notes:
+              - DOD: should the user of API be able to set this? Isn-t it that the API impl should set this to "api"
+            
+          last_updating_system_date_c:
+            type: string
+            format: date
+            x-sc-notes:
+              - does seem to be validated as date
+              - DOD: should the API be able to set this? see last_updating_system_c
+                        
+          lead_source:
+            type: string
+            example: BTO
+            externalDocs:
+              description: Lead Opportunity Source // Current (0105)  //  Approved  //  op - Opportunity
+              url: https://w3.ibm.com/standards/information/tmt/output/Approved/ibmww/op/bds/Opportunity_Management/Lead_Opportunity_Source.html
+
+            x-sc-enum:
+              api: /Opportunities/enum/lead_source
+              AVL:
+                dictionary_name: lead_source_dom
+              BDS:
+                XML: https://w3.ibm.com/standards/information/tmt/output/Approved/ibmww/op/bds/xml/Opportunity_Management/Lead_Source.xml
+                DTD: https://w3.ibm.com/standards/information/tmt/output/Approved/ibmww/op/bds/xml/Opportunity_Management/Lead_Source.dtd                
+
+            x-sc-notes:
+              - DOD: should be required, currently is not
+            
+            x-sc-crud:
+              create: required
+              update: TBD
+
+          name:
+            type: string
+            example: VZ-B3U8T6M
+            x-sc-notes:
+            - DOD: 73162, 73163 - this can be changed via the api, and when oppty created, this will become the id
+            x-sc-crud:
+              create: optional
+              update: optional
+        
+          probability:
+            type: integer
+            description: |
+              Overall likelhood the opportunity will be won.
+              <p>Calculated by averaging all line item probabilities and rounding to the closest 10%.</p>
+            externalDocs:
+              description: Opportunity Odds Code // Current (0100) // Approved // op - Opportunity
+              url: https://w3.ibm.com/standards/information/tmt/output/Approved/ibmww/op/bds/Opportunity_Management/Opportunity_Odds_Code.html
+
+            x-sc-notes:
+              - todo: move to mutable .  Can PUT to this with api, rule says if no rlis
+              - rtc: 74510 design or defect question on mutability of this field in api
+              - test: update with existing rli
+              - what is relationship of this field to probability_template?
+                - no longer a probability_template field after build r30_200
+              - from alicia spreadsheet
+                  - Probability at header is only accepted via services if there are no line items from which to calculate the probability.
+                  - This is needed for MAT which does not send line items from which to calculate the probability. 
+              - 'metadata#/modules/Opportunities/fields/probability/options = opportunity_probability, but there is no such name in avldictionarymap'
+
+            x-sc-enum:
+              api: '/opportunities/enum/probability'
+              AVL:
+                dictionary_name: opportunity_probability
+                parent_property: sales_stage
+                       
+    
+            x-sc-crud:
+              create: ignored, uses default
+              update: only if no rli values (to test)
+         
+          reason_lost_c:
+            type: string
+            externalDocs:
+              description: Opportunity Sales Stage Reason Code // Current (0100) // Approved // op - Opportunity
+              url: https://w3.ibm.com/standards/information/tmt/output/Approved/ibmww/op/bds/Opportunity_Management/Opportunity_Sales_Stage_Reason_Code.html
+  
+            x-sc-enum: 
+              api: /opportunities/enum/reason_lost_c
+              AVL:
+                dictionary_name : reason_won_lost 
+                parent_property: sales_stage
+               
+            x-sc-notes:
+            - todo: move to mutable
+            - some values of won/lost based on sales stage
+            
+          reason_won_c:
+            type: string
+            externalDocs:
+              description: Opportunity Sales Stage Reason Code // Current (0100) // Approved // op - Opportunity
+              url: https://w3.ibm.com/standards/information/tmt/output/Approved/ibmww/op/bds/Opportunity_Management/Opportunity_Sales_Stage_Reason_Code.html
+  
+            x-sc-enum: 
+              api:  /opportunities/enum/reason_won_c
+              AVL:
+                dictionary_name : reason_won_lost 
+                parent_property: sales_stage
+               
+            x-sc-notes:
+            - TODO: move to mutable once verified as changable.
+            - some values of won/lost based on sales stage
+
+          sales_stage:
+            type: string
+            title: sales stage from avl
+            
+            default: "03"
+                   
+            externalDocs:
+              description: Opportunity Sell Stage // Current (0100) // Approved // op - Opportunity
+              url: 'https://w3.ibm.com/standards/information/tmt/output/Approved/ibmww/op/bds/Opportunity_Management/Opportunity_Sell_Stage.html'
+    
+            x-sc-enum:
+              api: /Opportunities/enum/sales_stage
+              AVL:
+                dictionary_name: sales_stage_dom
+
+              BDS:
+                details:
+                  XML: "https://w3.ibm.com/standards/information/tmt/output/Approved/ibmww/op/bds/xml/Opportunity_Management/Opportunity_Sell_Stage.xml"
+                  DTD: "https://w3.ibm.com/standards/information/tmt/output/Approved/ibmww/op/bds/xml/Opportunity_Management/Opportunity_Sell_Stage.dtd"
+
+            example: "04"
+                
+            x-sc-notes:
+            - some stages require line items
+              
+  # moving things from here to other definitions as they are evaluated.
+  #
+  OpportunityTBDWorkingObject:
+    description: Items of Opportunity Object of undertermined nature. May be settable or not.
+    type: object              
+    properties:
+          account_client_id:
+            type: string
+            x-sc-context: 'MASTER#/definitions/SugarId'
+            example: S004SM4EZQ
+            x-sc-notes:
+            - TBD
+              
+          account_name:
+            type: string
+            example: BURNSWORTH HALCOTT
+            x-sc-notes:
+              - readonly?
+              
+          acl_prefetch:
+            type: string
+            x-sc-notes:
+              - TBD
+              
+          additional_ibm_businesspartners:
+            type: string
+            x-sc-notes:
+              - TBD
+              
+          additional_users:
+            $ref: '#/definitions/opportunities-additional_users'
+            
+          amount:
+            type: string
+            x-sc-enum:
+              api: /Opportunities/enum/amount
+                
+            example: "123469134.000000"
+            x-sc-notes:
+              - FUP: the enum may be for a filter, not for this field
+              - giving "foobar" returns error "arguments must be numeric"
+                - however, it accepts a number in a string ("123") or just a number (123) on put, but does not seem to actually change anything.
+            
+          amount_usdollar:
+            type: string
+            example: "123469134.000000"
+            x-sc-notes:
+              - TBD
+    
+          assigned_bp_id:
+            type: string
+            x-sc-notes:
+              - TBD
+    
+          assigned_bp_name:
+            type: string
+            x-sc-notes:
+             - TBD
+     
+          assigned_user_name_template:
+            type: string
+            x-sc-notes:
+            - TBD
+            
+          assignment_date:
+            type: string
+            x-sc-notes:
+            - can't set it with put
+            
+          base_rate:
+            type: integer
+            x-sc-notes:
+            - TBD
+            
+          best_case:
+            type: string
+            example: "0.000000"
+            x-sc-notes:
+            - TBD
+            
+          business_name_kana:
+            type: string
+            x-sc-notes:
+            - TBD
+            
+          campaign_code_c:
+            $ref: '#/definitions/opportunities-campaign_code_c'
+            
+          campaign_id:
+            type: string
+            x-sc-notes:
+            - TBD
+            
+          campaign_name:
+            type: string
+            x-sc-notes:
+            - TBD
+            
+          closed_revenue_line_items:
+            type: integer
+            x-sc-notes:
+            - TBD
+            
+          cmr_c:
+            type: string
+            example: 8721067 / T0000306 / System Integration
+            x-sc-notes:
+            - TBD
+            
+          cmr_id:
+            type: string
+            example: S004SM4EZQ-8721067-897
+            x-sc-notes:
+            - TBD
+            
+          commit_stage:
+            type: string
+            x-sc-enum:
+              api: /Opportunities/enum/commit_stage
+            x-sc-notes:
+            - TBD
+          competitor_template:
+            type: string
+            x-sc-enum:
+              api: /Opportunities/enum/competitor_template
+                
+            x-sc-notes:
+            - TBD
+            
+          contact_name_kana:
+            type: string
+            x-sc-notes:
+            - TBD
+            
+          contact_role:
+            type: string
+            x-sc-enum: 
+              api:  /Opportunities/enum/contact_role
+            x-sc-notes:
+            - TBD
+            
+          cross_lob:
+            $ref: '#/definitions/opportunities-cross_lob'
+            
+          currency_id:
+            type: string
+            x-sc-enum: 
+              api: /Opportunities/enum/currency_id
+            example: "-99"
+            x-sc-notes:
+            - TBD
+            
+          currency_iso4217:
+            type: string
+            x-sc-notes:
+            - TBD
+            
+          currency_name:
+            type: string
+            x-sc-enum: { api: /Opportunities/enum/currency_name }
+            x-sc-notes:
+            - TBD
+            
+          currency_symbol:
+            type: string
+            x-sc-enum: { api: /Opportunities/enum/currency_symbol }
+            x-sc-notes:
+            - TBD
+            
+    
+          date_closed_days_out:
+            type: integer
+            x-sc-notes:
+            - Is this supposed to be related to 'date_closed'?
+    
+          date_closed_timestamp:
+            type: integer
+            x-sc-notes:
+            - is this supposed to be realted to 'date_closed'?
+            - it changes when you set 'date_closed'
+            - 'FUP: seems to be readonly'
+             
+          doc_owner:
+            type: string
+            x-sc-notes:
+            - TBD
+            
+          duration_template:
+            type: "null"
+            x-sc-notes:
+            - TBD
+            
+          edit_version:
+            type: "null"
+            x-sc-notes:
+            - TBD
+            
+          ext_ref_id1_c:
+            type: string
+            x-sc-notes:
+            - TBD
+            
+          ext_ref_id2_c:
+            type: string
+            x-sc-notes:
+            - TBD
+            
+          external_identifiers_c:
+            type: string
+            x-sc-notes:
+            - TBD
+            
+          facet_myitems_igf_owner:
+            type: string
+            x-sc-notes:
+            - TBD
+            
+          fcast_date_sign_template:
+            type: string
+            x-sc-notes:
+            - TBD
+            
+          fcast_date_tran_template:
+            type: string
+            x-sc-notes:
+            - TBD
+            
+          green_blue_revenue_template:
+            type: string
+            x-sc-enum: { api: /Opportunities/enum/green_blue_revenue_template }
+            x-sc-notes:
+            - TBD
+            
+          ibm_visibility:
+            type: string
+            x-sc-notes:
+            - TBD
+            
+          id_template:
+            type: string
+            x-sc-notes:
+            - TBD
+            
+          international_c:
+            type: boolean
+            x-sc-notes:
+            - TBD
+             
+          lead_source_values:
+            type: string
+            x-sc-notes:
+            - TBD
+                      
+          mergedtags:
+            type: string
+            x-sc-notes:
+            - TBD
+            
+          mkto_id:
+            type: "null"
+            x-sc-notes:
+            - TBD
+            
+          mkto_sync:
+            type: boolean
+            x-sc-notes:
+            - TBD
+                     
+          next_step:
+            type: string
+            x-sc-notes:
+            - TBD
+          offering_template:
+            type: string
+            x-sc-notes:
+            - TBD
+          opportun_revenuelineitemrow:
+            type: string
+            x-sc-notes:
+            - TBD
+          opportunity_owner_type:
+            type: string
+            x-sc-notes:
+            - TBD
+          opportunity_type:
+            type: string
+            x-sc-enum: { api: /Opportunities/enum/opportunity_type }
+            x-sc-notes:
+            - TBD
+            
+          owner_acceptance_status_c:
+            type: string
+            x-sc-enum: { api: /Opportunities/enum/owner_acceptance_status_c }
+            example: none
+            x-sc-notes:
+            - TBD
+            
+          pcontact_id_c:
+            type: string
+            example: HELENA COLLI
+            x-sc-notes:
+              - readonly?
+            
+          prev_assigned_user_id:
+            type: string
+            example: none
+            x-sc-notes:
+            - TBD
+            
+              
+          rel_pcontact_id_c_first_name:
+            type: string
+            example: HELENA
+            x-sc-notes:
+            - TBD
+          rel_pcontact_id_c_last_name:
+            type: string
+            example: COLLI
+            x-sc-notes:
+            - TBD
+          rel_pcontact_id_c_preferred_name_c:
+            type: string
+            x-sc-notes:
+            - TBD
+          relate_beans:
+            type: string
+            x-sc-notes:
+            - TBD
+          related_opportunities:
+            $ref: '#/definitions/opportunities-related_opportunities'
+          restricted:
+            type: string
+            x-sc-enum: { api: /Opportunities/enum/restricted }
+            example: RESTNOT
+            x-sc-notes:
+            - TBD
+          revenue_amount_template:
+            type: string
+            x-sc-notes:
+            - TBD
+          revenue_type_template:
+            type: string
+            x-sc-enum: { api: /Opportunities/enum/revenue_type_template }
+            x-sc-notes:
+            - TBD
+          risk_assessment:
+            type: string
+            example: "1"
+            x-sc-notes:
+            - TBD
+          rli_browseSolution_template:
+            type: string
+            x-sc-notes:
+            - TBD
+          roadmap_status_c:
+            type: string
+            x-sc-notes:
+            - TBD
+          roadmap_status_template:
+            type: string
+            x-sc-enum: { api: /Opportunities/enum/roadmap_status_template }
+            x-sc-notes:
+            - TBD
+            
+          sales_stage_qualified:
+            type: boolean
+            x-sc-notes:
+            - TBD
+          sales_stage_values:
+            type: string
+            x-sc-notes:
+            - TBD
+          sales_status:
+            type: string
+            x-sc-enum: 
+              api: /Opportunities/enum/sales_status
+            example: New
+            x-sc-notes:
+            - TBD
+          solution_codes_c:
+            $ref: '#/definitions/opportunities-solution_codes_c'
+          srv_work_type_template:
+            type: string
+            x-sc-enum: 
+              api: /Opportunities/enum/srv_work_type_template
+            x-sc-notes:
+            - TBD
+          stg_fulfill_type_template:
+            type: string
+            x-sc-enum:
+              api: /Opportunities/enum/stg_fulfill_type_template
+            x-sc-notes:
+            - TBD
+          stg_signings_type_template:
+            type: string
+            x-sc-enum:
+              api: /Opportunities/enum/stg_signings_type_template
+            x-sc-notes:
+            - TBD
+          survey_c:
+            type: boolean
+            x-sc-notes:
+            - TBD
+          swg_book_new_template:
+            type: string
+            x-sc-enum: 
+              api: /Opportunities/enum/swg_book_new_template
+            x-sc-notes:
+            - TBD
+          swg_book_rnwl_template:
+            type: string
+            x-sc-enum: 
+              api: /Opportunities/enum/swg_book_rnwl_template
+            x-sc-notes:
+            - TBD
+          swg_book_serv_template:
+            type: string
+            x-sc-enum:
+              api: /Opportunities/enum/swg_book_serv_template
+            x-sc-notes:
+            - TBD
+          swg_contract_template:
+            type: string
+            x-sc-enum: 
+              api: /Opportunities/enum/swg_contract_template
+            x-sc-notes:
+            - TBD
+          swg_sign_det_template:
+            type: string
+            x-sc-enum: 
+              api: /Opportunities/enum/swg_sign_det_template
+            x-sc-notes:
+            - TBD
+          swg_tran_det_template:
+            type: string
+            x-sc-enum: 
+              api: /Opportunities/enum/swg_tran_det_template
+            x-sc-notes:
+            - TBD
+          tags:
+            type: string
+            x-sc-notes:
+            - TBD
+          team_count:
+            type: string
+            x-sc-notes:
+            - TBD
+          team_member_identifier:
+            type: string
+            x-sc-notes:
+            - TBD
+          team_members:
+            $ref: '#/definitions/opportunities-team_members'
+          team_name:
+            $ref: '#/definitions/opportunities-team_name'
+          total_revenue_line_items:
+            type: integer
+            x-sc-notes:
+            - TBD
+          update_contacts_last_interaction_date:
+            type: string
+            x-sc-notes:
+            - TBD
+          user_favorites:
+            type: string
+            x-sc-notes:
+            - TBD
+          user_role:
+            type: string
+            x-sc-notes:
+            - TBD
+          version:
+            type: integer
+            x-sc-notes:
+            - TODO: semantics of this version? settable by API?
+            - auto incremented when modifying
+            - settable by the UI, but will then be auto incremented- setting to x will show
+              result obj with version = x+1
+            - 'can be set ''back'' by the API: existing version=67, PUT version=10 will result
+              in change'
+          worst_case:
+            type: string
+            example: "0.000000"
+            x-sc-notes:
+            - TBD
+      
+parameters:
+  opportunity-id:
+    name: opportunity-id
+    type: string
+    in: path
+    required: true
+    description: sugar id of a particular opportunity
+        
+paths: 
+  /opportunities:
+    parameters: 
+      - $ref: 'MASTER#/parameters/OAuthToken'
+      - $ref: 'MASTER#/parameters/ContentType'
+ 
+    get:
+      summary: retrieve opportunities
+      tags: [opportunities]
+      x-sc-APIm-plans:
+        - salesconnect_opportunities_read
+
+      parameters:
+        - $ref: 'MASTER#/parameters/complex-filter-query'
+        - $ref: 'MASTER#/parameters/q-query'
+        - $ref: 'MASTER#/parameters/max_num-query'
+        - $ref: 'MASTER#/parameters/offset-query'
+        - $ref: 'MASTER#/parameters/field-query'
+        - $ref: 'MASTER#/parameters/order_by-query'
+        - $ref: 'MASTER#/parameters/favorites-query'
+        - $ref: 'MASTER#/parameters/deleted-query'
+        - $ref: 'MASTER#/parameters/my_items-query'
+
+      description: |
+        API to retrieve opportunities.
+        <p>Refer to the parameter descriptions for using the parameter.</p>
+
+      x-sc-samples:
+        - $ref: '#/x-sc-samples/opportunities-1'
+        - $ref: '#/x-sc-samples/opportunities-2'
+        
+      responses:
+        200: 
+          $ref: 'MASTER?OBJECT=OpportunityTBDObject#/responses/(OBJECT)ListResponse'          
+
+        401:
+          $ref: 'MASTER#/responses/General401Response'
+ 
+    post:
+      summary: create an opportunity
+      tags: [opportunities]
+      x-sc-APIm-plans:
+        - salesconnect_opportunities_create
+      parameters:
+        - name: create_opportunity
+          in: body
+          schema:
+            $ref: '#/definitions/OpportunityTBDMutableObject'
+            
+      responses:
+        200: 
+          $ref: 'MASTER?OBJECT=OpportunityTBDObject#/responses/(OBJECT)Response'      
+          
+  /opportunities/{opportunity-id}:
+    parameters:
+      - $ref: '#/parameters/opportunity-id'
+      - $ref: 'MASTER#/parameters/OAuthToken'
+      - $ref: 'MASTER#/parameters/ContentType'   
+      
+    get:
+      summary: get a opportunity by opportunity id
+      responses:
+        200: 
+          $ref: 'MASTER?OBJECT=OpportunityTBDObject#/responses/(OBJECT)Response'   
+          
+    put:
+      summary: update an opportunity
+      parameters:
+        - name: update_opportunity
+          in: body
+          schema:
+            $ref: '#/definitions/OpportunityTBDMutableObject'
+          
+      responses:
+        200:
+          $ref: 'MASTER?OBJECT=OpportunityTBDObject#/responses/(OBJECT)Response'     
+          
+##
+## FUP - this one under development
+##          
+  /opportunities/{opportunity-id}/link/opportun_revenuelineitems:
+        
+    parameters:
+      - $ref: '#/parameters/opportunity-id'
+      - $ref: 'MASTER#/parameters/OAuthToken'
+ 
+    get:
+      summary: retrieve revenue line items for a given opportunity.       
+      responses:
+        default:
+          $ref: 'MASTER?OBJECT=RLITBDObject#/responses/(OBJECT)ListResponse' 
+
+    # put: - no put
+    
+    post:
+      summary: create a new related record
+      description: |
+        A new item in (RELATED) module is created and linked as related in item (MODULE)-id.
+     
+      parameters:
+        - name: New Item
+          required: true
+          in: body
+          description: Fields for new item to be created in revenue line items module.
+          schema:
+            $ref: 'MASTER#/definitions/(OBJECT)'
+               
+      responses:
+        default:
+          $ref: 'MASTER#/responses/(OBJECT)Link(otherOBJECT)Response'                 
+
+##
+## FUP - this one under development
+##          
+  /opportunities/{opportunity-id}/link/opportun_winplans:
+        
+    parameters:
+      - $ref: '#/parameters/opportunity-id'
+      - $ref: 'MASTER#/parameters/OAuthToken'
+
+    get:
+      summary: retrieve win plans for a given opportunity.       
+      
+      responses:
+        default:
+          $ref: 'MASTER?OBJECT=opportunitiesTBD-WinplanObject#/responses/(OBJECT)ListResponse'
+          

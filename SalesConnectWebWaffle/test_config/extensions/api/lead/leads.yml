@@ -1,0 +1,2087 @@
+swagger: '2.0'
+
+info:
+  version: '2.2.0'
+  title:  leads API
+  x-sc-module: /leads
+  description: The leads module
+ 
+basePath: /salesconnect
+
+consumes:
+  - application/json
+  
+produces:
+  - application/json
+
+schemes:
+  - https
+ 
+parameters:
+  leadId:
+    name: lead-id
+    type: string
+    in: path
+    required: true
+    description: sugar id of a particular lead
+
+responses:
+  LeadObjectResponse:
+    description: successful operation, lead object returned.
+    schema:
+      allOf:
+        - $ref: '#/definitions/LeadObject'
+        - $ref: '#/definitions/LeadResponseExtraReturnObject'
+      
+      
+definitions:
+  leads-Post-Link:
+    type: object
+    required:
+      - link_name
+      - ids
+    
+    properties:
+      link_name:
+        type: string
+        enum:
+          - calls
+          - notes
+          - tasks
+          - emails
+          - meetings
+          
+      ids:
+        type: array
+        items:
+          type: string
+   
+    example: |     
+      {
+        "link_name": "calls",
+        "ids": [
+          "fffe0387-281b-4151-d9cd-528257143719","fffd0330-5a15-ed24-0ad7-5229e406a854"
+        ]
+      }
+  
+      
+  leads-Update-MassUpdate:
+    type: object
+    required:
+      - massupdate_params
+    
+    properties:
+      massupdate_params:
+        type: object
+        allOf:
+          - properties:
+              uid:
+                type: array
+                items:
+                  type: string
+             
+          - $ref: '#/definitions/LeadObject'
+    
+    
+    example: |     
+      {
+        "massupdate_params":{
+          "uid":[
+           "b063d37c-1940-8e63-fa0d-54c941cf7b02", "92bc833d-82e9-e1a3-5b4a-54c7f5141949" 
+          ],
+          "description":"Mass Updated - 01", 
+          "status":"LEADCOLD"
+        }
+      }
+
+      
+  leads-Delete-MassUpdate:
+    type: object
+    required:
+      - massupdate_params
+    
+    properties:
+      massupdate_params:
+        type: object
+        properties:
+          uid:
+            type: array
+            items:
+               type: string
+            
+ 
+    example: |     
+      {
+        "massupdate_params":{
+          "uid":[
+           "b063d37c-1940-8e63-fa0d-54c941cf7b02", "92bc833d-82e9-e1a3-5b4a-54c7f5141949" 
+          ]
+        }
+      }
+
+      
+      
+  leads-EmailObject:
+    type: object
+    properties:
+      email_address:
+        type: string
+        x-sc-fieldmap:
+            uifieldname: Email
+        
+      invalid_email:
+        type: boolean
+        x-sc-fieldmap:
+            uifieldname: Invalid
+        
+      opt_out:
+        type: boolean
+        x-sc-fieldmap:
+            uifieldname: Suppressed
+      
+      primary_address:
+        type: boolean
+        x-sc-fieldmap:
+            uifieldname: Primary
+        
+      reply_to_address:
+        type: boolean
+        
+  
+  leads-TeamObject:
+    type: object
+    properties:
+      id:
+        type: string
+        x-sc-fieldmap:
+            uifieldname: LEADS
+        
+      name:
+        type: String
+        
+      name_2:
+        type: String
+      
+      primary:
+        type: boolean
+      
+ 
+  LeadResponseExtraReturnObject:
+    description: Additional schema of Sales Connect lead response.  These are the fields set by the System.
+    type: object
+    properties:
+      all_emails:
+        type: string
+        
+      assigned_user_name:
+        type: string
+        example: Helen10 (Helen10) Byrne
+          
+        
+      campaign_name:
+        type: string
+        example: Amusement Parks & Attractions; Gambling & Gaming;
+        
+        
+      contact_name:
+        type: string
+        
+      created_by:
+        type: string
+        example: 585bc873-70bf-21d4-2676-546b5d5be2cc
+        x-sc-fieldmap:
+          table: LEADS
+        
+      created_by_name:
+        type: string
+        
+        
+      date_modified:
+        type: string
+        description: |
+          This is a timestamp field.<br>
+            
+        example: 2015-01-12T10:42:29-05:00
+        x-sc-fieldmap:
+          table: LEADS
+            
+            
+            
+        
+      doc_owner:
+        type: string
+        
+      email1:
+        type: string
+        description:  One of the email specified in the email array.
+        
+      email2:
+        type: string
+        description:  One of the email specified in the email array.
+  
+      email_opt_out:
+        type: boolean
+        description: opt_out flag of the primary email specified in the email array.
+        
+      email_addresses_non_primary:
+        type: string
+        
+      following:
+        type: boolean
+        
+      full_name:
+        type: string
+        description: concatenation of first_name and last_name
+        
+      ibm_visibility:
+        type: string
+
+        
+      id:
+        type: string
+        x-sc-fieldmap:
+          table: LEADS
+            
+            
+      invalid_email:
+        type: boolean
+        description: invalid_email flag of the primary email specified in the email array.
+
+      lead_source_values:
+        type: string
+        
+      modified_by_name:
+         type: string
+         
+      modified_user_id:
+        type: string
+        x-sc-fieldmap:
+          table: LEADS
+          
+
+      name:
+        type: string
+        description: concatenation of first_name and last_name
+        
+      primary_address_country_values:
+        type: string
+        
+      relate_beans:
+        type: string
+        
+      report_to_name:
+        type: string
+        
+      status_detail_values:
+        type: string
+        
+      status_values:
+        type: string
+        
+      team_count:
+        type: string
+        
+      user_favorites:
+        type: string
+        
+      webtolead_email_opt_out:
+        type: string
+        
+      webtolead_invalid_email:
+        type: string
+        
+  LeadObject:
+    title: SalesConnect Lead
+    type: object
+    description: Schema of create/update a Sales Connect lead.  These are the fields user can specify in the payload.
+    required:
+      - first_name
+      - last_name
+      - phone_mobile
+      - primary_address_country
+      - status
+      
+    properties:
+        account_description:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        account_id:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        account_name:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+            uifieldname: Client
+          
+        alt_address_city:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        alt_address_country:
+          type: string
+          enum: 
+            - AF (Afghanistan)
+            - AX (Åland Islands)
+            - AL (Albania)
+            - DZ (Algeria)
+            - AS (American Samoa)
+            - AD (Andorra)
+            - AO (Angola)
+            - AI (Anguilla)
+            - AQ (Antarctica)
+            - AG (Antigua and Barbuda)
+            - AR (Argentina)
+            - AM (Armenia)
+            - AW (Aruba)
+            - AU (Australia)
+            - AT (Austria)
+            - AZ (Azerbaijan)
+            - BS (Bahamas)
+            - BH (Bahrain)
+            - BD (Bangladesh)
+            - BB (Barbados)
+            - BY (Belarus)
+            - BE (Belgium)
+            - BZ (Belize)
+            - BJ (Benin)
+            - BM (Bermuda)
+            - BT (Bhutan)
+            - BO (Bolivia, Plurinational State of)
+            - BQ (Bonaire, Sint Eustatius and Saba)
+            - BA (Bosnia and Herzegovina)
+            - BW (Botswana)
+            - BV (Bouvet Island)
+            - BR (Brazil)
+            - IO (British Indian Ocean Territory)
+            - BN (Brunei Darussalam)
+            - BG (Bulgaria)
+            - BF (Burkina Faso)
+            - BI (Burundi)
+            - KH (Cambodia)
+            - CM (Cameroon)
+            - CA (Canada)
+            - CV (Cape Verde)
+            - KY (Cayman Islands)
+            - CF (Central African Republic)
+            - TD (Chad)
+            - CL (Chile)
+            - CN (China)
+            - CX (Christmas Island)
+            - CC (Cocos (Keeling) Islands)
+            - CO (Colombia)
+            - KM (Comoros)
+            - CG (Congo)
+            - CD (Congo, The Democratic Republic of the)
+            - CK (Cook Islands)
+            - CR (Costa Rica)
+            - CI (Côte d'Ivoire)
+            - HR (Croatia)
+            - CU (Cuba)
+            - CW (Curaçao)
+            - CY (Cyprus)
+            - CZ (Czech Republic)
+            - DK (Denmark)
+            - DJ (Djibouti)
+            - DM (Dominica)
+            - DO (Dominican Republic)
+            - EC (Ecuador)
+            - EG (Egypt)
+            - SV (El Salvador)
+            - GQ (Equatorial Guinea)
+            - ER (Eritrea)
+            - EE (Estonia)
+            - ET (Ethiopia)
+            - FK (Falkland Islands (Malvinas))
+            - FO (Faroe Islands)
+            - FJ (Fiji)
+            - FI (Finland)
+            - FR (France)
+            - GF (French Guiana)
+            - PF (French Polynesia)
+            - TF (French Southern Territories)
+            - GA (Gabon)
+            - GM (Gambia)
+            - GE (Georgia)
+            - DE (Germany)
+            - GH (Ghana)
+            - GI (Gibraltar)
+            - GR (Greece)
+            - GL (Greenland)
+            - GD (Grenada)
+            - GP (Guadeloupe)
+            - GU (Guam)
+            - GT (Guatemala)
+            - GG (Guernsey)
+            - GN (Guinea)
+            - GW (Guinea-Bissau)
+            - GY (Guyana)
+            - HT (Haiti)
+            - HM (Heard Island and McDonald Islands)
+            - VA (Holy See (Vatican City State))
+            - HN (Honduras)
+            - HK (Hong Kong)
+            - HU (Hungary)
+            - IS (Iceland)
+            - IN (India)
+            - ID (Indonesia)
+            - IR (Iran, Islamic Republic of)
+            - IQ (Iraq)
+            - IE (Ireland)
+            - IM (Isle of Man)
+            - IL (Israel)
+            - IT (Italy)
+            - JM (Jamaica)
+            - JP (Japan)
+            - JE (Jersey)
+            - JO (Jordan)
+            - KZ (Kazakhstan)
+            - KE (Kenya)
+            - KI (Kiribati)
+            - KP (Korea, Democratic People's Republic of)
+            - KR (Korea, Republic of)
+            - KW (Kuwait)
+            - KG (Kyrgyzstan)
+            - LA (Lao People's Democratic Republic)
+            - LV (Latvia)
+            - LB (Lebanon)
+            - LS (Lesotho)
+            - LR (Liberia)
+            - LY (Libya)
+            - LI (Liechtenstein)
+            - LT (Lithuania)
+            - LU (Luxembourg)
+            - MO (Macao)
+            - MK (Macedonia, The former Yugoslav Republic of)
+            - MG (Madagascar)
+            - MW (Malawi)
+            - MY (Malaysia)
+            - MV (Maldives)
+            - ML (Mali)
+            - MT (Malta)
+            - MH (Marshall Islands)
+            - MQ (Martinique)
+            - MR (Mauritania)
+            - MU (Mauritius)
+            - YT (Mayotte)
+            - MX (Mexico)
+            - FM (Micronesia, Federated States of)
+            - MD (Moldova, Republic of)
+            - MC (Monaco)
+            - MN (Mongolia)
+            - ME (Montenegro)
+            - MS (Montserrat)
+            - MA (Morocco)
+            - MZ (Mozambique)
+            - MM (Myanmar)
+            - NA (Namibia)
+            - NR (Nauru)
+            - NP (Nepal)
+            - NL (Netherlands)
+            - NC (New Caledonia)
+            - NZ (New Zealand)
+            - NI (Nicaragua)
+            - NE (Niger)
+            - NG (Nigeria)
+            - NU (Niue)
+            - NF (Norfolk Island)
+            - MP (Northern Mariana Islands)
+            - NO (Norway)
+            - OM (Oman)
+            - PK (Pakistan)
+            - PW (Palau)
+            - PS (Palestine, State of)
+            - PA (Panama)
+            - PG (Papua New Guinea)
+            - PY (Paraguay)
+            - PE (Peru)
+            - PH (Philippines)
+            - PN (Pitcairn)
+            - PL (Poland)
+            - PT (Portugal)
+            - PR (Puerto Rico)
+            - QA (Qatar)
+            - RE (Réunion)
+            - RO (Romania)
+            - RU (Russian Federation)
+            - RW (Rwanda)
+            - BL (Saint Barthélemy)
+            - SH (Saint Helena, Ascension and Tristan da Cunha)
+            - KN (Saint Kitts and Nevis)
+            - LC (Saint Lucia)
+            - MF (Saint Martin (French Part))
+            - PM (Saint Pierre and Miquelon)
+            - VC (Saint Vincent and the Grenadines)
+            - WS (Samoa)
+            - SM (San Marino)
+            - ST (Sao Tome and Principe)
+            - SA (Saudi Arabia)
+            - SN (Senegal)
+            - RS (Serbia)
+            - SC (Seychelles)
+            - SL (Sierra Leone)
+            - SG (Singapore)
+            - SX (Sint Maarten (Dutch part))
+            - SK (Slovakia)
+            - SI (Slovenia)
+            - SB (Solomon Islands)
+            - SO (Somalia)
+            - ZA (South Africa)
+            - GS (South Georgia and the South Sandwich Islands)
+            - SS (South Sudan)
+            - ES (Spain)
+            - LK (Sri Lanka)
+            - SD (Sudan)
+            - SR (Suriname)
+            - SJ (Svalbard and Jan Mayen)
+            - SZ (Swaziland)
+            - SE (Sweden)
+            - CH (Switzerland)
+            - SY (Syrian Arab Republic)
+            - TW (Taiwan)
+            - TJ (Tajikistan)
+            - TZ (Tanzania, United Republic of)
+            - TH (Thailand)
+            - TL (Timor-Leste)
+            - TG (Togo)
+            - TK (Tokelau)
+            - TO (Tonga)
+            - TT (Trinidad and Tobago)
+            - TN (Tunisia)
+            - TR (Turkey)
+            - TM (Turkmenistan)
+            - TC (Turks and Caicos Islands)
+            - TV (Tuvalu)
+            - UG (Uganda)
+            - UA (Ukraine)
+            - AE (United Arab Emirates)
+            - GB (United Kingdom)
+            - US (United States)
+            - UM (United States Minor Outlying Islands)
+            - UY (Uruguay)
+            - UZ (Uzbekistan)
+            - VU (Vanuatu)
+            - VE (Venezuela, Bolivarian Republic of)
+            - VN (Viet Nam)
+            - VG (Virgin Islands, British)
+            - VI (Virgin Islands, U.S.)
+            - WF (Wallis and Futuna)
+            - EH (Western Sahara)
+            - YE (Yemen)
+            - ZM (Zambia)
+            - ZW (Zimbabwe)
+
+          x-sc-fieldmap:
+            table: LEADS
+          
+        alt_address_postalcode:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        alt_address_state:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        alt_address_street:
+          type: string
+          description:  |
+            The first line of alternate address.<br>
+            In the response, Sugar concatenates alt_address_street_2 and alt_address_street_3 into alt_address_street, and sets alt_address_street_2 and alt_address_street_3 to blank.
+          x-sc-fieldmap:
+            table: LEADS
+          
+        alt_address_street_2:
+          type: string
+          description: The second line of alternate address.
+          
+        alt_address_street_3:
+          type: string
+          description: The third line of alternate address.
+          
+        assigned_user_id:
+          type: string
+          description: |
+            User's Sugar id.<br>
+            <br>
+            You can assign a lead to a user through one of the following options:<br> 
+            <ul>
+            <li>specifying user's Sugar id in the "assigned_user_id" field, or</li>
+            <li>specifying user's cnum in the "employee_cnum" field</li>
+            </ul>
+            
+            In either way, Sugar extracts the corresponding Sugar id and saves it in the LEADS table's assigned_user_id column.<br>
+            <br>
+            You should use only one of the options.<br>
+            If you specified both "assigned_user_id" and "employee_cnum", Sugar returns the following error:<br>
+            "0": "There's no vardef mapping for field 'employee_cnum'"<br>
+            <br>
+          example: "51449f9b-a68f-059c-ad06-5039325c53b2"
+          x-sc-fieldmap:
+            table: LEADS
+            
+       
+        assistant:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        assistant_phone:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        birthdate:
+          type: string
+          description: This is a date field.<br>
+          
+          example: 2015-01-02
+          x-sc-fieldmap:
+            table: LEADS
+          
+        campaign_id:
+          type: string
+          example: 946d0813-1497-5122-99b0-53b05c3d9952
+          x-sc-fieldmap:
+            table: LEADS
+          
+        
+        contact_id:
+          type: string
+          description: the contact this lead is relating to
+          x-sc-fieldmap:
+            table: LEADS
+          
+        
+        converted:
+          type: boolean
+          x-sc-fieldmap:
+            table: LEADS
+          
+        
+          
+        date_entered:
+          type: string
+          description: |
+            This is a timestamp field.<br>
+            
+          example: 2015-01-12T10:42:29-05:00
+          x-sc-fieldmap:
+            table: LEADS
+      
+            
+        deleted:
+          type: boolean
+          x-sc-fieldmap:
+            table: LEADS
+            
+        department:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        description:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+            uifieldname: Description
+            
+        dnb_principal_id:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        do_not_call:
+          type: boolean
+          x-sc-fieldmap:
+            table: LEADS
+          
+          
+        email:
+          type: array
+          items:
+              $ref: '#/definitions/leads-EmailObject'
+          x-sc-fieldmap:
+            uifieldname: Email
+              
+          
+        employee_cnum:
+          type: string
+          description: |
+            User's cnum.<br>
+            <br>
+            You can assign a lead to a user through one of the following options:<br> 
+            <ul>
+            <li>specifying user's Sugar id in the "assigned_user_id" field, or</li>
+            <li>specifying user's cnum in the "employee_cnum" field</li>
+            </ul>
+            
+            In either way, Sugar extracts the corresponding Sugar id and saves it in the LEADS table's assigned_user_id column.<br>
+            <br>
+            You should use only one of the options.<br>
+            If you specified both "assigned_user_id" and "employee_cnum", Sugar returns the following error:<br>
+            "0": "There's no vardef mapping for field 'employee_cnum'"<br>
+            <br>
+           
+          example: "L08447897"
+            
+            
+        ext_ref_id1_c:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS_CSTM
+            uifieldname: Lead/Contact ID
+          
+        facebook:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        first_name:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+            uifieldname: First Name
+            
+          
+        googleplus:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+            
+        ibm_campaign_c:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS_CSTM
+            uifieldname: Campaign
+          
+          
+       
+        last_name:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+            uifieldname: Last Name
+            
+            
+        lead_source:
+          type: string
+          enum:
+            - LSCAMP (Campaign)
+            - LSCOLD (Cold call)
+            - LSCONF (Conference)
+            - LSMAIL (Email)
+            - LSFBOK (Facebook)
+            - LSGOOG (Google+)
+            - LSLINK (LinkedIn)
+            - LSMOBL (Mobile - Chat, Calls, BBM, Text)
+            - LSOTHR (Other)
+            - LSTRDE (Trade show)
+            - LSTRIL (Trial)
+            - LSTWIT (Twitter)
+            - LSVIDO (Video chat)
+            - LSSITE (Web site)
+            - LSWEBN (Webinar)
+            - LSWPAP (Whitepaper)
+            - LSWORD (Word of mouth)
+            - LSYTUB (YouTube)
+            
+          example: LinkedIn
+            
+          x-sc-fieldmap:
+            table: LEADS
+            uifieldname: Lead Source
+          
+        lead_source_description:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        
+        mkto_id:
+          type: integer
+          x-sc-fieldmap:
+            table: LEADS
+          
+        mkto_lead_score:
+          type: integer
+          x-sc-fieldmap:
+            table: LEADS
+          
+        mkto_sync:
+          type: boolean
+          x-sc-fieldmap:
+            table: LEADS
+        
+        my_favorite:
+          type: boolean
+          
+        
+        opportunity_amount:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        opportunity_id:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        opportunity_name:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        phone_fax:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        phone_home:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        phone_mobile:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+            uifieldname: Mobile
+          
+        phone_other:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        phone_work:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        picture:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        portal_app:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        portal_name:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        preferred_language:
+          type: string
+          enum:
+            - en_us (English (US))
+            - de_DE (Deutsch)
+            - ja_JP (日本語)
+            - fr_FR (Français)
+            - fr_CA (Français (Canada))
+            - zz_ZZ (Pseudo Translation)
+            
+          x-sc-fieldmap:
+            table: LEADS
+          
+        primary_address_city:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+            uifieldname:  Primary Address City
+          
+        primary_address_country: 
+          type: string
+          enum:
+            - AF (Afghanistan)
+            - AX (Åland Islands)
+            - AL (Albania)
+            - DZ (Algeria)
+            - AS (American Samoa)
+            - AD (Andorra)
+            - AO (Angola)
+            - AI (Anguilla)
+            - AQ (Antarctica)
+            - AG (Antigua and Barbuda)
+            - AR (Argentina)
+            - AM (Armenia)
+            - AW (Aruba)
+            - AU (Australia)
+            - AT (Austria)
+            - AZ (Azerbaijan)
+            - BS (Bahamas)
+            - BH (Bahrain)
+            - BD (Bangladesh)
+            - BB (Barbados)
+            - BY (Belarus)
+            - BE (Belgium)
+            - BZ (Belize)
+            - BJ (Benin)
+            - BM (Bermuda)
+            - BT (Bhutan)
+            - BO (Bolivia, Plurinational State of)
+            - BQ (Bonaire, Sint Eustatius and Saba)
+            - BA (Bosnia and Herzegovina)
+            - BW (Botswana)
+            - BV (Bouvet Island)
+            - BR (Brazil)
+            - IO (British Indian Ocean Territory)
+            - BN (Brunei Darussalam)
+            - BG (Bulgaria)
+            - BF (Burkina Faso)
+            - BI (Burundi)
+            - KH (Cambodia)
+            - CM (Cameroon)
+            - CA (Canada)
+            - CV (Cape Verde)
+            - KY (Cayman Islands)
+            - CF (Central African Republic)
+            - TD (Chad)
+            - CL (Chile)
+            - CN (China)
+            - CX (Christmas Island)
+            - CC (Cocos (Keeling) Islands)
+            - CO (Colombia)
+            - KM (Comoros)
+            - CG (Congo)
+            - CD (Congo, The Democratic Republic of the)
+            - CK (Cook Islands)
+            - CR (Costa Rica)
+            - CI (Côte d'Ivoire)
+            - HR (Croatia)
+            - CU (Cuba)
+            - CW (Curaçao)
+            - CY (Cyprus)
+            - CZ (Czech Republic)
+            - DK (Denmark)
+            - DJ (Djibouti)
+            - DM (Dominica)
+            - DO (Dominican Republic)
+            - EC (Ecuador)
+            - EG (Egypt)
+            - SV (El Salvador)
+            - GQ (Equatorial Guinea)
+            - ER (Eritrea)
+            - EE (Estonia)
+            - ET (Ethiopia)
+            - FK (Falkland Islands (Malvinas))
+            - FO (Faroe Islands)
+            - FJ (Fiji)
+            - FI (Finland)
+            - FR (France)
+            - GF (French Guiana)
+            - PF (French Polynesia)
+            - TF (French Southern Territories)
+            - GA (Gabon)
+            - GM (Gambia)
+            - GE (Georgia)
+            - DE (Germany)
+            - GH (Ghana)
+            - GI (Gibraltar)
+            - GR (Greece)
+            - GL (Greenland)
+            - GD (Grenada)
+            - GP (Guadeloupe)
+            - GU (Guam)
+            - GT (Guatemala)
+            - GG (Guernsey)
+            - GN (Guinea)
+            - GW (Guinea-Bissau)
+            - GY (Guyana)
+            - HT (Haiti)
+            - HM (Heard Island and McDonald Islands)
+            - VA (Holy See (Vatican City State))
+            - HN (Honduras)
+            - HK (Hong Kong)
+            - HU (Hungary)
+            - IS (Iceland)
+            - IN (India)
+            - ID (Indonesia)
+            - IR (Iran, Islamic Republic of)
+            - IQ (Iraq)
+            - IE (Ireland)
+            - IM (Isle of Man)
+            - IL (Israel)
+            - IT (Italy)
+            - JM (Jamaica)
+            - JP (Japan)
+            - JE (Jersey)
+            - JO (Jordan)
+            - KZ (Kazakhstan)
+            - KE (Kenya)
+            - KI (Kiribati)
+            - KP (Korea, Democratic People's Republic of)
+            - KR (Korea, Republic of)
+            - KW (Kuwait)
+            - KG (Kyrgyzstan)
+            - LA (Lao People's Democratic Republic)
+            - LV (Latvia)
+            - LB (Lebanon)
+            - LS (Lesotho)
+            - LR (Liberia)
+            - LY (Libya)
+            - LI (Liechtenstein)
+            - LT (Lithuania)
+            - LU (Luxembourg)
+            - MO (Macao)
+            - MK (Macedonia, The former Yugoslav Republic of)
+            - MG (Madagascar)
+            - MW (Malawi)
+            - MY (Malaysia)
+            - MV (Maldives)
+            - ML (Mali)
+            - MT (Malta)
+            - MH (Marshall Islands)
+            - MQ (Martinique)
+            - MR (Mauritania)
+            - MU (Mauritius)
+            - YT (Mayotte)
+            - MX (Mexico)
+            - FM (Micronesia, Federated States of)
+            - MD (Moldova, Republic of)
+            - MC (Monaco)
+            - MN (Mongolia)
+            - ME (Montenegro)
+            - MS (Montserrat)
+            - MA (Morocco)
+            - MZ (Mozambique)
+            - MM (Myanmar)
+            - NA (Namibia)
+            - NR (Nauru)
+            - NP (Nepal)
+            - NL (Netherlands)
+            - NC (New Caledonia)
+            - NZ (New Zealand)
+            - NI (Nicaragua)
+            - NE (Niger)
+            - NG (Nigeria)
+            - NU (Niue)
+            - NF (Norfolk Island)
+            - MP (Northern Mariana Islands)
+            - NO (Norway)
+            - OM (Oman)
+            - PK (Pakistan)
+            - PW (Palau)
+            - PS (Palestine, State of)
+            - PA (Panama)
+            - PG (Papua New Guinea)
+            - PY (Paraguay)
+            - PE (Peru)
+            - PH (Philippines)
+            - PN (Pitcairn)
+            - PL (Poland)
+            - PT (Portugal)
+            - PR (Puerto Rico)
+            - QA (Qatar)
+            - RE (Réunion)
+            - RO (Romania)
+            - RU (Russian Federation)
+            - RW (Rwanda)
+            - BL (Saint Barthélemy)
+            - SH (Saint Helena, Ascension and Tristan da Cunha)
+            - KN (Saint Kitts and Nevis)
+            - LC (Saint Lucia)
+            - MF (Saint Martin (French Part))
+            - PM (Saint Pierre and Miquelon)
+            - VC (Saint Vincent and the Grenadines)
+            - WS (Samoa)
+            - SM (San Marino)
+            - ST (Sao Tome and Principe)
+            - SA (Saudi Arabia)
+            - SN (Senegal)
+            - RS (Serbia)
+            - SC (Seychelles)
+            - SL (Sierra Leone)
+            - SG (Singapore)
+            - SX (Sint Maarten (Dutch part))
+            - SK (Slovakia)
+            - SI (Slovenia)
+            - SB (Solomon Islands)
+            - SO (Somalia)
+            - ZA (South Africa)
+            - GS (South Georgia and the South Sandwich Islands)
+            - SS (South Sudan)
+            - ES (Spain)
+            - LK (Sri Lanka)
+            - SD (Sudan)
+            - SR (Suriname)
+            - SJ (Svalbard and Jan Mayen)
+            - SZ (Swaziland)
+            - SE (Sweden)
+            - CH (Switzerland)
+            - SY (Syrian Arab Republic)
+            - TW (Taiwan)
+            - TJ (Tajikistan)
+            - TZ (Tanzania, United Republic of)
+            - TH (Thailand)
+            - TL (Timor-Leste)
+            - TG (Togo)
+            - TK (Tokelau)
+            - TO (Tonga)
+            - TT (Trinidad and Tobago)
+            - TN (Tunisia)
+            - TR (Turkey)
+            - TM (Turkmenistan)
+            - TC (Turks and Caicos Islands)
+            - TV (Tuvalu)
+            - UG (Uganda)
+            - UA (Ukraine)
+            - AE (United Arab Emirates)
+            - GB (United Kingdom)
+            - US (United States)
+            - UM (United States Minor Outlying Islands)
+            - UY (Uruguay)
+            - UZ (Uzbekistan)
+            - VU (Vanuatu)
+            - VE (Venezuela, Bolivarian Republic of)
+            - VN (Viet Nam)
+            - VG (Virgin Islands, British)
+            - VI (Virgin Islands, U.S.)
+            - WF (Wallis and Futuna)
+            - EH (Western Sahara)
+            - YE (Yemen)
+            - ZM (Zambia)
+            - ZW (Zimbabwe)
+              
+
+          example: US
+          x-sc-fieldmap:
+            table: LEADS
+            uifieldname: Primary Address Country
+           
+           
+
+        primary_address_postalcode:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+            uifieldname: Primary Address Postal Code
+          
+        primary_address_state:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+            uifieldname: a dropdown list of states
+          
+        primary_address_street:
+          type: string
+          description: |
+            the first line of primary address.<br>
+            In the response, Sugar concatenates primary_address_street_2 and primary_address_street_3 into primary_address_street, and sets primary_address_street_2 and primary_address_street_3 to blank.
+          x-sc-fieldmap:
+            table: LEADS
+            uifieldname: Primary Address 
+          
+        primary_address_street_2:
+          type: string
+          description: the second line of primary address
+          x-sc-fieldmap:
+            uifieldname: Primary Address
+          
+        primary_address_street_3:
+          type: string
+          description: the third line of primary address
+          x-sc-fieldmap:
+            uifieldname: Primary Address
+          
+        refered_by:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+            
+        
+        reports_to_id:
+          type: string
+          description: A contact id.
+          x-sc-fieldmap:
+            table: LEADS
+          
+        response_score_c:
+          type: string
+          enum:
+            - 20 (Weak)
+            - 50 (Medium)
+            - 90 (Strong)
+            
+          example: 20
+          x-sc-fieldmap:
+            table: LEADS_CSTM
+            uifieldname: Strength
+          
+        salutation:
+          type: string
+          enum:
+            - Mr. (Mr.)
+            - Ms. (Ms.)
+            - Mrs. (Mrs.)
+            - Dr. (Dr.)
+            - Prof. (Prof.)
+            
+          example: prof.
+          x-sc-fieldmap:
+            table: LEADS
+            uifieldname: Salutation
+            
+            
+          
+        status:
+          type: string
+          description: |
+            status and status_detail_c are companion fields.<br>
+            Following are the pre-defined hierarchy:<br>
+            LEADNEW - field status_default_c must have the value of NEWTBA<br>
+            LEADPROG - field status_default_c must have one of the following values:<br>
+                          PROGINIT,<br>
+                          PROGMEET,<br>
+                          PROGDEMO,<br>
+                          PROGOFFC,<br>
+                          PROGCALL, or<br>
+                          PROGWEBN<br>
+            LEADCONV - field status_default_c must have the value of CONTACT<br>
+            LEADCOLD - field status_default_c must have one of the following values:<br>
+                          COLDBADD,<br>
+                          COLDIBM1,<br>
+                          COLDIBM2,<br>
+                          COLDNOFO,<br>
+                          COLDNORE,<br>
+                          COLDNOFT,<br>
+                          COLDOOUT,<br>
+                          COLDOTHR,<br>
+                          COLDPRTN,<br>
+                          COLDIBM3, or<br>
+                          COLDSTDT<br>
+
+          enum:
+            - LEADCOLD (Cold)
+            - LEADCONV (Converted)
+            - LEADPROG (In progress)
+            - LEADNEW (New)
+            
+          example: LEADPROG
+          x-sc-fieldmap:
+            table: LEADS
+          
+        status_description:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        status_detail_c:
+          type: string
+          enum:
+            - "PROGMEET (1:1 meeting)"
+            - COLDBADD (Bad data)
+            - CONTACT (Contact created)
+            - PROGDEMO (Demos)
+            - COLDIBM1 (IBM already working)
+            - COLDIBM2 (IBM employee)
+            - PROGINIT (Initial contact)
+            - COLDNOFO (No follow up required)
+            - COLDNORE (No response)
+            - COLDNOFT (Not a fit)
+            - PROGOFFC (Office hours)
+            - COLDOOUT (Opt out)
+            - COLDOTHR (Other)
+            - COLDPRTN (Partner)
+            - COLDIBM3 (Passed to other IBM brand)
+            - COLDSTDT (Student)
+            - PROGCALL (Tech sales call)
+            - NEWTBA (To be actioned)
+            - PROGWEBN (Webinar)
+
+            
+          x-sc-fieldmap:
+            table: LEADS_CSTM
+        
+        
+        
+        team_name:
+          type: array
+          items:
+              $ref: '#/definitions/leads-TeamObject'
+            
+            
+        title:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+          
+        trial_applications_c:
+          type: string
+          enum:
+            - APPBIG (Big Data)
+            - APPINT (Integration)
+            - APPIOT (Internet of Things)
+            - APPMOB (Mobile)
+            - APPWAT (Watson)
+            - APPWEB (Web)
+            
+          example: APPWEB
+          x-sc-fieldmap:
+            table: LEADS_CSTM
+            uifieldname: Applications
+          
+        trial_end_date_c:
+          type: string
+          description: |
+            This is a timestamp field.<br>
+            
+          example: 2015-01-15T16:59:00-05:00
+          x-sc-fieldmap:
+            table: LEADS_CSTM
+            uifieldname: Trial end date
+          
+        trial_id_c:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS_CSTM
+            uifieldname: Trial ID
+          
+        trial_start_date_c:
+          type: string
+          description: |
+            This is a timestamp field.<br>
+            
+          example: 2015-01-13T16:58:00-05:00
+          x-sc-fieldmap:
+            table: LEADS_CSTM
+            uifieldname: Trial start date
+          
+        twitter:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+            uifieldname: Twitter Account
+          
+        
+        version:
+          type: integer
+          x-sc-fieldmap:
+            table: LEADS
+          
+        website:
+          type: string
+          x-sc-fieldmap:
+            table: LEADS
+            uifieldname: Website
+          
+       
+        
+        
+paths:
+     
+  /leads:
+    parameters:
+      - $ref: 'MASTER#/parameters/OAuthToken'
+      - $ref: 'MASTER#/parameters/ContentType'
+      
+    post:
+      summary: create lead
+      tags: [ leads ]
+      x-sc-APIm-plans:
+        - salesconnect_leads_create
+        
+      description: |
+        <p>API to create a lead.</p>
+
+      x-sc-samples:
+        - $ref: '#/x-sc-samples/leads-post-create-lead'
+        - $ref: '#/x-sc-samples/leads-post-create-lead-employeecnum'
+        
+        
+      parameters:
+        - name: lead_definition
+          in: body
+          description: definition of lead to be created
+          schema:
+            $ref: '#/definitions/LeadObject'
+            
+      responses:
+        200: 
+          $ref: '#/responses/LeadObjectResponse'
+          
+        422:
+          description: |
+            <p>scenarios</p>
+            <ul>
+            <li>missing required field</li>
+            <li>invalid values for optional fields</li>
+            <li>et cetera</li>
+            </ul>
+
+            
+    get:
+      summary: retrieve leads
+      tags: [ leads ]
+      x-sc-APIm-plans:
+        - salesconnect_leads_read
+
+      description: |
+        <p>Query parameters are optional.
+        </p>  
+        <p>By default, this API retrieves the first page of leads.  
+        Use ?offset=<offset-number> query parameter to retrieve leads starting from the offset-number (0-based)
+        </p>
+
+      x-sc-samples:
+        - $ref: '#/x-sc-samples/leads-get-query'
+        - $ref: '#/x-sc-samples/leads-get-query-favorite'
+        
+        
+      parameters:
+        - $ref: 'MASTER#/parameters/complex-filter-query'
+        - $ref: 'MASTER#/parameters/q-query'
+        - $ref: 'MASTER#/parameters/max_num-query'
+        - $ref: 'MASTER#/parameters/offset-query'
+        - $ref: 'MASTER#/parameters/field-query'
+        - $ref: 'MASTER#/parameters/order_by-query'
+        - $ref: 'MASTER#/parameters/favorites-query'
+        - $ref: 'MASTER#/parameters/deleted-query'
+ 
+      responses: 
+        200: 
+          description: successful
+          schema:
+            $ref: '#/definitions/LeadObject'     
+            
+            
+          
+      
+  /leads/count:
+    parameters: 
+      - $ref: 'MASTER#/parameters/OAuthToken'
+      - $ref: 'MASTER#/parameters/ContentType'
+
+    get:
+      summary: retrieve lead counts
+      tags: [ leads ]
+      x-sc-APIm-plans:
+        - salesconnect_leads_read
+    
+      description: API to retrieve lead counts
+      
+      x-sc-samples:
+        - $ref: '#/x-sc-samples/leads-get-count'
+          
+      responses: 
+        200: 
+          description: successful
+          
+  /leads/enum/{field_name}:
+    parameters: 
+      - $ref: 'MASTER#/parameters/OAuthToken'
+      - $ref: 'MASTER#/parameters/ContentType'
+
+    get:
+      summary: retrieve available keys and values of a lead field
+      tags: [ leads ]
+      x-sc-APIm-plans:
+        - salesconnect_leads_read
+    
+      description: API to retrieve available keys and values of a lead field
+      
+      x-sc-samples:
+        - $ref: '#/x-sc-samples/leads-get-enum-status'
+        
+      parameters:
+        - name: field_name
+          in: path
+          type: string
+          description: |
+            Name of the fields in the LEADS table
+          
+      responses: 
+        200: 
+          description: successful
+      
+  /leads/{lead-id}: 
+    parameters:
+    - $ref: '#/parameters/leadId'
+    - $ref: 'MASTER#/parameters/OAuthToken'
+    - $ref: 'MASTER#/parameters/ContentType'
+    
+    get:
+      summary: retrieve a lead
+      tags: [ leads ]
+      x-sc-APIm-plans: [ salesconnect_leads_read ]
+      
+      description: |
+        <p>API to retrieve a lead.</p>
+        
+      x-sc-samples:
+        - $ref: '#/x-sc-samples/leads-get-lead'
+        
+      responses: 
+        200: 
+          description: successful
+        404:
+          description: "Could not find record: {lead-id] in module: Leads"
+          
+      
+    put:
+      summary: update a lead
+      tags: [ leads ]
+      x-sc-APIm-plans: [ salesconnect_leads_update ]
+      description: |
+        <p>API to update a lead.</p>
+     
+      x-sc-samples:
+        - $ref: '#/x-sc-samples/leads-update-lead'
+        
+      responses: 
+        200: 
+          description: successful
+      
+      
+    delete:
+      summary: delete a lead
+      tags:  [ leads ]
+      x-sc-APIm-plans: [ salesconnect_leads_delete ]
+      description: |
+        <p>API to delete a lead.</p>
+     
+      x-sc-samples:
+        - $ref: '#/x-sc-samples/leads-delete-lead'
+        
+        
+      responses: 
+        200: 
+          description: successful
+
+    
+ 
+  /leads/{lead-id}/favorite: 
+    parameters:
+      - $ref: 'MASTER#/parameters/OAuthToken'
+      - $ref: 'MASTER#/parameters/ContentType'
+      - $ref: '#/parameters/leadId'
+    
+    put:
+      summary: set a lead as favorite
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_update ]
+      description: |
+        <p>API to set a lead as current user's favorite.</p>
+      
+      x-sc-samples:
+        - $ref: '#/x-sc-samples/leads-put-favorite'
+        
+      responses: 
+        200: 
+          description: successful
+      
+    delete:
+      summary: remove a lead as favorite
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_delete ]
+      description: |
+        <p>API to remove a lead as current user's favorite.</p>
+      
+      x-sc-samples:
+        - $ref: '#/x-sc-samples/leads-delete-favorite'
+        
+      responses: 
+        200: 
+          description: successful
+     
+     
+  /leads/{lead-id}/link: 
+    parameters:
+      - $ref: 'MASTER#/parameters/OAuthToken'
+      - $ref: 'MASTER#/parameters/ContentType'
+      - $ref: '#/parameters/leadId'
+
+    post:
+      summary: link multiple items of a module to a lead    
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_create ]
+      description: |
+        <p>API to link multiple items of a module (I.e. call/note/task/meeting/email) to a lead</p>
+        
+        
+      x-sc-samples:
+        - $ref: '#/x-sc-samples/leads-post-link-multicalls'
+        - $ref: '#/x-sc-samples/leads-post-link-multinotes'
+        
+        
+      parameters:
+        - name: Link Payload
+          in: body
+          description: payload of Link
+          schema:
+            $ref: '#/definitions/leads-Post-Link'
+            
+        
+      responses: 
+        200: 
+          description: successful
+              
+       
+  /leads/{lead-id}/link/calls: 
+    parameters:
+      - $ref: 'MASTER#/parameters/OAuthToken'
+      - $ref: 'MASTER#/parameters/ContentType'
+      - $ref: '#/parameters/leadId'
+
+    get:
+      summary: retrieve linked calls    
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_read ]
+      description: |
+        <p>API to retrieve all the calls linking to a lead</p>
+        
+      responses: 
+        200: 
+          description: successful
+ 
+  /leads/{lead-id}/link/calls/{call-id}: 
+    parameters:
+      - $ref: 'MASTER#/parameters/OAuthToken'
+      - $ref: 'MASTER#/parameters/ContentType'
+      - $ref: '#/parameters/leadId'
+      - name: call-id
+        in: path
+        type: string
+        required: true
+        description: sugar id of a particular call
+  
+    get:
+      summary: retrieve a linked call    
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_read ]
+      description: |
+        <p>API to retrieve a linked call.</p>
+        
+      responses: 
+        200: 
+          description: successful
+          
+    post:
+      summary: link a call to a lead    
+      tags: [ leads ]
+      x-sc-APIm-plans: [ salesconnect_leads_create ]
+      description: |
+        <p>API to link a call to a lead.</p>
+      
+      responses: 
+        200: 
+          description: successful
+          
+    
+    delete:
+      summary: remove the link between a lead and a call    
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_delete ]
+      description:  |
+        <p>API to remove the link between a lead and a call.</p>
+      
+      responses: 
+        200: 
+          description: successful
+          
+          
+  
+  /leads/{lead-id}/link/emails: 
+    parameters:
+      - $ref: 'MASTER#/parameters/OAuthToken'
+      - $ref: 'MASTER#/parameters/ContentType'
+      - $ref: '#/parameters/leadId'
+
+    get:
+      summary: retrieve linked emails    
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_read ]
+      description: |
+        <p>API to retrieve all the emails relating to a lead</p>
+        
+      responses: 
+        200: 
+          description: successful
+ 
+  /leads/{lead-id}/link/emails/{email-id}: 
+    parameters:
+      - $ref: 'MASTER#/parameters/OAuthToken'
+      - $ref: 'MASTER#/parameters/ContentType'
+      - $ref: '#/parameters/leadId'
+      - name: email-id
+        in: path
+        type: string
+        required: true
+        description: sugar id of a particular email
+  
+    get:
+      summary: retrieve a linked email    
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_read ]
+      description: |
+        <p>API to retrieve a linked email.</p>
+        
+      responses: 
+        200: 
+          description: successful
+          
+    post:
+      summary: link an email to a lead    
+      tags: [ leads ]
+      x-sc-APIm-plans: [ salesconnect_leads_create ]
+      description: |
+        <p>API to link an email to a lead.</p>
+      
+      responses: 
+        200: 
+          description: successful
+          
+    
+          
+    delete:
+      summary: remove the link between a lead and an email    
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_delete ]
+      description:  |
+        <p>API to remove the link between a lead and an email.</p>
+      
+      responses: 
+        200: 
+          description: successful
+          
+      
+      
+  /leads/{lead-id}/link/meetings: 
+    parameters:
+      - $ref: 'MASTER#/parameters/OAuthToken'
+      - $ref: 'MASTER#/parameters/ContentType'
+      - $ref: '#/parameters/leadId'
+
+    get:
+      summary: retrieve linked meetings    
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_read ]
+      description: |
+        <p>API to retrieve all the meetings relating to a given lead</p>
+        
+      responses: 
+        200: 
+          description: successful
+ 
+  /leads/{lead-id}/link/meetings/{meeting-id}: 
+    parameters:
+      - $ref: 'MASTER#/parameters/OAuthToken'
+      - $ref: 'MASTER#/parameters/ContentType'
+      - $ref: '#/parameters/leadId'
+      - name: meeting-id
+        in: path
+        type: string
+        required: true
+        description: sugar id of a particular meeting
+  
+    get:
+      summary: retrieve a linked meeting    
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_read ]
+      description: |
+        <p>API to retrieve a linked meeting.</p>
+        
+      responses: 
+        200: 
+          description: successful
+          
+    post:
+      summary: link a meeting to a lead    
+      tags: [ leads ]
+      x-sc-APIm-plans: [ salesconnect_leads_create ]
+      description: |
+        <p>API to link a meeting to a lead.</p>
+      
+      responses: 
+        200: 
+          description: successful
+          
+       
+          
+    delete:
+      summary: remove link between a lead and a meeting    
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_delete ]
+      description:  |
+        <p>API to remove the link between a lead and a meeting.</p>
+      
+      responses: 
+        200: 
+          description: successful
+          
+      
+      
+      
+  /leads/{lead-id}/link/notes: 
+    parameters:
+      - $ref: 'MASTER#/parameters/OAuthToken'
+      - $ref: 'MASTER#/parameters/ContentType'
+      - $ref: '#/parameters/leadId'
+
+    get:
+      summary: retrieve linked notes
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_read ]
+      description: |
+        <p>API to retrieve all the notes relating to a given lead</p>
+        
+      responses: 
+        200: 
+          description: successful
+ 
+ 
+  /leads/{lead-id}/link/notes/{note-id}: 
+    parameters:
+      - $ref: 'MASTER#/parameters/OAuthToken'
+      - $ref: 'MASTER#/parameters/ContentType'
+      - $ref: '#/parameters/leadId'
+      - name: note-id
+        in: path
+        type: string
+        required: true
+        description: sugar id of a particular note
+  
+    get:
+      summary: retrieve a linked note    
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_read ]
+      description: |
+        <p>API to retrieve a linked note.</p>
+        
+      responses: 
+        200: 
+          description: successful
+          
+    post:
+      summary: link a note to a lead    
+      tags: [ leads ]
+      x-sc-APIm-plans: [ salesconnect_leads_create ]
+      description: |
+        <p>API to link a note to a lead</p>
+       
+      responses: 
+        200: 
+          description: successful
+          
+    
+          
+    delete:
+      summary: remove link between a lead and a note    
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_delete ]
+      description: |
+        <p>API to remove the link between a lead and a note</p>
+       
+      responses: 
+        200: 
+          description: successful
+    
+    
+  
+          
+  /leads/{lead-id}/link/tasks: 
+    parameters:
+      - $ref: 'MASTER#/parameters/OAuthToken'
+      - $ref: 'MASTER#/parameters/ContentType'
+      - $ref: '#/parameters/leadId'
+
+    get:
+      summary: retrieve linked tasks    
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_read ]
+      description: |
+        <p>API to retrieve all the tasks relating to a given lead</p>
+        
+      x-sc-samples:
+        - $ref: '#/x-sc-samples/leads-get-link-tasks'
+        
+      responses: 
+        200: 
+          description: successful
+ 
+  /leads/{lead-id}/link/tasks/{task-id}: 
+    parameters:
+      - $ref: 'MASTER#/parameters/OAuthToken'
+      - $ref: 'MASTER#/parameters/ContentType'
+      - $ref: '#/parameters/leadId'
+      - name: task-id
+        in: path
+        type: string
+        required: true
+        description: sugar id of a particular task
+  
+    get:
+      summary: retrieve a linked task    
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_read ]
+      description: |
+        <p>API to retrieve a linked task.</p>
+        
+      x-sc-samples:
+        - $ref: '#/x-sc-samples/leads-get-link-task'
+       
+      responses: 
+        200: 
+          description: successful
+          
+    post:
+      summary: link a task to a lead
+      tags: [ leads ]
+      x-sc-APIm-plans: [ salesconnect_leads_create ]
+      description: |
+        <p>API to link a task to a lead.</p>
+    
+      x-sc-samples:
+        - $ref: '#/x-sc-samples/leads-post-link-task'
+       
+      responses: 
+        200: 
+          description: successful
+        404:
+          "description": |
+            <p>"Could not find a relationship named: {task-id}"</p>
+            <p>"Could not find record: {lead-id} in module: Leads"</p>
+          
+    put:
+      summary: update a linked task    
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_update ]
+      description: |
+        <p>API to update the task the lead links to</p>
+      
+      x-sc-samples:
+        - $ref: '#/x-sc-samples/leads-put-link-task'
+        
+        
+      parameters: 
+        - name: Taskupdate Payload
+          in: body
+          description: payload of Task update
+          schema:
+            $ref: '#/definitions/TaskObject'
+             
+            
+      responses: 
+        200: 
+          description: successful
+          
+          
+    delete:
+      summary: remove link between a lead and a task    
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_delete ]
+      description: |
+        <p>API to remove the link between a lead and a task</p>
+       
+      x-sc-samples:
+        - $ref: '#/x-sc-samples/leads-delete-link-task'
+        
+      responses: 
+        200: 
+          description: successful
+          
+    
+  
+  /leads/{lead-id}/subscribe: 
+    parameters:
+      - $ref: 'MASTER#/parameters/OAuthToken'
+      - $ref: 'MASTER#/parameters/ContentType'
+      - $ref: '#/parameters/leadId'
+
+    post:
+      summary: subscribe    
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_create ]
+      description: |
+        <p>This API returned GUID of a subscription record in the Subscriptions table for the specified lead.
+           It allows the user to be subscribed to activity stream messages for the record being subscribed to, or "followed". 
+           The value of this lead's "following" field will be set to true.</p>
+           
+      x-sc-samples:
+        - $ref: '#/x-sc-samples/leads-post-subscribe'
+       
+      responses: 
+        200: 
+          description: successful
+          
+          
+  
+  
+  /leads/{lead-id}/unsubscribe: 
+    parameters:
+      - $ref: 'MASTER#/parameters/OAuthToken'
+      - $ref: 'MASTER#/parameters/ContentType'
+      - $ref: '#/parameters/leadId'
+
+    delete:
+      summary: unsubscribe    
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_delete ]
+      description: |
+        <p>API to unsubscribe a lead.</p>
+        
+      x-sc-samples:
+        - $ref: '#/x-sc-samples/leads-delete-unsubscribe'
+       
+      responses: 
+        200: 
+          description: successful
+          
+  /leads/MassUpdate: 
+    parameters:
+      - $ref: 'MASTER#/parameters/OAuthToken'
+      - $ref: 'MASTER#/parameters/ContentType'
+
+    delete:
+      summary: delete multiple leads    
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_delete ]
+      description: |
+        <p>API to handle mass deletion of leads.</p>
+      
+      x-sc-samples:
+        - $ref: '#/x-sc-samples/leads-delete-massupdate'
+        
+      parameters:
+        - name: MassUpdate Payload
+          in: body
+          description: payload of Mass Update
+          schema:
+            $ref: '#/definitions/leads-Delete-MassUpdate'
+            
+      responses: 
+        200: 
+          description: successful
+
+    put:
+      summary: update multiple leads    
+      tags: [ leads ]
+      x-sc-APIm-plans:  [ salesconnect_leads_update ]
+      description: |
+        <p>API to handle mass update of leads.</p>
+       
+      x-sc-samples:
+        - $ref: '#/x-sc-samples/leads-put-massupdate'
+        
+        
+      parameters:
+        - name: MassUpdate Payload
+          in: body
+          description: payload of Mass Update
+          schema:
+            $ref: '#/definitions/leads-Update-MassUpdate'
+            
+            
+      responses: 
+        200: 
+          description: successful
+
+       

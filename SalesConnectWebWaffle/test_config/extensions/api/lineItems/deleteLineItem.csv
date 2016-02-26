@@ -1,0 +1,15 @@
+TC_Name,url,urlextension,related,user,expectedResponse
+DeleteRLIinvalidid,invalidRLI,*blank*,*blank*,same,404
+DeleteRLIvalididOppty1RLI,rliID3,*blank*,*blank*,same,404
+DeleteRLIvalididOpptySalesStage04,rliID4,*blank*,*blank*,same,404
+DeleteRLIvalidid,rliID,*blank*,*blank*,same,200
+DeleteRLIblankid,*blank*,*blank*,*blank*,same,404
+DeleteRLIAsFavourite,favRLI,/favorite,*blank*,same,200
+DeleteRLIRLILinkvaliditemid,rliOpptyID2,/link/opportun_revenuelineitems,validRLI2,same,200
+DeleteRLIRLILinkblankitemid,rliOpptyID2,/link/opportun_revenuelineitems,*blank*,same,404
+DeleteRLILinkvaliditemidwronguri,rliOpptyID2,/link/opportun_revenuelineitems1,validRLI2,same,404
+DeleteRLILinkValidOpptyInvalidRLIID,rliOpptyID1,/link/opportun_revenuelineitems,invalidRLI,same,404
+DeleteRLILinkInvalidOpptyIdValidRLIID,opptyID,/link/opportun_revenuelineitems,validRLI1,same,404
+DeleteRLIvalididotheruser,favRLI,*blank*,*blank*,other,403
+DeleteRLILinkRLIotheruser,rliOpptyID1,/link/opportun_revenuelineitems,validRLI1,other,404
+DeleteRLIUnsubscribe,subRLI,/unsubscribe,*blank*,same,200

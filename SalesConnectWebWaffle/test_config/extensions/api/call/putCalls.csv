@@ -1,0 +1,78 @@
+TC_NAME;URL;Body;User;Expected_response
+UpdateCallAsFavourite;/*callID*/favorite;;;200
+UpdateCallAsNotFavourite;/*callID*/unfavorite;;;200
+MassUpdate;/MassUpdate;"{ ""massupdate_params"":{""uid"":[""*callID1*"",""*callID2*""],""name"":""Mass Update Lead"",""duration_minutes"":""30""}}";;200
+UpdateAllRequired;/*callID*;"{""name"":""Updated Call Name"", ""status"":""Held"", ""date_start"":""2017-01-08T03:15:30+00:00"", ""duration_minutes"":""30""}";;200
+UpdateName;/*callID*;"{""name"":""Call Name Updated""}";;200
+UpdateStatus;/*callID*;"{ ""status"":""Not Held""}";;200
+UpdateDateStart;/*callID*;"{ ""date_start"":""2017-01-08T03:15:30+00:00""}";;200
+UpdateDurationMinutes;/*callID*;"{ ""duration_minutes"":""45""}";;200
+UpdateWithInvalidName;/*callID*;"{""name"":blah}";;422
+UpdateWithInvalidStatus;/*callID*;"{ ""status"":blah}";;422
+UpdateWithInvalidDateStart;/*callID*;"{ ""date_start"":blah}";;422
+UpdateWithInvalidDurationMinutes;/*callID*;"{ ""duration_minutes"":blah}";;422
+UpdateWithInvalidAssighedUserIDAssignedUserNameCombo;/*callID*;"{ ""assigned_user_id"": ""*assignedUserID*"", ""assigned_user_name"":""*assignedUserName1*""}";;200
+UpdateAcctIndustC;/*callID*;"{""acct_indust_c"":""Chem""}";;200
+UpdateActivityLogFormC;/*callID*;"{ ""activity_log_form_c"":""ITS_call_log"" }";;200
+UpdateBudgetForInitiativeC;/*callID*;"{ ""budget_for_initiative_c"":""Under100k"" }";;200
+UpdateBusPriorityFirstC;/*callID*;"{ ""bus_priority_first_c"":""Insight""}";;200
+UpdateCallOutcomeC;/*callID*;"{ ""call_outcome_c"":""AttemptVM"" }";;200
+UpdateCallType;/*callID*;"{ ""call_type"":""SocialMediainteraction"" }";;200
+UpdateClientValuePlaysC;/*callID*;"{ ""client_value_plays_c"":[""EfficientDataCenter"",""NtwkTransform""]}";;200
+UpdateContactBuyingAuthC;/*callID*;"{ ""contact_buying_auth_c"":""Recomender"" }";;200
+UpdateContactFocusC;/*callID*;"{ ""contact_focus_c"":""OpptyProg"" }";;200
+UpdateDescription;/*callID*;"{ ""description"":""Test_call_log"" }";;200
+UpdateExtCalllogTextfield2C;/*callID*;"{ ""ext_calllog_textfield_2_c"":""ext_calllog_textfield_2_c"" }";;200
+UpdatePlanToAllocateFundsC;/*callID*;"{ ""plan_to_allocate_funds_c"":""q42014"" }";;200
+UpdateSalesPlaysC;/*callID*;"{ ""sales_plays_c"":[""SmartCloud"",""BCRS"",""Other""] }";;200
+UpdateInvalidAcctIndustC;/*callID*;"{""acct_indust_c"":blah}";;422
+UpdateInvalidActivityLogFormC;/*callID*;"{ ""activity_log_form_c"":blah }";;422
+UpdateInvalidBudgetForInitiativeC;/*callID*;"{ ""budget_for_initiative_c"":blah }";;422
+UpdateInvalidBusPriorityFirstC;/*callID*;"{ ""bus_priority_first_c"":blah}";;422
+UpdateInvalidCallOutcomeC;/*callID*;"{ ""call_outcome_c"":blah }";;422
+UpdateInvalidCallType;/*callID*;"{ ""call_type"":blah }";;422
+UpdateInvalidClientValuePlaysC;/*callID*;"{ ""client_value_plays_c"":[blah,blah]}";;422
+UpdateInvalidContactBuyingAuthC;/*callID*;"{ ""contact_buying_auth_c"":blah }";;422
+UpdateInvalidContactFocusC;/*callID*;"{ ""contact_focus_c"":blah }";;422
+UpdateInvalidDescription;/*callID*;"{ ""description"":blah }";;422
+UpdateInvalidExtCalllogTextfield2C;/*callID*;"{ ""ext_calllog_textfield_2_c"":blah }";;422
+UpdateInvalidPlanToAllocateFundsC;/*callID*;"{ ""plan_to_allocate_funds_c"":blah }";;422
+UpdateInvalidSalesPlaysC;/*callID*;"{ ""sales_plays_c"":[blah] }";;422
+UpdateInvalidAssignedUserID;/*callID*;"{ ""assigned_user_id"": blah}";;422
+UpdateInvalidAssignedUserName;/*callID*;"{ ""assigned_user_name"":blah}";;422
+UpdateWithNonExistantField;/*callID*;"{ ""blah"":blah}";;422
+LinkSingleAccount;/*callID*/link/accounts/*accountID*;;;200
+LinkAdditionalAssigneeViaCNUM;/*callID*/link/additional_assignees_link/*assignedUserCNUM1*/id_field/employee_cnum;;;403
+LinkAdditionalAssigneeViaID;/*callID*/link/additional_assignees_link/*assignedUserID2*;;;403
+LinkAssignedUserViaCNUM;/*callID*/link/assigned_user_link/*assignedUserCNUM1*/id_field/employee_cnum;;;403
+LinkAssignedUserViaID;/*callID*/link/assigned_user_link/*assignedUserID2*;;;403
+LinkSingleContact;/*callID*/link/contacts/*contactID*;;;200
+LinkSingleLead;/*callID*/link/leads/*leadID*;;;200
+LinkSingleNote;/*callID*/link/notes/*noteID*;;;200
+LinkSingleOpportunity;/*callID*/link/opportunities/*opptyID*;;;200
+LinkSingleCampaign;/*callID*/link/rel_campaign_code_c/*campaignID*;;;200
+LinkSingleTask;/*callID*/link/tasks/*taskID*;;;200
+LinkSingleUser;/*callID*/link/users/*assignedUserID1*;;;403
+LinkSingleContactOtherUser;/*callID*/link/contacts/*contactID1*;;user2;403
+LinkSingleLeadOtherUser;/*callID*/link/leads/*leadID1*;;user2;403
+LinkSingleNoteOtherUser;/*callID*/link/notes/*noteID1*;;user2;200
+LinkSingleOpportunityOtherUser;/*callID*/link/opportunities/*opptyID1*;;user2;403
+LinkSingleCampaignOtherUser;/*callID*/link/rel_campaign_code_c/*campaignID*;;user2;403
+LinkSingleTaskOtherUser;/*callID*/link/tasks/*taskID1*;;user2;200
+LinkSingleUserOtherUser;/*callID*/link/users/*assignedUserID2*;;user2;403
+UpdateCallLinkTask;/*callID*/link/tasks/*taskID*;"{ ""name"":""Updated Base task""}";;200
+UpdateCallLinkTaskNotLinked;/*callID*/link/tasks/*unLinkedTaskID*;"{ ""name"":""Updated Base task""}";;200
+UpdateCallLinkTaskInvalidTask;/*callID*/link/tasks/INVALID;"{ ""name"":""Updated Base task""}";;404
+UpdateCallLinkLead;/*callID*/link/leads/*leadID*;"{ ""name"":""Updated Base Lead""}";;200
+UpdateCallLinkLeadNotLinked;/*callID*/link/leads/*unLinkedLeadID*;"{ ""name"":""Updated Base Lead""}";;200
+UpdateCallLinkLeadInvalidCall;/*callID*/link/leads/INVALID;"{ ""name"":""Updated Base Lead""}";;404
+UpdateCallLinkOpportunity;/*callID*/link/opportunities/*opptyID*;"{ ""description"": ""Edited Opportunity Description""}";;200
+UpdateCallLinkOpportunityNotLinked;/*callID*/link/opportunities/*unLinkedOpptyID*;"{ ""description"": ""Edited Opportunity Description""}";;200
+UpdateCallLinkOpportunityInvalidOpportunity;/*callID*/link/opportunities/INVALID;"{ ""description"": ""Edited Opportunity Description""}";;404
+UpdateCallLinkNote;/*callID*/link/notes/*noteID*;"{ ""name"":""Updated Base Note""}";;200
+UpdateCallLinkNoteNotLinked;/*callID*/link/notes/*unLinkedNoteID*;"{ ""name"":""Updated Base Note""}";;200
+UpdateCallLinkNoteInvalidNote;/*callID*/link/notes/INVALID;"{ ""name"":""Updated Base Note""}";;404
+UpdateCallLinkContact;/*callID*/link/contacts/*contactID2*;"{ ""first_name"":""ContactFirstTest""}";;200
+UpdateCallLinkContactNotLinked;/*callID*/link/contacts/*unLinkedContactID*;"{ ""first_name"":""ContactFirstTest""}";;200
+UpdateCallLinkContactInvalidContact;/*callID*/link/contacts/INVALID;"{ ""first_name"":""ContactFirstTest""}";;404
+UpdateDeletedToTrue;/*callID*;"{ ""deleted"": true }";;403

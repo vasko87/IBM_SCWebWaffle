@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!-- TEMPLATE VERSION
+2012.11.04-2200
+-->
+
+<!-- SEE TESTNG.ORG for documentation on using testng xml config files. DTD available at above link and also in testng.jar -->
+
+<suite thread-count="1" name="SmokeTestSuite" parallel="false" >
+  <parameter name="server_is_grid_hub" value="false" />
+  <parameter name="server_host" value="localhost" />
+  <parameter name="server_port" value="" /> 
+  <parameter name="browser_start_command" value="ff_17_Linux" />
+  <parameter name="timeout_page_navigate_timeout" value="@PAGENAVIGATETIMEOUT@" />
+  <parameter name="timeout_async_script" value="@TIMEOUTASYNCSCRIPT@" />
+  <parameter name="timeout_implicit_wait" value="@IMPLICITWAIT@" />
+  <parameter name="timeout_explicit_wait" value="@EXPLICITWAIT@" />
+  <parameter name="test_log_level" value="info" />
+  <parameter name="root_folder_name" value="/tmp/" />
+ 
+<!-- SalesConnect specific parameters -->
+  <parameter name="sugarurldb" value="jdbc:db2://@DBSERVER@:@DBPORT@/@DBNAME@" />
+  <parameter name="testphase" value="nodbaccess" />
+  <parameter name="apimanagement" value="https://@APISERVERHOST@/@APISERVERURL@"/>
+  <!-- 42e2bc6e-5920-46d1-ba3d-dbc9ec963fae -->
+  <parameter name="client_ID" value="@CLIENTID@"/>
+  <!-- lF5wU5pK7gB6gM2jV2vM4kI3cL2tH0cT2vV2oY5yB7hM1hF6jR -->
+  <parameter name="client_secret" value="@CLIENTSECRET@"/>
+  
+  
+  <!-- LISTENERS -->
+  <listeners>
+    <listener class-name="com.ibm.atmn.waffle.base.BaseExecutionListener" />
+    <listener class-name="com.ibm.atmn.waffle.base.BaseTestListener" />
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+  </listeners>
+  
+  <!-- 
+  TESTS
+  Specify test structure below. A test is a collection of test classes. 
+  Parameters for tests may be expected. <Test> parameters automatically override suite parameters of the same same.
+  <Test> divisions are abritrary. @Test method locations for a <test> may be specified by <package> or <class>.
+  -->
+  
+  <!-- APPLICATION UNDER TEST HOST SERVER -->
+  <parameter name="browser_url" value="https://@SFAHOST@/@SFAINSTANCE@" /><!-- address of application host -->
+  
+  <!-- LC UNDER TEST HOST SERVER -->
+  <parameter name="cxnurl" value="@CONNECTIONSHOST@/" />
+
+  <test name="Sugar Smoke Test" preserve-order="true" enabled="true">
+	  <groups>
+	    <run>
+      		<include name="API_AT" />
+      		<include name="AT" />
+    	</run>
+	    <dependencies>
+	      <group name="LCAPI" depends-on="API_AT" />
+	      <group name="MOBILE" depends-on="API_AT" />
+	      <group name="BVT" depends-on="AT" />
+	    </dependencies>
+	  </groups>
+	  <packages>
+      	<package name="com.ibm.salesconnect.test.*" />
+      </packages>
+  </test>
+  
+</suite>

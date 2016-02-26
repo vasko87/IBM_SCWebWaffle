@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Command line suite]">
+  <test name="Command line test(failed)" preserve-order="true">
+    <classes>
+      <class name="com.ibm.salesconnect.test.mobile.CallRestAPITests">
+        <methods>
+          <include name="Test_createCall"/>
+          <include name="Test_relateNewTaskToCall"/>
+          <include name="Test_linkOpportunityToCall"/>
+          <include name="afterClass"/>
+          <include name="Test_favoriteCall"/>
+          <include name="beforeTest"/>
+          <include name="afterMethod"/>
+          <include name="Test_unFavoriteCall"/>
+          <include name="Test_deleteCall"/>
+          <include name="Test_linkUserToCall"/>
+          <include name="Test_linkTaskToCall"/>
+          <include name="Test_relateNewContactToCall"/>
+          <include name="Test_relateNewNoteToCall"/>
+          <include name="Test_relateNewOpportunityToCall"/>
+          <include name="afterSuite"/>
+          <include name="beforeSuite"/>
+          <include name="Test_linkAdditionalAssigneeToCall"/>
+          <include name="afterTest"/>
+          <include name="Test_editCall"/>
+          <include name="Test_linkNoteToCall"/>
+          <include name="Test_linkContactToCall"/>
+        </methods>
+      </class> <!-- com.ibm.salesconnect.test.mobile.CallRestAPITests -->
+    </classes>
+  </test> <!-- Command line test(failed) -->
+</suite> <!-- Failed suite [Command line suite] -->

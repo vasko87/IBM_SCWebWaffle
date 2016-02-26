@@ -1,0 +1,31 @@
+TC_Name,expected_response,record_id,link,link_id
+UpdateLinkedTask_ deleted Task id_Valid Linked Task,404,deletedtask,tasks,linkedtaskid
+UpdateLinkedTask_invalid Task id_Valid Linked Task,404,invalidtask,tasks,linkedtaskid
+UpdateLinkedTask_invalid Task id_Invalid Linked Task,404,invalidtask,tasks,linkedinvalidtaskid
+UpdateLinkedTask_valid Task id_Valid Linked Task,200,validtask,tasks,linkedtaskid
+UpdateLinkedTask_valid Task id_Valid Linked Task,200,unlinkedvalidtaskOneUse,tasks,linkedtaskid
+UpdateLinkedTask_valid Task id_Linked Task absent,404,validtask,tasks,0
+UpdateLinkedTask_blank Task id_Valid Linked Task,405,0,tasks,linkedtaskid
+UpdateLinkedTask_valid Task id in different case_Valid Task present,200,casetask,tasks,linkedtaskid
+UpdateLinkedTask_valid Task id_wrong uri_Valid Task present,405,validtask,tasks1,linkedtaskid
+UpdateLinkedTask_valid Task id_Invalid Linked Task,404,validtask,tasks,linkedinvalidtaskid
+UpdateLinkedTask_valid Task id_Deleted Linked Task,404,validtask,tasks,linkeddeletedtaskid
+UpdateLinkedTask_valid Task id_Linked Task in different case,200,validtask,tasks,linkedtaskcaseid
+Update linked additional assignee via Sugar User ID_url shouldn't be accessible,405,validtask,additional_assignees_link,linkeduserid
+Update linked client_url shouldn't be accessible,405,unlinkedvalidtask,accounts,linkedaccountid
+Update linked contact_url shouldn't be accessible,405,unlinkedvalidtask,contacts,linkedcontactid
+Update linked oppty_url shouldn't be accessible,405,unlinkedvalidtask,opportunities,linkedopptyid
+Update linked call_url shouldn't be accessible,405,unlinkedvalidtask,calls,linkedcallid
+Update linked note_url shouldn't be accessible,405,unlinkedvalidtask,notes,linkednoteid
+Update linked additional assignee via Sugar User ID_url shouldn't be accessible,405,validtask,additional_assignees_link,linkeduserid
+Update linked client_url shouldn't be accessible,405,validtask,accounts,linkedaccountid
+Update linked contact_url shouldn't be accessible,405,validtask,contacts,linkedcontactid
+Update linked oppty_url shouldn't be accessible,405,validtask,opportunities,linkedopptyid
+Update linked call_url shouldn't be accessible,405,validtask,calls,linkedcallid
+Update linked note_url shouldn't be accessible,405,validtask,notes,linkednoteid
+UpdateTaskAsFavorite_Valid Task id,200,validtask,0,favorite
+UpdateTaskAsFavorite_Invalid Task id,404,invalidtask,0,favorite
+UpdateTaskAsFavorite_Blank Task id,404,0,0,favorite
+UpdateTaskAsFavorite_Deleted Task ID,404,deletedtask,0,favorite
+UpdateTaskAsFavorite_Valid Task Id_wrong uri,404,validtask,0,favorite1
+UpdateTaskAsFavorite_Valid Task id in different case,200,casetask,0,favorite

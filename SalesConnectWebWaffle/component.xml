@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+ * IBM Confidential
+ * 
+ * OCO Source Materials
+ * 
+ * (C) Copyright IBM Corp. 2014
+ * 
+ * The source code for this program is not published or otherwise
+ * divested of its trade secrets, irrespective of what has been
+ * deposited with the U.S. Copyright Office.
+ * 
+-->
+<component name="SalesConnectWebWaffle" description="selenium test jar" spec-version="1.0" type="source">
+
+   <output-group name="dist">
+      <output type="jar" visibility="public" platform="all" location="${build.dir}/SalesConnectAuto.jar"/>
+   </output-group>   
+</component>

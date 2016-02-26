@@ -1,0 +1,47 @@
+TC_Name,expected_response,record_id,link,link_id
+DeleteTask_invalid id ,404,invalidtask,0,0
+DeleteTask_valid id,200,temptask,0,0
+DeleteTask_blank id ,405,0,0,0
+DeleteTask_valid id in different case,200,casetask,0,0
+DeleteTaskLink_valid item id(linked Task),200,tasktask,tasks,linkedtaskid
+DeleteTaskLink_blank item id(linked Task),404,tasktask,tasks,0
+DeleteTaskLink_valid item id in different case,200,tasktask,tasks,linkedtaskcaseid
+DeleteTaskLink_valid item id_wrong uri,404,tasktask,tasks1,linkedtaskid
+DeleteTaskLink_Valid Task id_Invalid item id,404,tasktask,tasks,linkedtaskidinvalid
+DeleteTaskLink_Invalid Task id_Valid item id,404,invalidtask,tasks,linkedtaskid
+DeleteAssigneeLink_Valid Task id_valid user id(linked assignee),200,usertask,additional_assignees_link,linkeduserid
+DeleteAssigneeLink_Valid Task id_blank user id ,404,usertask,additional_assignees_link,0
+DeleteAssigneeLink_Valid Task id_valid user id in different case,200,validcasetask,additional_assignees_link,linkedusercaseid
+DeleteAssigneeLink_Valid Task id_valid user id_wrong uri,404,usertask,additional_assignees_link1,linkeduserid
+DeleteAssigneeLink_Valid Task id_Invalid linked Assignee,404,usertask,additional_assignees_link,linkeduseridinvalid
+DeleteAssigneeLink_Invalid Task id_Valid linked Assignee,404,invalidtask,additional_assignees_link,linkeduserid
+DeleteClientLink_Valid Task id_valid item id(linked Client),200,accounttask,accounts,linkedaccountid
+DeleteClientLink_Valid Task id_blank item id ,404,accounttask,accounts,0
+DeleteClientLink_Valid Task id_valid item id in different case,200,validcasetask,accounts,linkedaccountcaseid
+DeleteClientLink_Valid Task id_valid item id_wrong uri,404,accounttask,accounts1,linkedaccountid
+DeleteClientLink_Valid Task id_Invalid linked Client,404,accounttask,accounts,linkedaccountidinvalid
+DeleteClientLink_Invalid Task id_Valid linked Client,404,invalidtask,accounts,linkedaccountid
+DeleteContactLink_Valid Task id_valid item id(linked Contact),200,contacttask,contacts,linkedcontactid
+DeleteContactLink_Valid Task id_blank item id ,404,contacttask,contacts,0
+DeleteContactLink_Valid Task id_valid id in different case,200,validcasetask,contacts,linkedcontactcaseid
+DeleteContactLink_Valid Task id_valid id_wrong uri,404,contacttask,contacts1,linkedcontactid
+DeleteContactLink_Valid Task id_Invalid linked Contact,404,contacttask,contacts,linkedcontactidinvalid
+DeleteContactLink_Invalid Task id_Valid linked Contact,404,invalidtask,contacts,linkedcontactid
+DeleteNoteLink_Valid Task id_valid item id(linked Note),200,notetask,notes,linkednoteid
+DeleteNoteLink_Valid Task id_blank item id ,404,notetask,notes,0
+DeleteNoteLink_Valid Task id_valid item id in different case,200,validcasetask,notes,linkednotecaseid
+DeleteNoteLink_Valid Task id_valid id_wrong uri,404,notetask,notes1,linkednoteid
+DeleteNoteLink_Valid Task id_Invalid linked Note,404,notetask,notes,linkednoteidinvalid
+DeleteNoteLink_Invalid Task id_Valid linked Note,404,invalidtask,notes,linkednoteid
+DeleteOpptyLink_Valid Task id_valid item id(linked Oppty),200,opptytask,opportunities,linkedopptyid
+DeleteOpptyLink_Valid Task id_blank item id ,404,opptytask,opportunities,0
+DeleteOpptyLink_Valid Task id_valid id in different case,200,validcasetask,opportunities,linkedopptycaseid
+DeleteOpptyLink_Valid Task id_valid id_wrong uri,404,opptytask,opportunities1,linkedopptyid
+DeleteOpptyLink_Valid Task id_Invalid linked Oppty,404,opptytask,opportunities,linkedopptyidinvalid
+DeleteOpptyLink_Invalid Task id_Valid linked Oppty,404,invalidtask,opportunities,linkedopptyid
+DeleteCallLink_Valid Task id_valid item id(linked Call),200,calltask,calls,linkedcallid
+DeleteCallLink_Valid Task id_blank item id ,404,calltask,calls,0
+DeleteCallLink_Valid Task id_valid id in different case,200,validcasetask,calls,linkedcallcaseid
+DeleteCallLink_Valid Task id_valid id_wrong uri,404,calltask,calls1,linkedcallid
+DeleteCallLink_Valid Task id_Invalid linked Call,404,calltask,calls,linkedcallidinvalid
+DeleteCallLink_Invalid Task id_Valid linked Call,404,invalidtask,calls,linkedcallid

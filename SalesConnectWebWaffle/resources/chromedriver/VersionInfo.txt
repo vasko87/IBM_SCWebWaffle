@@ -1,0 +1,9 @@
+Current Chromedriver version per OS:
+Windows:
+2.22
+
+Linux:
+2.21
+
+MAC:
+2.21

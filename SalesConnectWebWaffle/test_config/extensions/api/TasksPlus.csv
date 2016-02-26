@@ -1,0 +1,11 @@
+TC_Name,expected_response,record_id,link,link_id,id_field,field_name
+PostLinkedClientList_valid Task id_Linked Client ccmsID,200,accounttask,accounts,linkedccmsID,id_field,ccms_id
+PostLinkedClientList_CaseTask ccmsID,200,casetask,accounts,linkedccmsID,id_field,ccms_id
+PostLinkedClientInvalidid_field,404,usertask,accounts,linkedccmsID,id_field,invalid
+PostLinkedClientInvalidTaskid_field,404,invalidtask,accounts,linkedccmsID,id_field,ccms_id
+PostLinkedClientDeletedTask,404,deletedtask,accounts,linkedccmsID,id_field,ccms_id
+PostLinkedContactList_valid Task id_Linked Contact presentCIContactID,200,contacttask,contacts,linkedCIcontactid,id_field,ext_ref_id1_c
+PostLinkedContactList_CaseTask CIContactID,200,casetask,contacts,linkedCIcontactid,id_field,ext_ref_id1_c
+PostLinkedContactInvalidid_field,404,usertask,contacts,linkedCIcontactid,id_field,invalid
+PostLinkedContactInvalidTaskid_field,404,invalidtask,contacts,linkedCIcontactid,id_field,ext_ref_id1_c
+PostLinkedContactDeletedTask,404,deletedtask,contacts,linkedCIcontactid,id_field,ext_ref_id1_c

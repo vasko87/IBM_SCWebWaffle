@@ -1,0 +1,37 @@
+TC_Name,expectedResponse,lead,urlextension,related,user
+DeleteLead_invalid id ,404,invalidLead,*blank*,*blank*,same
+DeleteLead_valid id,200,tempLead,*blank*,*blank*,same
+DeleteLead_blank id ,404,*blank*,*blank*,*blank*,same
+Delete LeadAsFavourite,200,favLead,/favorite,*blank*,same
+DeleteLeadLink_valid item id(linked Call),200,callLead,/link/calls,validCall,same
+DeleteLeadLink_blank item id(linked Call),404,negcallLead,/link/calls,*blank*,same
+DeleteLeadLink_valid item id_wrong uri,404,negcallLead,/link/calls1,validCall,same
+DeleteLeadLink_Valid Lead id_Invalid item id,404,callLead,/link/calls,invalidcallid,same
+DeleteLeadLink_Invalid Lead id_Valid item id,404,invalidLead,/link/calls,validCall,same
+DeleteLeadLink_valid item id(linked Note),200,noteLead,/link/notes,validNote,same
+DeleteLeadLink_blank item id(linked Note),404,negnoteLead,/link/notes,*blank*,same
+DeleteLeadLink_valid item id_wrong uri,404,negnoteLead,/link/note1,validNote,same
+DeleteLeadLink_Valid Lead id_Invalid item id,404,noteLead,/link/notes,invalidnoteid,same
+DeleteLeadLink_Invalid Lead id_Valid item id,404,invalidLead,/link/notes,validNote,same
+DeleteLeadLink_valid item id(linked Task),200,taskLead,/link/tasks,validTask,same
+DeleteLeadLink_blank item id(linked Task),404,negtaskLead,/link/tasks,*blank*,same
+DeleteLeadLink_valid item id_wrong uri,404,negtaskLead,/link/tasks1,validTask,same
+DeleteLeadLink_Valid Lead id_Invalid item id,404,taskLead,/link/tasks,invalidtaskid,same
+DeleteLeadLink_Invalid Lead id_Valid item id,404,invalidLead,/link/tasks,validTask,same
+DeleteLeadLink_valid item id(linked Email),200,emailLead,/link/emails,validEmail,same
+DeleteLeadLink_blank item id(linked Email),404,negemailLead,/link/emails,*blank*,same
+DeleteLeadLink_valid item id_wrong uri,404,negemailLead,/link/emails1,validEmail,same
+DeleteLeadLink_Valid Lead id_Invalid item id,404,emailLead,/link/emails,invalidemailid,same
+DeleteLeadLink_Invalid Lead id_Valid item id,404,invalidLead,/link/emails,validEmail,same
+DeleteLeadLink_valid item id(linked Meeting),200,meetingLead,/link/meetings,validMeeting,same
+DeleteLeadLink_blank item id(linked Meeting),404,negmeetingLead,/link/meetings,*blank*,same
+DeleteLeadLink_valid item id_wrong uri,404,negmeetingLead,/link/meetings1,validMeeting,same
+DeleteLeadLink_Valid Lead id_Invalid item id,404,meetingLead,/link/meetings,invalidmeetingid,same
+DeleteLeadLink_Invalid Lead id_Valid item id,404,invalidLead,/link/meetings,validMeeting,same
+DeleteLead_valid id other user,404,tempLead,*blank*,*blank*,other
+DeleteLeadLink_Call other user,404,callLead,/link/calls,validCall,other
+DeleteLeadLink_Note other user,404,noteLead,/link/notes,validNote,other
+DeleteLeadLink_Task other user,404,taskLead,/link/tasks,validTask,other
+DeleteLeadLink_Email other user,404,emailLead,/link/emails,validEmail,other
+DeleteLeadLink_Meetings other user,404,meetingLead,/link/meetings,validMeeting,other
+DeleteLeadUnsubscribe,200,subLead,/unsubscribe,*blank*,same
