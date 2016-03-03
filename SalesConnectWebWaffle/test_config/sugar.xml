@@ -42,17 +42,17 @@
   <Test> divisions are abritrary. @Test method locations for a <test> may be specified by <package> or <class>.
   -->
 
-  <test name="BVT 0" preserve-order="true" enabled="true">
+  <!--test name="BVT 0" preserve-order="true" enabled="true">
      	<classes>
-      		<!--<class name="com.ibm.salesconnect.test.Level0.AT_Opportunity"/>
+      		<class name="com.ibm.salesconnect.test.Level0.AT_Opportunity"/>
       		<class name="com.ibm.salesconnect.test.Level0.AT_Client"/>
       		<class name="com.ibm.salesconnect.test.Level0.AT_RLI"/>
       		<class name="com.ibm.salesconnect.test.Level0.AT_Lead"/>
       		<class name="com.ibm.salesconnect.test.Level0.AT_Call"/>
       		<class name="com.ibm.salesconnect.test.Level0.AT_Note"/>
-      		<class name="com.ibm.salesconnect.test.Level0.AT_Task"/>-->
+      		<class name="com.ibm.salesconnect.test.Level0.AT_Task"/>
      	</classes>
-    </test>
+    </test-->
     <test name="Mobile tests" preserve-order="true" enabled="true">
   <groups>
     <run>
